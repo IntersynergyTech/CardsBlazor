@@ -1,0 +1,43 @@
+﻿@page "/players"
+
+@using CardsBlazor.Data
+@using CardsBlazor.Data.Entity
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Grids
+@inject PlayerService PlayerService
+
+<h1>Players</h1>
+
+<p>This demonstrates all players in the system</p>
+
+@if (PlayerList == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+<SfGrid TValue="Player" AllowPaging="true" Toolbar="@(new List<string>() {"Add", "Edit", "Delete", "Cancel", "Update"})">
+    <GridEditSettings AllowAdding="true" AllowEditing="false" AllowDeleting="false" Mode="EditMode.Normal"></GridEditSettings>
+    <DataManager Url="api/Player" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
+
+    <GridColumns>
+        <GridColumn Field=@nameof(Player.PlayerId) HeaderText="Player Id" IsPrimaryKey="true"></GridColumn>
+        <GridColumn Field=@nameof(Player.EmailAddress) HeaderText="Email Address"></GridColumn>
+        <GridColumn Field=@nameof(Player.UserName) HeaderText="User Name"></GridColumn>
+        <GridColumn Field=@nameof(Player.RealName) HeaderText="Real Name"></GridColumn>
+        <GridColumn Field=@nameof(Player.LastPaid) HeaderText="Last Paid" Type="ColumnType.DateTime"></GridColumn>
+    </GridColumns>
+</SfGrid>
+}
+
+@code {
+    private List<Player> PlayerList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        PlayerList = await PlayerService.GetPlayers();
+    }
+
+}
