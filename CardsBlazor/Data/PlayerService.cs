@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CardsBlazor.ApiControllers;
 using CardsBlazor.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +23,16 @@ namespace CardsBlazor.Data
 
         public async Task<List<Player>> GetPlayers()
         {
-            return await _context.Players.ToListAsync();
+            return await _context.Players.OrderBy(x => x.PlayerId).ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets all of the players in the form a view model
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<PlayerViewModel>> GetPlayersViewModel()
+        {
+            return await _context.Players.OrderBy(x => x.PlayerId).Select(x => new PlayerViewModel(x)).ToListAsync();
         }
 
         public IQueryable<Player> GetAllAsQueryable()
@@ -30,9 +40,18 @@ namespace CardsBlazor.Data
             return _context.Players.AsQueryable();
         }
 
-        public void AddPlayer(Player player)
+        public void AddPlayer(PlayerViewModel player)
         {
-            _context.Players.Add(player);
+            var model = new Player
+            {
+                UserName = player.UserName,
+                EmailAddress = player.EmailAddress,
+                Archived = false,
+                HasAdminPermission = player.HasAdminPermission,
+                RealName = player.RealName,
+                LastPaid = player.LastPaid
+            };
+            _context.Players.Add(model);
             _context.SaveChanges();
         }
 

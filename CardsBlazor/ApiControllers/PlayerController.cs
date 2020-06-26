@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using CardsBlazor.Data;
 using CardsBlazor.Data.Entity;
@@ -37,6 +39,12 @@ namespace CardsBlazor.ApiControllers
             {
                 return data;
             }
+        }
+
+        [HttpPost]
+        public async void Post([FromBody] PlayerViewModel player)
+        {
+            _playerService.AddPlayer(player);
         }
     }
 }

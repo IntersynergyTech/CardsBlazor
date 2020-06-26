@@ -4,6 +4,7 @@
 @using CardsBlazor.Data.Entity
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Grids
+@using CardsBlazor.ApiControllers
 @inject PlayerService PlayerService
 
 <h1>Players</h1>
@@ -18,26 +19,26 @@
 }
 else
 {
-<SfGrid TValue="Player" AllowPaging="true" Toolbar="@(new List<string>() {"Add", "Edit", "Delete", "Cancel", "Update"})">
+<SfGrid TValue="PlayerViewModel" AllowPaging="true" Toolbar="@(new List<string>() {"Add", "Edit", "Delete", "Cancel", "Update"})">
     <GridEditSettings AllowAdding="true" AllowEditing="false" AllowDeleting="false" Mode="EditMode.Normal"></GridEditSettings>
     <DataManager Url="api/Player" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
 
     <GridColumns>
-        <GridColumn Field=@nameof(Player.PlayerId) HeaderText="Player Id" IsPrimaryKey="true"></GridColumn>
-        <GridColumn Field=@nameof(Player.EmailAddress) HeaderText="Email Address"></GridColumn>
-        <GridColumn Field=@nameof(Player.UserName) HeaderText="User Name"></GridColumn>
-        <GridColumn Field=@nameof(Player.RealName) HeaderText="Real Name"></GridColumn>
-        <GridColumn Field=@nameof(Player.LastPaid) HeaderText="Last Paid" Type="ColumnType.DateTime"></GridColumn>
+
+        <GridColumn Field=@nameof(PlayerViewModel.EmailAddress) HeaderText="Email Address"></GridColumn>
+        <GridColumn Field=@nameof(PlayerViewModel.UserName) HeaderText="User Name"></GridColumn>
+        <GridColumn Field=@nameof(PlayerViewModel.RealName) HeaderText="Real Name"></GridColumn>
+        <GridColumn Field=@nameof(PlayerViewModel.LastPaid) HeaderText="Last Paid" Type="ColumnType.DateTime" EditType="EditType.DateTimePickerEdit"></GridColumn>
     </GridColumns>
 </SfGrid>
 }
 
 @code {
-    private List<Player> PlayerList;
+    private List<PlayerViewModel> PlayerList;
 
     protected override async Task OnInitializedAsync()
     {
-        PlayerList = await PlayerService.GetPlayers();
+        PlayerList = await PlayerService.GetPlayersViewModel();
     }
 
 }
