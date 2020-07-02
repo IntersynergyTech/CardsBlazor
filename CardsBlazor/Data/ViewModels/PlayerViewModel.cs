@@ -11,6 +11,7 @@ namespace CardsBlazor.ApiControllers
         [Key]
         [ReadOnly(true)]
         public int PlayerId { get; set; }
+        [Key]
         public string UserName { get; set; }
         [EmailAddress]
         public string EmailAddress { get; set; }

@@ -32,6 +32,11 @@ namespace CardsBlazor.Data.Entity
             modelBuilder.Entity<Game>().Property(x => x.Name).IsRequired();
             modelBuilder.Entity<Game>().Property(x => x.HasFixedFee).IsRequired();
             modelBuilder.Entity<Game>().Property(x => x.MinimumPlayerCount).IsRequired();
+            modelBuilder.Entity<Game>().HasData(new Game
+            {
+                GameId = 1, Archived = false, Name = "Spin", HasFixedFee = false, MinimumPlayerCount = 2,
+                NumberOfWinnersInt = 1
+            });
         }
     }
 }
