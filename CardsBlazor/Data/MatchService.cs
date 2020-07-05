@@ -55,6 +55,7 @@ namespace CardsBlazor.Data
 
         public void ResolveSingleWinnerMatch(int matchId, int winningParticipantId)
         {
+            var trans = _context.Database.BeginTransaction();
             var match = _context.Matches.Include(x => x.Participants).Include(x => x.Game).FirstOrDefault(x => x.MatchId == matchId);
             if (match == null || match.Game.NumberOfWinners != NumberOfWinners.SingleWinner) throw new MatchNotFoundException();
             var winner = match.Participants.FirstOrDefault(x => x.ParticipantId == winningParticipantId);
@@ -72,6 +73,12 @@ namespace CardsBlazor.Data
             match.IsResolved = true;
             match.EndTime = DateTime.Now;
             _context.SaveChanges();
+            if (_context.Players.Sum(x => x.CurrentPosition) != 0)
+            {
+                Log.Error("Board does not level out");
+                throw new Exception("Board does not level");
+            }
+            trans.Commit();
         }
 
         /// <summary>

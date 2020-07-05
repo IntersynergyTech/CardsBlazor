@@ -7,7 +7,7 @@
 <h3>All matches</h3>
 
 <SfGrid DataSource="@Matches" AllowSelection="true" AllowPaging="true">
-    <GridEvents OnRecordDoubleClick="RecordDoubleClickHandler" TValue="MatchViewModel"></GridEvents>
+    <GridEvents OnRecordDoubleClick="RecordDoubleClickHandler" TValue="MatchViewModel" RowDataBound="RowBound"></GridEvents>
     <GridColumns>
         <GridColumn Field=@nameof(MatchViewModel.GameName) HeaderText="Game"></GridColumn>
         <GridColumn Field=@nameof(MatchViewModel.EntranceFee) HeaderText="Stake" Format="C2"></GridColumn>
@@ -15,16 +15,33 @@
         <GridColumn Field=@nameof(MatchViewModel.StartTime) HeaderText="Start Time" Type="ColumnType.DateTime"></GridColumn>
     </GridColumns>
 </SfGrid>
+<style>
+    .below-25 {
+        background-color: greenyellow;
+    }
+</style>
 @code {
     private List<MatchViewModel> Matches { get; set; } = new List<MatchViewModel>();
     protected override async Task OnInitializedAsync()
     {
-        Matches = MatchService.GetAllMatches().Select(x => new MatchViewModel(x)).ToList();
+        Matches = MatchService.GetAllMatches().OrderBy(x => x.IsResolved).ThenBy(x => x.StartTime).Select(x => new MatchViewModel(x)).ToList();
         Log.Information($"Successfully loaded {Matches.Count} matches");
     }
     public void RecordDoubleClickHandler(RecordDoubleClickEventArgs<MatchViewModel> args)
     {
         var matchId = args.RowData.MatchId;
         NavigationManager.NavigateTo($"viewmatch/{matchId}", false);
+    }
+
+    public void RowBound(RowDataBoundEventArgs<MatchViewModel> args)
+    {
+        if (args.Data.IsResolved)
+        {
+            args.Row.AddClass(new string[] { "below-25" });
+        }
+        else
+        {
+            
+        }
     }
 }
