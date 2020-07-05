@@ -19,5 +19,7 @@ namespace CardsBlazor.Data.Entity
 
         [Column(TypeName = "decimal(8,2)")]
         public decimal? NetResult { get; set; }
+
+        public bool IsResolved { get; set; }
     }
 }

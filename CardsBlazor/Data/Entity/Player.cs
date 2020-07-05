@@ -19,5 +19,17 @@ namespace CardsBlazor.Data.Entity
         public virtual List<Participant> MatchesParticipatedIn { get; set; }
         public bool Archived { get; set; }
         public DateTime? ArchiveTime { get; set; }
+
+        [NotMapped]
+        public decimal? CurrentPosition
+        {
+            get
+            {
+                var matchesSinceLastPaid =
+                    MatchesParticipatedIn.Where(x => x.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid);
+                var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
+                return netResult;
+            }
+        }
     }
 }

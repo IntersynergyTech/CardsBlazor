@@ -1,0 +1,48 @@
+﻿@page "/StartMatch"
+@using CardsBlazor.Data.ViewModels
+@using CardsBlazor.ApiControllers
+@using CardsBlazor.Data
+@using SelectionMode = Syncfusion.Blazor.DropDowns.SelectionMode
+@inject MatchService MatchService
+@inject PlayerService PlayerService
+@inject GameService GameService
+<h3>Start Match</h3>
+<EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes"></SfNumericTextBox>
+    <SfDropDownList TValue="int" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
+        <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
+    </SfDropDownList>
+    <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
+        <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
+    </SfMultiSelect>
+    <button type="submit">Submit</button>
+</EditForm>
+
+
+@code {
+
+    private MatchCreateModel viewModel = new MatchCreateModel {EntranceFee = 1};
+    private List<PlayerViewModel> players { get; set; }
+    private List<GameChooseModel> games { get; set; }
+    private EditContext editContext;
+    private void HandleValidSubmit()
+    {
+        var isValid = editContext.Validate();
+        Console.WriteLine(viewModel.EntranceFee);
+        Console.WriteLine(viewModel.GameId);
+        Console.WriteLine(viewModel.StartingPlayers.Length.ToString());
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        editContext = new EditContext(viewModel);
+        players = await PlayerService.GetPlayersViewModel();
+        games = GameService.GetAllAsChooseModels(); 
+        Console.WriteLine($"Successfully loaded {players.Count} players");
+    }
+    private async Task<bool> RemoteValidate(EditContext editContext)
+    {
+        return true;
+    }
+}

@@ -16,9 +16,11 @@ namespace CardsBlazor.Data.Entity
         public DateTime? EndTime { get; set; }
         public int NumberOfPlayers { get; set; }
         [Column(TypeName = "decimal(8,2)")]
-        public decimal? EntranceFee { get; set; }
+        public decimal EntranceFee { get; set; }
         public virtual List<Participant> Participants { get; set; }
         public bool Archived { get; set; }
         public DateTime? ArchiveTime { get; set; }
+
+        public bool IsResolved { get; set; }
     }
 }

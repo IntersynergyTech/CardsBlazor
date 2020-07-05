@@ -35,6 +35,8 @@ namespace CardsBlazor
             services.AddDbContext<CardsAppContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CardsAppContext")));
             services.AddScoped<PlayerService>();
+            services.AddScoped<GameService>();
+            services.AddScoped<MatchService>();
             services.AddSyncfusionBlazor();
         }
 

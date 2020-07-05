@@ -20,6 +20,18 @@ namespace CardsBlazor.Data.Entity
         {
             modelBuilder.Entity<Player>().HasIndex(x => x.PlayerId);
             modelBuilder.Entity<Player>().HasKey(x => x.PlayerId);
+            modelBuilder.Entity<Player>().HasData(new Player
+            {
+                Archived = false,
+                ArchiveTime = null,
+                EmailAddress = "test@example.com",
+                HasAdminPermission = true,
+                LastPaid = null,
+                Password = "asd123asd",
+                PlayerId = 1,
+                RealName = "Admin",
+                UserName = "Admin"
+            });
 
             modelBuilder.Entity<Match>().HasKey(x => x.MatchId);
             modelBuilder.Entity<Match>().HasOne(x => x.Game).WithMany(x => x.Matches);
@@ -34,8 +46,13 @@ namespace CardsBlazor.Data.Entity
             modelBuilder.Entity<Game>().Property(x => x.MinimumPlayerCount).IsRequired();
             modelBuilder.Entity<Game>().HasData(new Game
             {
-                GameId = 1, Archived = false, Name = "Spin", HasFixedFee = false, MinimumPlayerCount = 2,
-                NumberOfWinnersInt = 1
+                GameId = 1,
+                Archived = false,
+                Name = "Spin",
+                HasFixedFee = false,
+                MinimumPlayerCount = 2,
+                NumberOfWinnersInt = 1,
+                ArchiveTime = null
             });
         }
     }

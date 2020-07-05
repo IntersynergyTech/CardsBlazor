@@ -23,7 +23,7 @@ namespace CardsBlazor.Data
 
         public async Task<List<Player>> GetPlayers()
         {
-            return await _context.Players.OrderBy(x => x.PlayerId).ToListAsync();
+            return await _context.Players.OrderBy(x => x.PlayerId).ToListAsync().ConfigureAwait(true);
         }
 
         /// <summary>
@@ -32,12 +32,12 @@ namespace CardsBlazor.Data
         /// <returns></returns>
         public async Task<List<PlayerViewModel>> GetPlayersViewModel()
         {
-            return await _context.Players.OrderBy(x => x.PlayerId).Select(x => new PlayerViewModel(x)).ToListAsync();
+            return await _context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).OrderBy(x => x.PlayerId).Select(x => new PlayerViewModel(x)).ToListAsync().ConfigureAwait(true);
         }
 
         public IQueryable<Player> GetAllAsQueryable()
         {
-            return _context.Players.AsQueryable();
+            return _context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).AsQueryable();
         }
 
         public void AddPlayer(PlayerViewModel player)

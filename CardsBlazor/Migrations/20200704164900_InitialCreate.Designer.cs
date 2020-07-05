@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardsBlazor.Migrations
 {
     [DbContext(typeof(CardsAppContext))]
-    [Migration("20200517131919_AddSoftDelete")]
-    partial class AddSoftDelete
+    [Migration("20200704164900_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.0-preview.3.20181.2")
+                .HasAnnotation("ProductVersion", "5.0.0-preview.6.20312.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -44,9 +44,23 @@ namespace CardsBlazor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NumberOfWinnersInt")
+                        .HasColumnType("int");
+
                     b.HasKey("GameId");
 
                     b.ToTable("Games");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            Archived = false,
+                            HasFixedFee = false,
+                            MinimumPlayerCount = 2,
+                            Name = "Spin",
+                            NumberOfWinnersInt = 1
+                        });
                 });
 
             modelBuilder.Entity("CardsBlazor.Data.Entity.Match", b =>
@@ -65,11 +79,14 @@ namespace CardsBlazor.Migrations
                     b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal?>("EntranceFee")
+                    b.Property<decimal>("EntranceFee")
                         .HasColumnType("decimal(8,2)");
 
                     b.Property<int>("GameId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsResolved")
+                        .HasColumnType("bit");
 
                     b.Property<int>("NumberOfPlayers")
                         .HasColumnType("int");
@@ -97,8 +114,14 @@ namespace CardsBlazor.Migrations
                     b.Property<bool>("Archived")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsResolved")
+                        .HasColumnType("bit");
+
                     b.Property<int>("MatchId")
                         .HasColumnType("int");
+
+                    b.Property<decimal?>("NetResult")
+                        .HasColumnType("decimal(8,2)");
 
                     b.Property<int>("PlayerId")
                         .HasColumnType("int");
@@ -148,6 +171,18 @@ namespace CardsBlazor.Migrations
                     b.HasIndex("PlayerId");
 
                     b.ToTable("Players");
+
+                    b.HasData(
+                        new
+                        {
+                            PlayerId = 1,
+                            Archived = false,
+                            EmailAddress = "test@example.com",
+                            HasAdminPermission = true,
+                            Password = "asd123asd",
+                            RealName = "Admin",
+                            UserName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("CardsBlazor.Data.Entity.Match", b =>

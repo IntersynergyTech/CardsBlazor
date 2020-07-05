@@ -1,0 +1,41 @@
+﻿@page "/Games"
+
+@using CardsBlazor.Data
+@using CardsBlazor.Data.Entity
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Grids
+@using CardsBlazor.ApiControllers
+@using CardsBlazor.Data.ViewModels
+@inject GameService GameService
+
+@if (_gameList == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+<SfGrid TValue="GameViewModel" AllowPaging="true" ShowColumnChooser="true">
+    <GridEditSettings AllowAdding="false" AllowEditing="false" AllowDeleting="false" Mode="EditMode.Normal"></GridEditSettings>
+    <DataManager Url="api/Game" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
+
+    <GridColumns>
+
+        <GridColumn Field=@nameof(GameViewModel.Name) HeaderText="Name"></GridColumn>
+        <GridColumn Field=@nameof(GameViewModel.HasFixedFee) HeaderText="Fixed Fee" Type="ColumnType.Boolean"></GridColumn>
+        <GridColumn Field=@nameof(GameViewModel.TotalNumberOfMatches) HeaderText="Times Played" Type="ColumnType.Number"></GridColumn>
+        <GridColumn Field=@nameof(GameViewModel.MinimumPlayerCount) HeaderText="Minimum Players" Type="ColumnType.Number"></GridColumn>
+        <GridColumn Field=@nameof(GameViewModel.LastPlayed) HeaderText="Last Played on" Type="ColumnType.DateTime"></GridColumn>
+    </GridColumns>
+</SfGrid>
+}
+@code {
+    private List<GameViewModel> _gameList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _gameList = await GameService.GetAllAsViewModels();
+    }
+
+}

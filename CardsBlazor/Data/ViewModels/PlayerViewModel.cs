@@ -19,6 +19,8 @@ namespace CardsBlazor.ApiControllers
         public DateTime? LastPaid { get; set; }
         public bool HasAdminPermission { get; set; }
 
+        public decimal CurrentPosition { get; set; }
+
         public PlayerViewModel(Player player)
         {
             if (player != null)
@@ -29,6 +31,7 @@ namespace CardsBlazor.ApiControllers
                 RealName = player.RealName;
                 LastPaid = player.LastPaid;
                 HasAdminPermission = player.HasAdminPermission;
+                CurrentPosition = player.CurrentPosition.GetValueOrDefault(0);
             }
 
         }

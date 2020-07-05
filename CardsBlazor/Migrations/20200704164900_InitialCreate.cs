@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CardsBlazor.Migrations
 {
-    public partial class IntialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,10 @@ namespace CardsBlazor.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MinimumPlayerCount = table.Column<int>(type: "int", nullable: false),
-                    HasFixedFee = table.Column<bool>(type: "bit", nullable: false)
+                    HasFixedFee = table.Column<bool>(type: "bit", nullable: false),
+                    Archived = table.Column<bool>(type: "bit", nullable: false),
+                    ArchiveTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NumberOfWinnersInt = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,7 +36,9 @@ namespace CardsBlazor.Migrations
                     RealName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastPaid = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    HasAdminPermission = table.Column<bool>(type: "bit", nullable: false)
+                    HasAdminPermission = table.Column<bool>(type: "bit", nullable: false),
+                    Archived = table.Column<bool>(type: "bit", nullable: false),
+                    ArchiveTime = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -50,7 +55,10 @@ namespace CardsBlazor.Migrations
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NumberOfPlayers = table.Column<int>(type: "int", nullable: false),
-                    EntranceFee = table.Column<decimal>(type: "decimal(8,2)", nullable: true)
+                    EntranceFee = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
+                    Archived = table.Column<bool>(type: "bit", nullable: false),
+                    ArchiveTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsResolved = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,7 +78,11 @@ namespace CardsBlazor.Migrations
                     ParticipantId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MatchId = table.Column<int>(type: "int", nullable: false),
-                    PlayerId = table.Column<int>(type: "int", nullable: false)
+                    PlayerId = table.Column<int>(type: "int", nullable: false),
+                    Archived = table.Column<bool>(type: "bit", nullable: false),
+                    ArchiveTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NetResult = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
+                    IsResolved = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,6 +100,16 @@ namespace CardsBlazor.Migrations
                         principalColumn: "PlayerId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "Archived", "HasFixedFee", "MinimumPlayerCount", "Name", "NumberOfWinnersInt" },
+                values: new object[] { 1, false, false, 2, "Spin", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Players",
+                columns: new[] { "PlayerId",  "Archived", "EmailAddress", "HasAdminPermission", "Password", "RealName", "UserName" },
+                values: new object[] { 1, false, "test@example.com", true, "asd123asd", "Admin", "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Matches_GameId",

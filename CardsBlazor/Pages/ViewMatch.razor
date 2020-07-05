@@ -1,0 +1,28 @@
+﻿@page "/ViewMatch/{Id:int}"
+@using CardsBlazor.Data
+@using CardsBlazor.Data.ViewModels
+@inject MatchService MatchService
+<h3>ViewMatch</h3>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private MatchViewModel matchView { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var result = MatchService.GetMatch(Id);
+        if (result == null)
+        {
+            //Todo do something to handle the missing result
+        }
+        else if (result.IsResolved)
+        {
+            //Show Completed Match page
+        }
+        else
+        {
+            matchView = new MatchViewModel(result);
+        }
+    }
+}
