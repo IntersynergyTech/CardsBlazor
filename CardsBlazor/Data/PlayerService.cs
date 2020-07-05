@@ -37,7 +37,7 @@ namespace CardsBlazor.Data
 
         public IQueryable<Player> GetAllAsQueryable()
         {
-            return _context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).AsQueryable();
+            return _context.Players.Where(x => !x.Archived).Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).AsQueryable();
         }
 
         public void AddPlayer(PlayerViewModel player)

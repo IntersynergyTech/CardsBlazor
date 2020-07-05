@@ -31,7 +31,7 @@ namespace CardsBlazor.ApiControllers
                 RealName = player.RealName;
                 LastPaid = player.LastPaid;
                 HasAdminPermission = player.HasAdminPermission;
-                CurrentPosition = player.CurrentPosition.GetValueOrDefault(0);
+                CurrentPosition = player.CurrentPosition;
             }
 
         }

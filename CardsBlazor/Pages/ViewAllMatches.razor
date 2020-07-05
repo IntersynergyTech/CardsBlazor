@@ -3,9 +3,11 @@
 @using CardsBlazor.Data.ViewModels
 @using Serilog
 @inject MatchService MatchService
+@inject NavigationManager NavigationManager
 <h3>All matches</h3>
 
 <SfGrid DataSource="@Matches" AllowSelection="true" AllowPaging="true">
+    <GridEvents OnRecordDoubleClick="RecordDoubleClickHandler" TValue="MatchViewModel"></GridEvents>
     <GridColumns>
         <GridColumn Field=@nameof(MatchViewModel.GameName) HeaderText="Game"></GridColumn>
         <GridColumn Field=@nameof(MatchViewModel.EntranceFee) HeaderText="Stake" Format="C2"></GridColumn>
@@ -19,5 +21,10 @@
     {
         Matches = MatchService.GetAllMatches().Select(x => new MatchViewModel(x)).ToList();
         Log.Information($"Successfully loaded {Matches.Count} matches");
+    }
+    public void RecordDoubleClickHandler(RecordDoubleClickEventArgs<MatchViewModel> args)
+    {
+        var matchId = args.RowData.MatchId;
+        NavigationManager.NavigateTo($"viewmatch/{matchId}", false);
     }
 }

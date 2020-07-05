@@ -24,8 +24,6 @@ else
     <DataManager Url="api/Player" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
 
     <GridColumns>
-
-        <GridColumn Field=@nameof(PlayerViewModel.EmailAddress) HeaderText="Email Address"></GridColumn>
         <GridColumn Field=@nameof(PlayerViewModel.UserName) HeaderText="User Name"></GridColumn>
         <GridColumn Field=@nameof(PlayerViewModel.RealName) HeaderText="Real Name"></GridColumn>
         <GridColumn Field=@nameof(PlayerViewModel.CurrentPosition) HeaderText="Current Pos" Type="ColumnType.Number" Format="C2" AllowEditing="false"></GridColumn>

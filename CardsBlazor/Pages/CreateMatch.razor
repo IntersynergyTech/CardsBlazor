@@ -16,7 +16,7 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
     <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes"></SfNumericTextBox>
-    <SfDropDownList TValue="int" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
+    <SfDropDownList TValue="int?" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
         <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
     </SfDropDownList>
     <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
@@ -36,8 +36,8 @@
 @code {
 
     private MatchCreateModel viewModel = new MatchCreateModel { EntranceFee = 1 };
-    private List<PlayerViewModel> players { get; set; }
-    private List<GameChooseModel> games { get; set; }
+    private List<PlayerViewModel> players { get; set; } = new List<PlayerViewModel>();
+    private List<GameChooseModel> games { get; set; } = new List<GameChooseModel>();
     private EditContext editContext;
     private bool IsExceptionDialogVisible { get; set; } = false;
     private void HandleValidSubmit()
@@ -53,9 +53,10 @@
         }
         else
         {
-            NavigationManager.NavigateTo($"viewmatch/{matchId}", true);
+            NavigationManager.NavigateTo($"viewmatch/{matchId}", false);
         }
     }
+
     protected override async Task OnInitializedAsync()
     {
         editContext = new EditContext(viewModel);

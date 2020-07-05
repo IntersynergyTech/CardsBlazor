@@ -9,20 +9,58 @@
 @if (matchView.IsResolved && matchView.EndTime != null)
 {
     <h4>Resolved at @matchView.EndTime.Value.ToString("yyyy-MM-dd HH:mm:ss")</h4>
+    <h4>Won by @matchView.Participants.FirstOrDefault(x => x.IsWinner != null && x.IsWinner.Value)?.RealName</h4>
 }
 Player List:
-<ul>
-    @foreach (var party in matchView.Participants)
-    {
-        <li>
-            <input type="checkbox" @bind="party.IsResolved" />
-            <p>@party.RealName</p>
-        </li>
-    
-    }
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            @if (matchView.IsResolved)
+            {
+                <th>Net Result</th>
+            }
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var party in matchView.Participants)
+        {
+            var partyId = party.ParticipantId;
+        <tr>
 
-<SfButton id="test-button" @onclick="EndMatch" disabled="@IsDisabled" CssClass="e-primary">End Match</SfButton>
+            @if (!party.IsResolved)
+            {
+                <td>@party.RealName</td>
+                <td>
+                    <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
+                    <SfButton CssClass="e-success" IconCss="oi oi-check" OnClick="() => ClickedWinner(partyId)"></SfButton>
+                    <SfButton CssClass="e-danger" IconCss="oi oi-trash" OnClick="() => MarkArchived(partyId)"></SfButton>
+                </td>
+            }
+            else
+            {
+                if (party.IsWinner.HasValue && party.IsWinner.Value)
+                {
+                    <td style="font-weight:bold">@party.RealName</td>
+                }
+                else
+                {
+                    <td style="text-decoration-line:line-through">@party.RealName</td>
+                }
+                <td>@party.NetResult.Value.ToString("C2")</td>
+                <td>
+                    <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
+                    <SfButton CssClass="e-success" IconCss="oi oi-check"></SfButton>
+                    <SfButton CssClass="e-danger" IconCss="oi oi-trash"></SfButton>
+                </td>
+            }
+
+
+        </tr>
+        }
+    </tbody>
+</table>
 
 @code {
     [Parameter]
@@ -52,15 +90,30 @@ Player List:
         }
     }
 
-    private async void EndMatch()
+    private async void ClickedWinner(int partyId)
     {
+        Serilog.Log.Information($"Marking {partyId} as winner of {matchView.MatchId}");
         bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
         if (confirmed)
         {
-            MatchService.ResolveSingleWinnerMatch(matchView.MatchId, 0);
+            switch (matchView.WinnerCount)
+            {
+                case NumberOfWinners.SingleWinner:
+                    MatchService.ResolveSingleWinnerMatch(matchView.MatchId, partyId);
+                    break;
+                default:
+                    return;
+            }
+
             var result = MatchService.GetMatch(Id);
             matchView = new MatchViewModel(result);
+            this.StateHasChanged();
             IsDisabled = true;
         }
+
+    }
+    private void MarkArchived(int partyId)
+    {
+        Serilog.Log.Information($"Archiving {partyId} on {matchView.MatchId}");
     }
 }

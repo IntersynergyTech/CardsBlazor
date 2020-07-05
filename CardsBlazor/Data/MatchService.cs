@@ -92,9 +92,14 @@ namespace CardsBlazor.Data
             try
             {
                 var trans = _context.Database.BeginTransaction();
+                if (!createModel.GameId.HasValue)
+                {
+                    return -1;
+                }
+
                 var newMatch = new Match
                 {
-                    GameId = createModel.GameId,
+                    GameId = createModel.GameId.Value,
                     StartTime = DateTime.Now,
                     EntranceFee = createModel.EntranceFee
                 };

@@ -26,6 +26,7 @@ namespace CardsBlazor.Data.ViewModels
             NumberOfPlayers = matchData.NumberOfPlayers;
             EntranceFee = matchData.EntranceFee;
             IsResolved = matchData.IsResolved;
+            WinnerCount = matchData.Game.NumberOfWinners;
 
 
             if (matchData.Participants != null && matchData.Participants.Count > 0)
@@ -48,6 +49,7 @@ namespace CardsBlazor.Data.ViewModels
         public List<PartyViewModel> Participants { get; set; }
         public bool IsResolved { get; set; }
         public string GameName => Game?.Name;
+        public NumberOfWinners WinnerCount;
     }
 
     public class PartyViewModel

@@ -31,7 +31,6 @@ namespace CardsBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddDbContext<CardsAppContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CardsAppContext")));
             services.AddScoped<PlayerService>();

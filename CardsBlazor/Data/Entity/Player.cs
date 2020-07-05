@@ -16,19 +16,20 @@ namespace CardsBlazor.Data.Entity
         public string Password { get; set; }
         public DateTime? LastPaid { get; set; }
         public bool HasAdminPermission { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual List<Participant> MatchesParticipatedIn { get; set; }
         public bool Archived { get; set; }
         public DateTime? ArchiveTime { get; set; }
 
         [NotMapped]
-        public decimal? CurrentPosition
+        public decimal CurrentPosition
         {
             get
             {
                 var matchesSinceLastPaid =
-                    MatchesParticipatedIn.Where(x => x.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid);
+                    MatchesParticipatedIn.Where(x => x.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid.GetValueOrDefault(DateTime.MinValue));
                 var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
-                return netResult;
+                return netResult.GetValueOrDefault(0);
             }
         }
     }
