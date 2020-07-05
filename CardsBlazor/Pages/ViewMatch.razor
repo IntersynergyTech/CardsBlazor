@@ -1,28 +1,66 @@
 ﻿@page "/ViewMatch/{Id:int}"
 @using CardsBlazor.Data
+@using CardsBlazor.Data.Entity
 @using CardsBlazor.Data.ViewModels
 @inject MatchService MatchService
-<h3>ViewMatch</h3>
+@inject IJSRuntime JsRuntime
+<h3>@matchView.Game.Name for @matchView.EntranceFee.ToString("C2")</h3>
+<h4>Started at @matchView.StartTime.ToString("yyyy-MM-dd HH:mm:ss")</h4>
+@if (matchView.IsResolved && matchView.EndTime != null)
+{
+    <h4>Resolved at @matchView.EndTime.Value.ToString("yyyy-MM-dd HH:mm:ss")</h4>
+}
+Player List:
+<ul>
+    @foreach (var party in matchView.Participants)
+    {
+        <li>
+            <input type="checkbox" @bind="party.IsResolved" />
+            <p>@party.RealName</p>
+        </li>
+    
+    }
+</ul>
+
+<SfButton id="test-button" @onclick="EndMatch" disabled="@IsDisabled" CssClass="e-primary">End Match</SfButton>
 
 @code {
     [Parameter]
     public int Id { get; set; }
 
+    private PartyViewModel winnerModel { get; set; }
     private MatchViewModel matchView { get; set; }
+    protected bool IsDisabled { get; set; }
     protected override async Task OnInitializedAsync()
     {
         var result = MatchService.GetMatch(Id);
         if (result == null)
         {
             //Todo do something to handle the missing result
+            IsDisabled = true;
         }
         else if (result.IsResolved)
         {
-            //Show Completed Match page
+            matchView = new MatchViewModel(result);
+            IsDisabled = true;
+
         }
         else
         {
             matchView = new MatchViewModel(result);
+            IsDisabled = false;
+        }
+    }
+
+    private async void EndMatch()
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
+        if (confirmed)
+        {
+            MatchService.ResolveSingleWinnerMatch(matchView.MatchId, 0);
+            var result = MatchService.GetMatch(Id);
+            matchView = new MatchViewModel(result);
+            IsDisabled = true;
         }
     }
 }

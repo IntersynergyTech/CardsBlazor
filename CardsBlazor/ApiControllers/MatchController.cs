@@ -7,6 +7,7 @@ using CardsBlazor.Data.Entity;
 using CardsBlazor.Data.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace CardsBlazor.ApiControllers
 {

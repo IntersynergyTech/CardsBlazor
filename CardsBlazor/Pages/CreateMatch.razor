@@ -2,10 +2,15 @@
 @using CardsBlazor.Data.ViewModels
 @using CardsBlazor.ApiControllers
 @using CardsBlazor.Data
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@using Microsoft.AspNetCore.Http.Extensions
 @using SelectionMode = Syncfusion.Blazor.DropDowns.SelectionMode
 @inject MatchService MatchService
 @inject PlayerService PlayerService
 @inject GameService GameService
+@inject NavigationManager NavigationManager
 <h3>Start Match</h3>
 <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
@@ -19,30 +24,51 @@
     </SfMultiSelect>
     <button type="submit">Submit</button>
 </EditForm>
+<SfDialog @bind-Visible="@IsExceptionDialogVisible" Width="250px" IsModal="true">
+    <DialogEvents OnOverlayClick="ExceptionDialogClicked">
+    </DialogEvents>
+    <DialogTemplates>
+        <Content> An exception has occurred. The match has not been created. </Content>
+    </DialogTemplates>
+</SfDialog>
 
 
 @code {
 
-    private MatchCreateModel viewModel = new MatchCreateModel {EntranceFee = 1};
+    private MatchCreateModel viewModel = new MatchCreateModel { EntranceFee = 1 };
     private List<PlayerViewModel> players { get; set; }
     private List<GameChooseModel> games { get; set; }
     private EditContext editContext;
+    private bool IsExceptionDialogVisible { get; set; } = false;
     private void HandleValidSubmit()
     {
         var isValid = editContext.Validate();
         Console.WriteLine(viewModel.EntranceFee);
         Console.WriteLine(viewModel.GameId);
         Console.WriteLine(viewModel.StartingPlayers.Length.ToString());
+        var matchId = MatchService.AddNewMatch(viewModel);
+        if (matchId == -1)
+        {
+            IsExceptionDialogVisible = true;
+        }
+        else
+        {
+            NavigationManager.NavigateTo($"viewmatch/{matchId}", true);
+        }
     }
     protected override async Task OnInitializedAsync()
     {
         editContext = new EditContext(viewModel);
         players = await PlayerService.GetPlayersViewModel();
-        games = GameService.GetAllAsChooseModels(); 
+        games = GameService.GetAllAsChooseModels();
         Console.WriteLine($"Successfully loaded {players.Count} players");
     }
     private async Task<bool> RemoteValidate(EditContext editContext)
     {
         return true;
+    }
+    private void ExceptionDialogClicked()
+    {
+        IsExceptionDialogVisible = false;
     }
 }

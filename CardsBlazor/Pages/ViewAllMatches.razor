@@ -1,0 +1,23 @@
+﻿@page "/ViewMatches"
+@using CardsBlazor.Data
+@using CardsBlazor.Data.ViewModels
+@using Serilog
+@inject MatchService MatchService
+<h3>All matches</h3>
+
+<SfGrid DataSource="@Matches" AllowSelection="true" AllowPaging="true">
+    <GridColumns>
+        <GridColumn Field=@nameof(MatchViewModel.GameName) HeaderText="Game"></GridColumn>
+        <GridColumn Field=@nameof(MatchViewModel.EntranceFee) HeaderText="Stake" Format="C2"></GridColumn>
+        <GridColumn Field=@nameof(MatchViewModel.NumberOfPlayers) HeaderText="Number of Players"></GridColumn>
+        <GridColumn Field=@nameof(MatchViewModel.StartTime) HeaderText="Start Time" Type="ColumnType.DateTime"></GridColumn>
+    </GridColumns>
+</SfGrid>
+@code {
+    private List<MatchViewModel> Matches { get; set; } = new List<MatchViewModel>();
+    protected override async Task OnInitializedAsync()
+    {
+        Matches = MatchService.GetAllMatches().Select(x => new MatchViewModel(x)).ToList();
+        Log.Information($"Successfully loaded {Matches.Count} matches");
+    }
+}

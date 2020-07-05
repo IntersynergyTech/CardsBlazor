@@ -21,5 +21,6 @@ namespace CardsBlazor.Data.Entity
         public decimal? NetResult { get; set; }
 
         public bool IsResolved { get; set; }
+        public bool? IsWinner { get; set; }
     }
 }

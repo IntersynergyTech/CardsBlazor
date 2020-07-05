@@ -6,6 +6,7 @@ using CardsBlazor.ApiControllers;
 using CardsBlazor.Data.Entity;
 using CardsBlazor.Data.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace CardsBlazor.Data
 {
@@ -20,7 +21,17 @@ namespace CardsBlazor.Data
 
         public Match GetMatch(int matchId)
         {
-            return _context.Matches.Include(x => x.Participants).ThenInclude(x => x.Player).FirstOrDefault(x => x.MatchId == matchId);
+            return _context.Matches.Include(x => x.Game)
+                .Include(x => x.Participants)
+                .ThenInclude(x => x.Player)
+                .FirstOrDefault(x => x.MatchId == matchId);
+        }
+
+        public List<Match> GetAllMatches()
+        {
+            return _context.Matches.Include(x => x.Game)
+                .Include(x => x.Participants)
+                .ThenInclude(x => x.Player).ToList();
         }
 
         public void AddPlayers(int matchId, int[] playerIds)
@@ -38,6 +49,7 @@ namespace CardsBlazor.Data
                 _context.Participants.Add(participant);
             }
 
+            match.NumberOfPlayers += playerIds.Length;
             _context.SaveChanges();
         }
 
@@ -49,10 +61,12 @@ namespace CardsBlazor.Data
             var totalWinnings = match.EntranceFee * match.Participants.Count;
             winner.NetResult = totalWinnings - match.EntranceFee;
             winner.IsResolved = true;
+            winner.IsWinner = true;
             foreach (var party in match.Participants.Where(x => x.ParticipantId != winner.ParticipantId && !x.IsResolved))
             {
                 party.NetResult = -match.EntranceFee;
                 party.IsResolved = true;
+                party.IsWinner = false;
             }
 
             match.IsResolved = true;
@@ -75,17 +89,41 @@ namespace CardsBlazor.Data
 
         public int AddNewMatch(MatchCreateModel createModel)
         {
-            var newMatch = new Match
+            try
             {
-                GameId = createModel.GameId,
-                StartTime = DateTime.Now,
-                EntranceFee = createModel.EntranceFee
-            };
-            _context.Matches.Add(newMatch);
-            _context.SaveChanges();
-            return newMatch.MatchId;
+                var trans = _context.Database.BeginTransaction();
+                var newMatch = new Match
+                {
+                    GameId = createModel.GameId,
+                    StartTime = DateTime.Now,
+                    EntranceFee = createModel.EntranceFee
+                };
+                _context.Matches.Add(newMatch);
+                _context.SaveChanges();
+                foreach (var party in createModel.StartingPlayers)
+                {
+                    var partObj = new Participant
+                    {
+                        IsResolved = false,
+                        MatchId = newMatch.MatchId,
+                        PlayerId = party
+                    };
+                    _context.Participants.Add(partObj);
+                }
+
+                newMatch.NumberOfPlayers = createModel.StartingPlayers.Length;
+                _context.SaveChanges();
+                trans.Commit();
+                return newMatch.MatchId;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Log.Error(e, "Error occured while saving a new match");
+                return -1;
+            }
         }
     }
-    public class MatchNotFoundException : Exception{}
-    public class IncorrectMatchTypeException : Exception{}
+    public class MatchNotFoundException : Exception { }
+    public class IncorrectMatchTypeException : Exception { }
 }
