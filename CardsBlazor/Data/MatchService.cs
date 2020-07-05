@@ -73,7 +73,7 @@ namespace CardsBlazor.Data
             match.IsResolved = true;
             match.EndTime = DateTime.Now;
             _context.SaveChanges();
-            if (_context.Players.Sum(x => x.CurrentPosition) != 0)
+            if (_context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).ToList().Sum(x => x.CurrentPosition) != 0)
             {
                 Log.Error("Board does not level out");
                 throw new Exception("Board does not level");
