@@ -27,7 +27,7 @@ namespace CardsBlazor.Data.Entity
             get
             {
                 var matchesSinceLastPaid =
-                    MatchesParticipatedIn.Where(x => x.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid.GetValueOrDefault(DateTime.MinValue));
+                    MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid.GetValueOrDefault(DateTime.MinValue));
                 var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
                 return netResult.GetValueOrDefault(0);
             }
