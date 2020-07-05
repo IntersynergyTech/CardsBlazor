@@ -15,7 +15,7 @@
 <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes"></SfNumericTextBox>
+    <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes" Max="100000000"></SfNumericTextBox>
     <SfDropDownList TValue="int?" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
         <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
     </SfDropDownList>
@@ -30,6 +30,11 @@
     <DialogTemplates>
         <Content> An exception has occurred. The match has not been created. </Content>
     </DialogTemplates>
+    <DialogButtons>
+        <DialogButton OnClick="ExceptionDialogClicked">
+            <DialogButtonModel Content="Ok" IsPrimary="true"></DialogButtonModel>
+        </DialogButton>
+    </DialogButtons>
 </SfDialog>
 
 
@@ -43,9 +48,8 @@
     private void HandleValidSubmit()
     {
         var isValid = editContext.Validate();
-        Console.WriteLine(viewModel.EntranceFee);
-        Console.WriteLine(viewModel.GameId);
         Console.WriteLine(viewModel.StartingPlayers.Length.ToString());
+
         var matchId = MatchService.AddNewMatch(viewModel);
         if (matchId == -1)
         {
