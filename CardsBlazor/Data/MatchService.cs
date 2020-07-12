@@ -10,7 +10,7 @@ using Serilog;
 
 namespace CardsBlazor.Data
 {
-    public class MatchService
+    public class MatchService : IDisposable
     {
         private readonly CardsAppContext _context;
 
@@ -59,11 +59,11 @@ namespace CardsBlazor.Data
             var match = _context.Matches.Include(x => x.Participants).Include(x => x.Game).FirstOrDefault(x => x.MatchId == matchId);
             if (match == null || match.Game.NumberOfWinners != NumberOfWinners.SingleWinner) throw new MatchNotFoundException();
             var winner = match.Participants.FirstOrDefault(x => x.ParticipantId == winningParticipantId);
-            var totalWinnings = match.EntranceFee * match.Participants.Count;
+            var totalWinnings = match.EntranceFee * match.Participants.Count(x => !x.Archived);
             winner.NetResult = totalWinnings - match.EntranceFee;
             winner.IsResolved = true;
             winner.IsWinner = true;
-            foreach (var party in match.Participants.Where(x => x.ParticipantId != winner.ParticipantId && !x.IsResolved))
+            foreach (var party in match.Participants.Where(x => x.ParticipantId != winner.ParticipantId && !x.IsResolved && !x.Archived))
             {
                 party.NetResult = -match.EntranceFee;
                 party.IsResolved = true;
@@ -78,6 +78,35 @@ namespace CardsBlazor.Data
                 Log.Error("Board does not level out");
                 throw new Exception("Board does not level");
             }
+            trans.Commit();
+            trans.Dispose();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="matchId"></param>
+        /// <param name="playerResults">Dictionary containing each partyid and their net result</param>
+        public void ResolveMultiWinnerMatch(int matchId, Dictionary<int, decimal> playerResults)
+        {
+            var trans = _context.Database.BeginTransaction();
+            var valid = playerResults.Sum(x => x.Value) == 0;
+            if (!valid) throw new NotImplementedException();
+            var match = _context.Matches.Include(x => x.Participants).Include(x => x.Game).First(x => x.MatchId == matchId);
+            var playerIds = playerResults.Select(x => x.Key);
+            foreach (var result in playerResults)
+            {
+                var party = match.Participants.First(x => x.ParticipantId == result.Key);
+                party.IsWinner = result.Value >= 0;
+                party.NetResult = result.Value;
+                party.IsResolved = true;
+                _context.SaveChanges();
+            }
+
+            match.IsResolved = true;
+            match.EntranceFee = 0;
+            match.EndTime = DateTime.Now;
+            _context.SaveChanges();
             trans.Commit();
         }
 
@@ -126,6 +155,7 @@ namespace CardsBlazor.Data
                 newMatch.NumberOfPlayers = createModel.StartingPlayers.Length;
                 _context.SaveChanges();
                 trans.Commit();
+                trans.Dispose();
                 return newMatch.MatchId;
             }
             catch (Exception e)
@@ -134,6 +164,11 @@ namespace CardsBlazor.Data
                 Log.Error(e, "Error occured while saving a new match");
                 return -1;
             }
+        }
+
+        public void Dispose()
+        {
+            _context?.Dispose();
         }
     }
     public class MatchNotFoundException : Exception { }

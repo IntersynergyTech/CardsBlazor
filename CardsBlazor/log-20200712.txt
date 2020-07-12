@@ -1,0 +1,1134 @@
+2020-07-12 13:52:23.834 +01:00 [INF] Starting web host
+2020-07-12 13:52:27.320 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 13:52:27.911 +01:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 13:52:27.965 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 13:52:27.972 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 13:52:27.976 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 13:52:27.995 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 13:52:28.014 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 13:52:28.038 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 13:52:28.412 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 13:52:28.414 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 13:52:28.415 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 13:52:28.418 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 13:52:28.418 +01:00 [INF] Hosting environment: Development
+2020-07-12 13:52:28.419 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 13:53:43.664 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2020-07-12 13:53:43.698 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 13:53:43.733 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 13:53:43.746 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 13:53:43.747 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 13:53:43.864 +01:00 [INF] Executed page /_Host in 127.1006ms
+2020-07-12 13:53:43.867 +01:00 [INF] Executed endpoint '/_Host'
+2020-07-12 13:53:43.873 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 210.7472ms
+2020-07-12 13:53:43.934 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - -
+2020-07-12 13:53:43.934 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2020-07-12 13:53:43.934 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - -
+2020-07-12 13:53:43.945 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-07-12 13:53:43.947 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - - - 304 - application/javascript 12.2117ms
+2020-07-12 13:53:43.953 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'I:\Programming\GitHub\CardsBlazor\CardsBlazor\wwwroot\css\site.css'
+2020-07-12 13:53:43.955 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 200 3552 text/css 20.6053ms
+2020-07-12 13:53:43.966 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2020-07-12 13:53:43.976 +01:00 [INF] Sending file. Request path: '/css/open-iconic/font/css/open-iconic-bootstrap.min.css'. Physical path: 'I:\Programming\GitHub\CardsBlazor\CardsBlazor\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css'
+2020-07-12 13:53:43.977 +01:00 [INF] Sending file. Request path: '/css/bootstrap/bootstrap.min.css'. Physical path: 'I:\Programming\GitHub\CardsBlazor\CardsBlazor\wwwroot\css\bootstrap\bootstrap.min.css'
+2020-07-12 13:53:43.978 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 200 9395 text/css 11.9879ms
+2020-07-12 13:53:43.982 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - - - 200 155764 text/css 47.3457ms
+2020-07-12 13:53:44.817 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/fonts/open-iconic.woff - -
+2020-07-12 13:53:44.823 +01:00 [INF] Sending file. Request path: '/css/open-iconic/font/fonts/open-iconic.woff'. Physical path: 'I:\Programming\GitHub\CardsBlazor\CardsBlazor\wwwroot\css\open-iconic\font\fonts\open-iconic.woff'
+2020-07-12 13:53:44.825 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/fonts/open-iconic.woff - - - 200 14984 application/font-woff 7.7557ms
+2020-07-12 13:53:44.845 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 13:53:44.848 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 13:53:44.856 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 13:53:44.857 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 12.2818ms
+2020-07-12 13:53:44.912 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=B535tng8oextuThIFKRc8Q - -
+2020-07-12 13:53:44.915 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 13:53:47.896 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 13:53:48.157 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PlayerId], [p].[ArchiveTime], [p].[Archived], [p].[EmailAddress], [p].[HasAdminPermission], [p].[LastPaid], [p].[Password], [p].[RealName], [p].[UserName], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[MatchId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved0], [t].[NumberOfPlayers], [t].[StartTime]
+FROM [Players] AS [p]
+LEFT JOIN (
+    SELECT [p0].[ParticipantId], [p0].[ArchiveTime], [p0].[Archived], [p0].[IsResolved], [p0].[IsWinner], [p0].[MatchId], [p0].[NetResult], [p0].[PlayerId], [m].[MatchId] AS [MatchId0], [m].[ArchiveTime] AS [ArchiveTime0], [m].[Archived] AS [Archived0], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved] AS [IsResolved0], [m].[NumberOfPlayers], [m].[StartTime]
+    FROM [Participants] AS [p0]
+    INNER JOIN [Matches] AS [m] ON [p0].[MatchId] = [m].[MatchId]
+) AS [t] ON [p].[PlayerId] = [t].[PlayerId]
+ORDER BY [p].[PlayerId], [t].[ParticipantId], [t].[MatchId0]
+2020-07-12 13:53:48.681 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - -
+2020-07-12 13:53:48.688 +01:00 [INF] Sending file. Request path: '/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js'. Physical path: 'C:\Users\Floul\.nuget\packages\syncfusion.blazor\18.1.0.59\staticwebassets\scripts\syncfusion-blazor.min.js'
+2020-07-12 13:53:48.690 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - - - 200 184733 application/javascript 8.6950ms
+2020-07-12 13:53:48.713 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[Name]
+FROM [Games] AS [g]
+WHERE [g].[Archived] <> CAST(1 AS bit)
+2020-07-12 13:53:48.862 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - -
+2020-07-12 13:53:48.862 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - -
+2020-07-12 13:53:48.864 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js was not modified
+2020-07-12 13:53:48.865 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js was not modified
+2020-07-12 13:53:48.866 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - - - 304 - application/javascript 3.9150ms
+2020-07-12 13:53:48.867 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - - - 304 - application/javascript 4.7833ms
+2020-07-12 13:53:48.927 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - -
+2020-07-12 13:53:48.928 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - -
+2020-07-12 13:53:48.929 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js was not modified
+2020-07-12 13:53:48.930 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js was not modified
+2020-07-12 13:53:48.931 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - - - 304 - application/javascript 4.2316ms
+2020-07-12 13:53:48.932 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - - - 304 - application/javascript 4.4746ms
+2020-07-12 13:53:49.035 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - -
+2020-07-12 13:53:49.037 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - -
+2020-07-12 13:53:49.038 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - -
+2020-07-12 13:53:49.039 +01:00 [INF] Sending file. Request path: '/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js'. Physical path: 'C:\Users\Floul\.nuget\packages\syncfusion.blazor\18.1.0.59\staticwebassets\scripts\data-938a3e.min.js'
+2020-07-12 13:53:49.040 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - -
+2020-07-12 13:53:49.040 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js was not modified
+2020-07-12 13:53:49.041 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js was not modified
+2020-07-12 13:53:49.043 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - - - 200 65779 application/javascript 8.0725ms
+2020-07-12 13:53:49.044 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js was not modified
+2020-07-12 13:53:49.045 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - - - 304 - application/javascript 8.2650ms
+2020-07-12 13:53:49.048 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - - - 304 - application/javascript 9.3863ms
+2020-07-12 13:53:49.052 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - - - 304 - application/javascript 12.1026ms
+2020-07-12 13:53:54.274 +01:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (Precision = 8) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = Int32), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Matches] ([ArchiveTime], [Archived], [EndTime], [EntranceFee], [GameId], [IsResolved], [NumberOfPlayers], [StartTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [MatchId]
+FROM [Matches]
+WHERE @@ROWCOUNT = 1 AND [MatchId] = scope_identity();
+2020-07-12 13:53:54.307 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Matches] SET [NumberOfPlayers] = @p0
+WHERE [MatchId] = @p1;
+SELECT @@ROWCOUNT;
+2020-07-12 13:53:54.313 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Precision = 8) (Scale = 2), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Participants] ([ArchiveTime], [Archived], [IsResolved], [IsWinner], [MatchId], [NetResult], [PlayerId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [ParticipantId]
+FROM [Participants]
+WHERE @@ROWCOUNT = 1 AND [ParticipantId] = scope_identity();
+2020-07-12 13:53:54.319 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Precision = 8) (Scale = 2), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Participants] ([ArchiveTime], [Archived], [IsResolved], [IsWinner], [MatchId], [NetResult], [PlayerId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [ParticipantId]
+FROM [Participants]
+WHERE @@ROWCOUNT = 1 AND [ParticipantId] = scope_identity();
+2020-07-12 13:53:54.371 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 13:55:34.976 +01:00 [INF] Starting web host
+2020-07-12 13:55:36.882 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 13:55:37.198 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 13:55:37.233 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 13:55:37.238 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 13:55:37.240 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 13:55:37.252 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 13:55:37.273 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 13:55:37.305 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 13:55:37.587 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 13:55:37.589 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 13:55:37.590 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 13:55:37.593 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 13:55:37.594 +01:00 [INF] Hosting environment: Development
+2020-07-12 13:55:37.595 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 13:55:38.207 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 13:55:38.234 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 13:55:38.255 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 13:55:38.259 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 53.6126ms
+2020-07-12 13:55:38.278 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=UDbqDALwJiQmBxGmCn8U5A - -
+2020-07-12 13:55:38.280 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 13:55:48.488 +01:00 [INF] Executed endpoint '/_blazor'
+2020-07-12 13:55:48.491 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/_blazor?id=UDbqDALwJiQmBxGmCn8U5A - - - 101 - - 10213.2884ms
+2020-07-12 13:55:48.502 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/viewmatch/15 - -
+2020-07-12 13:55:48.504 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 13:55:48.525 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 13:55:48.536 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 13:55:48.537 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 13:55:48.610 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 13:55:48.849 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 13:56:24.775 +01:00 [INF] Starting web host
+2020-07-12 13:56:27.132 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 13:56:27.423 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 13:56:27.448 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 13:56:27.452 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 13:56:27.454 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 13:56:27.464 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 13:56:27.480 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 13:56:27.499 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 13:56:27.768 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 13:56:27.770 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 13:56:27.771 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 13:56:27.775 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 13:56:27.776 +01:00 [INF] Hosting environment: Development
+2020-07-12 13:56:27.777 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 13:57:18.572 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2020-07-12 13:57:18.599 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 13:57:18.626 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 13:57:18.641 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 13:57:18.642 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 13:57:18.755 +01:00 [INF] Executed page /_Host in 124.2216ms
+2020-07-12 13:57:18.758 +01:00 [INF] Executed endpoint '/_Host'
+2020-07-12 13:57:18.764 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 193.5107ms
+2020-07-12 13:57:18.806 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - -
+2020-07-12 13:57:18.806 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------380464761425284657971306565750 397
+2020-07-12 13:57:18.807 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2020-07-12 13:57:18.808 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - -
+2020-07-12 13:57:18.818 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-07-12 13:57:18.820 +01:00 [INF] The file /css/site.css was not modified
+2020-07-12 13:57:18.820 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-07-12 13:57:18.820 +01:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-07-12 13:57:18.823 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 304 - text/css 16.3825ms
+2020-07-12 13:57:18.825 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - - - 304 - text/css 18.1201ms
+2020-07-12 13:57:18.823 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - - - 304 - application/javascript 15.1535ms
+2020-07-12 13:57:18.848 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-07-12 13:57:18.849 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------380464761425284657971306565750 397 - 200 0 - 42.6231ms
+2020-07-12 13:57:18.870 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2020-07-12 13:57:18.872 +01:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-07-12 13:57:18.873 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 2.4039ms
+2020-07-12 13:57:18.897 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 13:57:18.900 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 13:57:18.911 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 13:57:18.912 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 15.3300ms
+2020-07-12 13:57:18.959 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=cauADDHJBHyPL2vkKJH0Ww - -
+2020-07-12 13:57:18.960 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 13:57:20.604 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 13:57:20.840 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[PlayerId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName]
+FROM [Matches] AS [m]
+INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t] ON [m].[MatchId] = [t].[MatchId]
+ORDER BY [m].[MatchId], [g].[GameId], [t].[ParticipantId], [t].[PlayerId0]
+2020-07-12 13:57:20.909 +01:00 [INF] Successfully loaded 12 matches
+2020-07-12 13:57:21.253 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - -
+2020-07-12 13:57:21.255 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js was not modified
+2020-07-12 13:57:21.256 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - - - 304 - application/javascript 3.2011ms
+2020-07-12 13:57:21.558 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - -
+2020-07-12 13:57:21.558 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - -
+2020-07-12 13:57:21.558 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - -
+2020-07-12 13:57:21.558 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - -
+2020-07-12 13:57:21.560 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/data-938a3e.min.js was not modified
+2020-07-12 13:57:21.561 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js was not modified
+2020-07-12 13:57:21.563 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js was not modified
+2020-07-12 13:57:21.565 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - - - 304 - application/javascript 7.2860ms
+2020-07-12 13:57:21.566 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - - - 304 - application/javascript 8.5919ms
+2020-07-12 13:57:21.568 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - - - 304 - application/javascript 10.0045ms
+2020-07-12 13:57:21.588 +01:00 [INF] Sending file. Request path: '/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js'. Physical path: 'C:\Users\Floul\.nuget\packages\syncfusion.blazor\18.1.0.59\staticwebassets\scripts\grids-938a3e.min.js'
+2020-07-12 13:57:21.591 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - - - 200 907800 application/javascript 32.1486ms
+2020-07-12 13:57:21.608 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - -
+2020-07-12 13:57:21.608 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - -
+2020-07-12 13:57:21.608 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - -
+2020-07-12 13:57:21.608 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - -
+2020-07-12 13:57:21.610 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js was not modified
+2020-07-12 13:57:21.611 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js was not modified
+2020-07-12 13:57:21.612 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js was not modified
+2020-07-12 13:57:21.613 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js was not modified
+2020-07-12 13:57:21.615 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - - - 304 - application/javascript 6.8342ms
+2020-07-12 13:57:21.616 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - - - 304 - application/javascript 7.7538ms
+2020-07-12 13:57:21.617 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - - - 304 - application/javascript 9.0556ms
+2020-07-12 13:57:21.619 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - - - 304 - application/javascript 10.3134ms
+2020-07-12 13:57:21.646 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - -
+2020-07-12 13:57:21.647 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js was not modified
+2020-07-12 13:57:21.648 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - - - 304 - application/javascript 2.2516ms
+2020-07-12 13:57:23.464 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 13:57:35.956 +01:00 [INF] Marking 25 as winner of 15
+2020-07-12 13:57:41.191 +01:00 [INF] Marking 25 as winner of 15
+2020-07-12 13:57:48.678 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 13:57:48.680 +01:00 [INF] Party 26 has result £0.00
+2020-07-12 13:57:52.988 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 13:57:52.989 +01:00 [INF] Party 26 has result £85.00
+2020-07-12 14:03:42.700 +01:00 [INF] Starting web host
+2020-07-12 14:03:44.351 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:03:44.674 +01:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:03:44.712 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:03:44.720 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:03:44.722 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:03:44.734 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 14:03:44.756 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 14:03:44.782 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 14:03:45.070 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 14:03:45.072 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 14:03:45.073 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 14:03:45.076 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 14:03:45.076 +01:00 [INF] Hosting environment: Development
+2020-07-12 14:03:45.077 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 14:03:45.430 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:03:45.461 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:03:45.482 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:03:45.486 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 57.1948ms
+2020-07-12 14:03:45.501 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=DtCJAFY3frjxOTRmzF_KjQ - -
+2020-07-12 14:03:45.503 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:05:16.045 +01:00 [INF] Executed endpoint '/_blazor'
+2020-07-12 14:05:16.048 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/_blazor?id=DtCJAFY3frjxOTRmzF_KjQ - - - 101 - - 90546.9886ms
+2020-07-12 14:05:16.065 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/viewmatch/15 - -
+2020-07-12 14:05:16.066 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 14:05:16.089 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 14:05:16.101 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 14:05:16.102 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 14:05:16.189 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:05:16.449 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 14:05:16.674 +01:00 [INF] Executed page /_Host in 580.0341ms
+2020-07-12 14:05:16.675 +01:00 [INF] Executed endpoint '/_Host'
+2020-07-12 14:05:16.679 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/viewmatch/15 - - - 200 - text/html;+charset=utf-8 614.1550ms
+2020-07-12 14:05:16.699 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------271665731716893230203220084084 397
+2020-07-12 14:05:16.699 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - -
+2020-07-12 14:05:16.699 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2020-07-12 14:05:16.700 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - -
+2020-07-12 14:05:16.701 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-07-12 14:05:16.708 +01:00 [INF] The file /css/site.css was not modified
+2020-07-12 14:05:16.708 +01:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-07-12 14:05:16.708 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-07-12 14:05:16.711 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 304 - text/css 11.8370ms
+2020-07-12 14:05:16.711 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - - - 304 - text/css 11.8895ms
+2020-07-12 14:05:16.712 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - - - 304 - application/javascript 12.5873ms
+2020-07-12 14:05:16.724 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-07-12 14:05:16.725 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------271665731716893230203220084084 397 - 200 0 - 26.1337ms
+2020-07-12 14:05:16.787 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2020-07-12 14:05:16.789 +01:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-07-12 14:05:16.790 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 2.4232ms
+2020-07-12 14:05:16.810 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:05:16.812 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:05:16.813 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:05:16.816 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 5.2231ms
+2020-07-12 14:05:16.860 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=r0jKkjqfWTsEUuE3qmEy7g - -
+2020-07-12 14:05:16.861 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:05:16.950 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:05:16.963 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 14:05:16.996 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - -
+2020-07-12 14:05:16.998 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js was not modified
+2020-07-12 14:05:17.000 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - - - 304 - application/javascript 3.2646ms
+2020-07-12 14:05:17.338 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - -
+2020-07-12 14:05:17.340 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js was not modified
+2020-07-12 14:05:17.342 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - - - 304 - application/javascript 3.6911ms
+2020-07-12 14:05:17.454 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - -
+2020-07-12 14:05:17.457 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js was not modified
+2020-07-12 14:05:17.458 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - - - 304 - application/javascript 3.4665ms
+2020-07-12 14:05:17.504 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - -
+2020-07-12 14:05:17.504 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - -
+2020-07-12 14:05:17.506 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js was not modified
+2020-07-12 14:05:17.507 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js was not modified
+2020-07-12 14:05:17.508 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - - - 304 - application/javascript 4.0894ms
+2020-07-12 14:05:17.509 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - - - 304 - application/javascript 5.2223ms
+2020-07-12 14:05:18.578 +01:00 [INF] Marking 25 as winner of 15
+2020-07-12 14:05:33.084 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:33.085 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:41.382 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:41.383 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:41.795 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:41.796 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:42.131 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:42.132 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:42.331 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:42.332 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:42.508 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:42.509 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:42.686 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:42.687 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:42.888 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:42.889 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:05:43.101 +01:00 [INF] Party 25 has result £100.00
+2020-07-12 14:05:43.102 +01:00 [INF] Party 26 has result -£100.00
+2020-07-12 14:07:55.591 +01:00 [INF] Starting web host
+2020-07-12 14:07:57.268 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:07:57.553 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:07:57.579 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:07:57.584 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:07:57.586 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:07:57.599 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 14:07:57.615 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 14:07:57.634 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 14:07:57.905 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 14:07:57.907 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 14:07:57.908 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 14:07:57.910 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 14:07:57.911 +01:00 [INF] Hosting environment: Development
+2020-07-12 14:07:57.912 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 14:07:58.974 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:07:59.004 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:07:59.026 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:07:59.029 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 57.0283ms
+2020-07-12 14:07:59.044 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=rCWJ2zzaMidN2tVWwl46MA - -
+2020-07-12 14:07:59.045 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:08:01.677 +01:00 [INF] Executed endpoint '/_blazor'
+2020-07-12 14:08:01.680 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/_blazor?id=rCWJ2zzaMidN2tVWwl46MA - - - 101 - - 2636.2163ms
+2020-07-12 14:08:01.694 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2020-07-12 14:08:01.695 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 14:08:01.718 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 14:08:01.729 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 14:08:01.730 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 14:08:01.825 +01:00 [INF] Executed page /_Host in 102.4385ms
+2020-07-12 14:08:01.827 +01:00 [INF] Executed endpoint '/_Host'
+2020-07-12 14:08:01.832 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 138.0821ms
+2020-07-12 14:08:01.847 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------17899332533655181567788679139 395
+2020-07-12 14:08:01.848 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - -
+2020-07-12 14:08:01.848 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2020-07-12 14:08:01.848 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - -
+2020-07-12 14:08:01.850 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-07-12 14:08:01.854 +01:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-07-12 14:08:01.854 +01:00 [INF] The file /css/site.css was not modified
+2020-07-12 14:08:01.854 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-07-12 14:08:01.857 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - - - 304 - text/css 9.4190ms
+2020-07-12 14:08:01.858 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 304 - text/css 10.5690ms
+2020-07-12 14:08:01.860 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - - - 304 - application/javascript 12.4177ms
+2020-07-12 14:08:01.867 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-07-12 14:08:01.868 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------17899332533655181567788679139 395 - 200 0 - 20.3430ms
+2020-07-12 14:08:01.917 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2020-07-12 14:08:01.919 +01:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-07-12 14:08:01.920 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 2.4671ms
+2020-07-12 14:08:01.944 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:08:01.945 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:08:01.947 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:08:01.948 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 3.6609ms
+2020-07-12 14:08:01.997 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=QRoa-91B3RFo2ll-LfJmpQ - -
+2020-07-12 14:08:01.999 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:08:03.263 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:08:03.516 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PlayerId], [p].[ArchiveTime], [p].[Archived], [p].[EmailAddress], [p].[HasAdminPermission], [p].[LastPaid], [p].[Password], [p].[RealName], [p].[UserName], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[MatchId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved0], [t].[NumberOfPlayers], [t].[StartTime]
+FROM [Players] AS [p]
+LEFT JOIN (
+    SELECT [p0].[ParticipantId], [p0].[ArchiveTime], [p0].[Archived], [p0].[IsResolved], [p0].[IsWinner], [p0].[MatchId], [p0].[NetResult], [p0].[PlayerId], [m].[MatchId] AS [MatchId0], [m].[ArchiveTime] AS [ArchiveTime0], [m].[Archived] AS [Archived0], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved] AS [IsResolved0], [m].[NumberOfPlayers], [m].[StartTime]
+    FROM [Participants] AS [p0]
+    INNER JOIN [Matches] AS [m] ON [p0].[MatchId] = [m].[MatchId]
+) AS [t] ON [p].[PlayerId] = [t].[PlayerId]
+ORDER BY [p].[PlayerId], [t].[ParticipantId], [t].[MatchId0]
+2020-07-12 14:08:03.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - -
+2020-07-12 14:08:03.942 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js was not modified
+2020-07-12 14:08:03.943 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - - - 304 - application/javascript 3.0758ms
+2020-07-12 14:08:04.221 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - -
+2020-07-12 14:08:04.222 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - -
+2020-07-12 14:08:04.221 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - -
+2020-07-12 14:08:04.221 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - -
+2020-07-12 14:08:04.222 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - -
+2020-07-12 14:08:04.221 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - -
+2020-07-12 14:08:04.222 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/calendars-938a3e.min.js - -
+2020-07-12 14:08:04.226 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/data-938a3e.min.js was not modified
+2020-07-12 14:08:04.228 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js was not modified
+2020-07-12 14:08:04.229 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js was not modified
+2020-07-12 14:08:04.237 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - - - 304 - application/javascript 14.9890ms
+2020-07-12 14:08:04.239 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - - - 304 - application/javascript 17.7039ms
+2020-07-12 14:08:04.230 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js was not modified
+2020-07-12 14:08:04.231 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js was not modified
+2020-07-12 14:08:04.234 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - - - 304 - application/javascript 13.5625ms
+2020-07-12 14:08:04.232 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js was not modified
+2020-07-12 14:08:04.248 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - - - 304 - application/javascript 26.6199ms
+2020-07-12 14:08:04.248 +01:00 [INF] Sending file. Request path: '/_content/Syncfusion.Blazor/scripts/calendars-938a3e.min.js'. Physical path: 'C:\Users\Floul\.nuget\packages\syncfusion.blazor\18.1.0.59\staticwebassets\scripts\calendars-938a3e.min.js'
+2020-07-12 14:08:04.249 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - - - 304 - application/javascript 27.8258ms
+2020-07-12 14:08:04.253 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - - - 304 - application/javascript 32.0132ms
+2020-07-12 14:08:04.258 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/calendars-938a3e.min.js - - - 200 324558 application/javascript 36.8295ms
+2020-07-12 14:08:04.292 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - -
+2020-07-12 14:08:04.292 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - -
+2020-07-12 14:08:04.292 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - -
+2020-07-12 14:08:04.293 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js was not modified
+2020-07-12 14:08:04.294 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js was not modified
+2020-07-12 14:08:04.296 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js was not modified
+2020-07-12 14:08:04.297 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - - - 304 - application/javascript 5.1466ms
+2020-07-12 14:08:04.299 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - - - 304 - application/javascript 7.2422ms
+2020-07-12 14:08:04.301 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - - - 304 - application/javascript 8.6661ms
+2020-07-12 14:08:04.551 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Player?$inlinecount=allpages&$skip=0&$top=12 - -
+2020-07-12 14:08:04.553 +01:00 [INF] Executing endpoint 'CardsBlazor.ApiControllers.PlayerController.Get (CardsBlazor)'
+2020-07-12 14:08:04.559 +01:00 [INF] Route matched with {action = "Get", controller = "Player", page = ""}. Executing controller action with signature System.Object Get() on controller CardsBlazor.ApiControllers.PlayerController (CardsBlazor).
+2020-07-12 14:08:04.585 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:08:04.612 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Players] AS [p]
+WHERE [p].[Archived] <> CAST(1 AS bit)
+2020-07-12 14:08:04.619 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Linq.IQueryable`1[[CardsBlazor.Data.Entity.Player, CardsBlazor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Linq.Expressions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2020-07-12 14:08:04.666 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[PlayerId], [t].[ArchiveTime], [t].[Archived], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[MatchId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EndTime], [t0].[EntranceFee], [t0].[GameId], [t0].[IsResolved0], [t0].[NumberOfPlayers], [t0].[StartTime]
+FROM (
+    SELECT [p].[PlayerId], [p].[ArchiveTime], [p].[Archived], [p].[EmailAddress], [p].[HasAdminPermission], [p].[LastPaid], [p].[Password], [p].[RealName], [p].[UserName]
+    FROM [Players] AS [p]
+    WHERE [p].[Archived] <> CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [p0].[ParticipantId], [p0].[ArchiveTime], [p0].[Archived], [p0].[IsResolved], [p0].[IsWinner], [p0].[MatchId], [p0].[NetResult], [p0].[PlayerId], [m].[MatchId] AS [MatchId0], [m].[ArchiveTime] AS [ArchiveTime0], [m].[Archived] AS [Archived0], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved] AS [IsResolved0], [m].[NumberOfPlayers], [m].[StartTime]
+    FROM [Participants] AS [p0]
+    INNER JOIN [Matches] AS [m] ON [p0].[MatchId] = [m].[MatchId]
+) AS [t0] ON [t].[PlayerId] = [t0].[PlayerId]
+ORDER BY [t].[PlayerId], [t0].[ParticipantId], [t0].[MatchId0]
+2020-07-12 14:08:04.677 +01:00 [INF] Executed action CardsBlazor.ApiControllers.PlayerController.Get (CardsBlazor) in 115.9398ms
+2020-07-12 14:08:04.678 +01:00 [INF] Executed endpoint 'CardsBlazor.ApiControllers.PlayerController.Get (CardsBlazor)'
+2020-07-12 14:08:04.685 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Player?$inlinecount=allpages&$skip=0&$top=12 - - - 200 - application/json;+charset=utf-8 133.2685ms
+2020-07-12 14:08:09.910 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PlayerId], [p].[ArchiveTime], [p].[Archived], [p].[EmailAddress], [p].[HasAdminPermission], [p].[LastPaid], [p].[Password], [p].[RealName], [p].[UserName], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[MatchId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved0], [t].[NumberOfPlayers], [t].[StartTime]
+FROM [Players] AS [p]
+LEFT JOIN (
+    SELECT [p0].[ParticipantId], [p0].[ArchiveTime], [p0].[Archived], [p0].[IsResolved], [p0].[IsWinner], [p0].[MatchId], [p0].[NetResult], [p0].[PlayerId], [m].[MatchId] AS [MatchId0], [m].[ArchiveTime] AS [ArchiveTime0], [m].[Archived] AS [Archived0], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved] AS [IsResolved0], [m].[NumberOfPlayers], [m].[StartTime]
+    FROM [Participants] AS [p0]
+    INNER JOIN [Matches] AS [m] ON [p0].[MatchId] = [m].[MatchId]
+) AS [t] ON [p].[PlayerId] = [t].[PlayerId]
+ORDER BY [p].[PlayerId], [t].[ParticipantId], [t].[MatchId0]
+2020-07-12 14:08:10.119 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[Name]
+FROM [Games] AS [g]
+WHERE [g].[Archived] <> CAST(1 AS bit)
+2020-07-12 14:08:16.324 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (Precision = 8) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = Int32), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Matches] ([ArchiveTime], [Archived], [EndTime], [EntranceFee], [GameId], [IsResolved], [NumberOfPlayers], [StartTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [MatchId]
+FROM [Matches]
+WHERE @@ROWCOUNT = 1 AND [MatchId] = scope_identity();
+2020-07-12 14:08:16.356 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Matches] SET [NumberOfPlayers] = @p0
+WHERE [MatchId] = @p1;
+SELECT @@ROWCOUNT;
+2020-07-12 14:08:16.360 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Precision = 8) (Scale = 2), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Participants] ([ArchiveTime], [Archived], [IsResolved], [IsWinner], [MatchId], [NetResult], [PlayerId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [ParticipantId]
+FROM [Participants]
+WHERE @@ROWCOUNT = 1 AND [ParticipantId] = scope_identity();
+2020-07-12 14:08:16.367 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Precision = 8) (Scale = 2), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Participants] ([ArchiveTime], [Archived], [IsResolved], [IsWinner], [MatchId], [NetResult], [PlayerId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [ParticipantId]
+FROM [Participants]
+WHERE @@ROWCOUNT = 1 AND [ParticipantId] = scope_identity();
+2020-07-12 14:08:16.408 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 14:08:20.403 +01:00 [INF] Marking 27 as winner of 16
+2020-07-12 14:08:28.623 +01:00 [INF] Party 28 has result £50.00
+2020-07-12 14:08:28.624 +01:00 [INF] Party 27 has result -£50.00
+2020-07-12 14:08:28.637 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN [Participants] AS [p] ON [t].[MatchId] = [p].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [p].[ParticipantId]
+2020-07-12 14:08:28.648 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean), @p2='?' (Precision = 8) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Participants] SET [IsResolved] = @p0, [IsWinner] = @p1, [NetResult] = @p2
+WHERE [ParticipantId] = @p3;
+SELECT @@ROWCOUNT;
+2020-07-12 14:08:28.654 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean), @p2='?' (Precision = 8) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Participants] SET [IsResolved] = @p0, [IsWinner] = @p1, [NetResult] = @p2
+WHERE [ParticipantId] = @p3;
+SELECT @@ROWCOUNT;
+2020-07-12 14:08:28.661 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Precision = 8) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Matches] SET [EndTime] = @p0, [EntranceFee] = @p1, [IsResolved] = @p2
+WHERE [MatchId] = @p3;
+SELECT @@ROWCOUNT;
+2020-07-12 14:08:28.695 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 14:08:57.087 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PlayerId], [p].[ArchiveTime], [p].[Archived], [p].[EmailAddress], [p].[HasAdminPermission], [p].[LastPaid], [p].[Password], [p].[RealName], [p].[UserName], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[MatchId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved0], [t].[NumberOfPlayers], [t].[StartTime]
+FROM [Players] AS [p]
+LEFT JOIN (
+    SELECT [p0].[ParticipantId], [p0].[ArchiveTime], [p0].[Archived], [p0].[IsResolved], [p0].[IsWinner], [p0].[MatchId], [p0].[NetResult], [p0].[PlayerId], [m].[MatchId] AS [MatchId0], [m].[ArchiveTime] AS [ArchiveTime0], [m].[Archived] AS [Archived0], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved] AS [IsResolved0], [m].[NumberOfPlayers], [m].[StartTime]
+    FROM [Participants] AS [p0]
+    INNER JOIN [Matches] AS [m] ON [p0].[MatchId] = [m].[MatchId]
+) AS [t] ON [p].[PlayerId] = [t].[PlayerId]
+ORDER BY [p].[PlayerId], [t].[ParticipantId], [t].[MatchId0]
+2020-07-12 14:08:57.140 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Player?$inlinecount=allpages&$skip=0&$top=12 - -
+2020-07-12 14:08:57.143 +01:00 [INF] Executing endpoint 'CardsBlazor.ApiControllers.PlayerController.Get (CardsBlazor)'
+2020-07-12 14:08:57.144 +01:00 [INF] Route matched with {action = "Get", controller = "Player", page = ""}. Executing controller action with signature System.Object Get() on controller CardsBlazor.ApiControllers.PlayerController (CardsBlazor).
+2020-07-12 14:08:57.148 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:08:57.155 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Players] AS [p]
+WHERE [p].[Archived] <> CAST(1 AS bit)
+2020-07-12 14:08:57.158 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Linq.IQueryable`1[[CardsBlazor.Data.Entity.Player, CardsBlazor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Linq.Expressions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2020-07-12 14:08:57.168 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[PlayerId], [t].[ArchiveTime], [t].[Archived], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[MatchId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EndTime], [t0].[EntranceFee], [t0].[GameId], [t0].[IsResolved0], [t0].[NumberOfPlayers], [t0].[StartTime]
+FROM (
+    SELECT [p].[PlayerId], [p].[ArchiveTime], [p].[Archived], [p].[EmailAddress], [p].[HasAdminPermission], [p].[LastPaid], [p].[Password], [p].[RealName], [p].[UserName]
+    FROM [Players] AS [p]
+    WHERE [p].[Archived] <> CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [p0].[ParticipantId], [p0].[ArchiveTime], [p0].[Archived], [p0].[IsResolved], [p0].[IsWinner], [p0].[MatchId], [p0].[NetResult], [p0].[PlayerId], [m].[MatchId] AS [MatchId0], [m].[ArchiveTime] AS [ArchiveTime0], [m].[Archived] AS [Archived0], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved] AS [IsResolved0], [m].[NumberOfPlayers], [m].[StartTime]
+    FROM [Participants] AS [p0]
+    INNER JOIN [Matches] AS [m] ON [p0].[MatchId] = [m].[MatchId]
+) AS [t0] ON [t].[PlayerId] = [t0].[PlayerId]
+ORDER BY [t].[PlayerId], [t0].[ParticipantId], [t0].[MatchId0]
+2020-07-12 14:08:57.175 +01:00 [INF] Executed action CardsBlazor.ApiControllers.PlayerController.Get (CardsBlazor) in 28.3086ms
+2020-07-12 14:08:57.176 +01:00 [INF] Executed endpoint 'CardsBlazor.ApiControllers.PlayerController.Get (CardsBlazor)'
+2020-07-12 14:08:57.179 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Player?$inlinecount=allpages&$skip=0&$top=12 - - - 200 - application/json;+charset=utf-8 39.1664ms
+2020-07-12 14:09:02.169 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PlayerId], [p].[ArchiveTime], [p].[Archived], [p].[EmailAddress], [p].[HasAdminPermission], [p].[LastPaid], [p].[Password], [p].[RealName], [p].[UserName], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[MatchId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved0], [t].[NumberOfPlayers], [t].[StartTime]
+FROM [Players] AS [p]
+LEFT JOIN (
+    SELECT [p0].[ParticipantId], [p0].[ArchiveTime], [p0].[Archived], [p0].[IsResolved], [p0].[IsWinner], [p0].[MatchId], [p0].[NetResult], [p0].[PlayerId], [m].[MatchId] AS [MatchId0], [m].[ArchiveTime] AS [ArchiveTime0], [m].[Archived] AS [Archived0], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved] AS [IsResolved0], [m].[NumberOfPlayers], [m].[StartTime]
+    FROM [Participants] AS [p0]
+    INNER JOIN [Matches] AS [m] ON [p0].[MatchId] = [m].[MatchId]
+) AS [t] ON [p].[PlayerId] = [t].[PlayerId]
+ORDER BY [p].[PlayerId], [t].[ParticipantId], [t].[MatchId0]
+2020-07-12 14:09:02.181 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[Name]
+FROM [Games] AS [g]
+WHERE [g].[Archived] <> CAST(1 AS bit)
+2020-07-12 14:09:03.051 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[PlayerId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName]
+FROM [Matches] AS [m]
+INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t] ON [m].[MatchId] = [t].[MatchId]
+ORDER BY [m].[MatchId], [g].[GameId], [t].[ParticipantId], [t].[PlayerId0]
+2020-07-12 14:09:03.058 +01:00 [INF] Successfully loaded 13 matches
+2020-07-12 14:09:03.922 +01:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime]
+FROM [Games] AS [g]
+LEFT JOIN [Matches] AS [m] ON [g].[GameId] = [m].[GameId]
+ORDER BY [g].[GameId], [m].[MatchId]
+2020-07-12 14:09:04.009 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Game?$inlinecount=allpages&$skip=0&$top=12 - -
+2020-07-12 14:09:04.010 +01:00 [INF] Executing endpoint 'CardsBlazor.ApiControllers.GameController.Get (CardsBlazor)'
+2020-07-12 14:09:04.013 +01:00 [INF] Route matched with {action = "Get", controller = "Game", page = ""}. Executing controller action with signature System.Object Get() on controller CardsBlazor.ApiControllers.GameController (CardsBlazor).
+2020-07-12 14:09:04.015 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:09:04.018 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime]
+FROM [Games] AS [g]
+LEFT JOIN [Matches] AS [m] ON [g].[GameId] = [m].[GameId]
+ORDER BY [g].[GameId], [m].[MatchId]
+2020-07-12 14:09:04.022 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Collections.Generic.IEnumerable`1[[CardsBlazor.Data.ViewModels.GameViewModel, CardsBlazor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2020-07-12 14:09:04.028 +01:00 [INF] Executed action CardsBlazor.ApiControllers.GameController.Get (CardsBlazor) in 13.201ms
+2020-07-12 14:09:04.029 +01:00 [INF] Executed endpoint 'CardsBlazor.ApiControllers.GameController.Get (CardsBlazor)'
+2020-07-12 14:09:04.030 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Game?$inlinecount=allpages&$skip=0&$top=12 - - - 200 - application/json;+charset=utf-8 21.5632ms
+2020-07-12 14:09:07.864 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[PlayerId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName]
+FROM [Matches] AS [m]
+INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t] ON [m].[MatchId] = [t].[MatchId]
+ORDER BY [m].[MatchId], [g].[GameId], [t].[ParticipantId], [t].[PlayerId0]
+2020-07-12 14:09:07.869 +01:00 [INF] Successfully loaded 13 matches
+2020-07-12 14:09:13.626 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 14:11:21.602 +01:00 [INF] Starting web host
+2020-07-12 14:11:23.158 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:11:23.422 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:11:23.447 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:11:23.451 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:11:23.453 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:11:23.463 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 14:11:23.479 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 14:11:23.497 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 14:11:23.742 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 14:11:23.743 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 14:11:23.744 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 14:11:23.747 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 14:11:23.747 +01:00 [INF] Hosting environment: Development
+2020-07-12 14:11:23.748 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 14:11:26.493 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/viewmatch/16 - -
+2020-07-12 14:11:26.520 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 14:11:26.546 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 14:11:26.558 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 14:11:26.559 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 14:11:26.648 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:11:26.891 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 14:11:27.104 +01:00 [INF] Executed page /_Host in 552.4891ms
+2020-07-12 14:11:27.106 +01:00 [INF] Executed endpoint '/_Host'
+2020-07-12 14:11:27.114 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/viewmatch/16 - - - 200 - text/html;+charset=utf-8 622.6163ms
+2020-07-12 14:11:27.140 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2020-07-12 14:11:27.140 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------407542151035019800913976919174 397
+2020-07-12 14:11:27.140 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - -
+2020-07-12 14:11:27.140 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - -
+2020-07-12 14:11:27.144 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-07-12 14:11:27.148 +01:00 [INF] The file /css/site.css was not modified
+2020-07-12 14:11:27.148 +01:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-07-12 14:11:27.148 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-07-12 14:11:27.151 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 304 - text/css 10.4663ms
+2020-07-12 14:11:27.151 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - - - 304 - text/css 10.9758ms
+2020-07-12 14:11:27.153 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - - - 304 - application/javascript 12.2834ms
+2020-07-12 14:11:27.166 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-07-12 14:11:27.168 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------407542151035019800913976919174 397 - 200 0 - 27.5539ms
+2020-07-12 14:11:27.212 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2020-07-12 14:11:27.214 +01:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-07-12 14:11:27.215 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 2.8058ms
+2020-07-12 14:11:27.246 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:11:27.249 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:11:27.260 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:11:27.262 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 15.4426ms
+2020-07-12 14:11:27.324 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=IfS132aQWW81nrXafyZySg - -
+2020-07-12 14:11:27.325 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:11:27.441 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:11:27.447 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__matchId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[GameId0], [t].[ArchiveTime0], [t].[Archived0], [t].[HasFixedFee], [t].[MinimumPlayerCount], [t].[Name], [t].[NumberOfWinnersInt], [t0].[ParticipantId], [t0].[ArchiveTime], [t0].[Archived], [t0].[IsResolved], [t0].[IsWinner], [t0].[MatchId], [t0].[NetResult], [t0].[PlayerId], [t0].[PlayerId0], [t0].[ArchiveTime0], [t0].[Archived0], [t0].[EmailAddress], [t0].[HasAdminPermission], [t0].[LastPaid], [t0].[Password], [t0].[RealName], [t0].[UserName]
+FROM (
+    SELECT TOP(1) [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId] AS [GameId0], [g].[ArchiveTime] AS [ArchiveTime0], [g].[Archived] AS [Archived0], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt]
+    FROM [Matches] AS [m]
+    INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+    WHERE [m].[MatchId] = @__matchId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t0] ON [t].[MatchId] = [t0].[MatchId]
+ORDER BY [t].[MatchId], [t].[GameId0], [t0].[ParticipantId], [t0].[PlayerId0]
+2020-07-12 14:11:27.474 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - -
+2020-07-12 14:11:27.476 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js was not modified
+2020-07-12 14:11:27.477 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - - - 304 - application/javascript 2.8071ms
+2020-07-12 14:11:27.758 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - -
+2020-07-12 14:11:27.760 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js was not modified
+2020-07-12 14:11:27.761 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - - - 304 - application/javascript 2.5648ms
+2020-07-12 14:11:27.894 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - -
+2020-07-12 14:11:27.895 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js was not modified
+2020-07-12 14:11:27.896 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - - - 304 - application/javascript 2.5675ms
+2020-07-12 14:11:27.952 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - -
+2020-07-12 14:11:27.953 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - -
+2020-07-12 14:11:27.954 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js was not modified
+2020-07-12 14:11:27.956 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js was not modified
+2020-07-12 14:11:27.957 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - - - 304 - application/javascript 4.1126ms
+2020-07-12 14:11:27.958 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - - - 304 - application/javascript 5.4266ms
+2020-07-12 14:11:34.933 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[PlayerId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName]
+FROM [Matches] AS [m]
+INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t] ON [m].[MatchId] = [t].[MatchId]
+ORDER BY [m].[MatchId], [g].[GameId], [t].[ParticipantId], [t].[PlayerId0]
+2020-07-12 14:11:34.942 +01:00 [INF] Successfully loaded 13 matches
+2020-07-12 14:11:35.315 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - -
+2020-07-12 14:11:35.315 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - -
+2020-07-12 14:11:35.315 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - -
+2020-07-12 14:11:35.317 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/data-938a3e.min.js was not modified
+2020-07-12 14:11:35.319 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js was not modified
+2020-07-12 14:11:35.320 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js was not modified
+2020-07-12 14:11:35.321 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - - - 304 - application/javascript 5.8541ms
+2020-07-12 14:11:35.322 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - - - 304 - application/javascript 7.0650ms
+2020-07-12 14:11:35.324 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - - - 304 - application/javascript 8.3674ms
+2020-07-12 14:11:35.413 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - -
+2020-07-12 14:11:35.414 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - -
+2020-07-12 14:11:35.415 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js was not modified
+2020-07-12 14:11:35.416 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js was not modified
+2020-07-12 14:11:35.417 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - - - 304 - application/javascript 3.7122ms
+2020-07-12 14:11:35.419 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - - - 304 - application/javascript 5.0683ms
+2020-07-12 14:26:24.324 +01:00 [INF] Starting web host
+2020-07-12 14:26:26.018 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:26:26.346 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:26:26.374 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:26:26.380 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:26:26.383 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:26:26.395 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 14:26:26.415 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 14:26:26.440 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 14:26:26.713 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 14:26:26.715 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 14:26:26.716 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 14:26:26.719 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 14:26:26.719 +01:00 [INF] Hosting environment: Development
+2020-07-12 14:26:26.720 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 14:26:46.661 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/viewmatches - -
+2020-07-12 14:26:46.688 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 14:26:46.716 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 14:26:46.728 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 14:26:46.730 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 14:26:46.817 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:26:47.051 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[PlayerId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName]
+FROM [Matches] AS [m]
+INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t] ON [m].[MatchId] = [t].[MatchId]
+ORDER BY [m].[MatchId], [g].[GameId], [t].[ParticipantId], [t].[PlayerId0]
+2020-07-12 14:26:47.125 +01:00 [INF] Successfully loaded 13 matches
+2020-07-12 14:26:47.509 +01:00 [INF] Executed page /_Host in 787.6438ms
+2020-07-12 14:26:47.511 +01:00 [INF] Executed endpoint '/_Host'
+2020-07-12 14:26:47.520 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/viewmatches - - - 200 - text/html;+charset=utf-8 860.8289ms
+2020-07-12 14:26:47.544 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------84147213217467618771666500118 395
+2020-07-12 14:26:47.545 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2020-07-12 14:26:47.544 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - -
+2020-07-12 14:26:47.547 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - -
+2020-07-12 14:26:47.549 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-07-12 14:26:47.554 +01:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-07-12 14:26:47.555 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-07-12 14:26:47.555 +01:00 [INF] The file /css/site.css was not modified
+2020-07-12 14:26:47.557 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - - - 304 - text/css 13.3985ms
+2020-07-12 14:26:47.557 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - - - 304 - application/javascript 10.5535ms
+2020-07-12 14:26:47.559 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 304 - text/css 14.3829ms
+2020-07-12 14:26:47.572 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-07-12 14:26:47.573 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------84147213217467618771666500118 395 - 200 0 - 29.8431ms
+2020-07-12 14:26:47.613 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2020-07-12 14:26:47.617 +01:00 [INF] Sending file. Request path: '/css/open-iconic/font/css/open-iconic-bootstrap.min.css'. Physical path: 'I:\Programming\GitHub\CardsBlazor\CardsBlazor\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css'
+2020-07-12 14:26:47.619 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 200 9395 text/css 6.0599ms
+2020-07-12 14:26:47.645 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:26:47.647 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:26:47.658 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:26:47.660 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 15.1064ms
+2020-07-12 14:26:47.683 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/favicon.ico - -
+2020-07-12 14:26:47.689 +01:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'I:\Programming\GitHub\CardsBlazor\CardsBlazor\wwwroot\favicon.ico'
+2020-07-12 14:26:47.696 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/favicon.ico - - - 200 32038 image/x-icon 12.9016ms
+2020-07-12 14:26:47.705 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=zwAbSNOlnfELkWXCIDQnnQ - -
+2020-07-12 14:26:47.707 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:26:47.810 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:26:47.815 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[ParticipantId], [t].[ArchiveTime], [t].[Archived], [t].[IsResolved], [t].[IsWinner], [t].[MatchId], [t].[NetResult], [t].[PlayerId], [t].[PlayerId0], [t].[ArchiveTime0], [t].[Archived0], [t].[EmailAddress], [t].[HasAdminPermission], [t].[LastPaid], [t].[Password], [t].[RealName], [t].[UserName]
+FROM [Matches] AS [m]
+INNER JOIN [Games] AS [g] ON [m].[GameId] = [g].[GameId]
+LEFT JOIN (
+    SELECT [p].[ParticipantId], [p].[ArchiveTime], [p].[Archived], [p].[IsResolved], [p].[IsWinner], [p].[MatchId], [p].[NetResult], [p].[PlayerId], [p0].[PlayerId] AS [PlayerId0], [p0].[ArchiveTime] AS [ArchiveTime0], [p0].[Archived] AS [Archived0], [p0].[EmailAddress], [p0].[HasAdminPermission], [p0].[LastPaid], [p0].[Password], [p0].[RealName], [p0].[UserName]
+    FROM [Participants] AS [p]
+    INNER JOIN [Players] AS [p0] ON [p].[PlayerId] = [p0].[PlayerId]
+) AS [t] ON [m].[MatchId] = [t].[MatchId]
+ORDER BY [m].[MatchId], [g].[GameId], [t].[ParticipantId], [t].[PlayerId0]
+2020-07-12 14:26:47.820 +01:00 [INF] Successfully loaded 13 matches
+2020-07-12 14:26:47.844 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - -
+2020-07-12 14:26:47.847 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js was not modified
+2020-07-12 14:26:47.848 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - - - 304 - application/javascript 3.3151ms
+2020-07-12 14:26:48.186 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - -
+2020-07-12 14:26:48.187 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - -
+2020-07-12 14:26:48.190 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - -
+2020-07-12 14:26:48.189 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - -
+2020-07-12 14:26:48.192 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/data-938a3e.min.js was not modified
+2020-07-12 14:26:48.192 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js was not modified
+2020-07-12 14:26:48.196 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - - - 304 - application/javascript 9.5892ms
+2020-07-12 14:26:48.194 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js was not modified
+2020-07-12 14:26:48.195 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js was not modified
+2020-07-12 14:26:48.200 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - - - 304 - application/javascript 12.6801ms
+2020-07-12 14:26:48.204 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - - - 304 - application/javascript 14.2454ms
+2020-07-12 14:26:48.205 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - - - 304 - application/javascript 16.6837ms
+2020-07-12 14:26:48.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - -
+2020-07-12 14:26:48.224 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js was not modified
+2020-07-12 14:26:48.225 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - - - 304 - application/javascript 2.5351ms
+2020-07-12 14:26:48.238 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - -
+2020-07-12 14:26:48.240 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - -
+2020-07-12 14:26:48.240 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - -
+2020-07-12 14:26:48.240 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js was not modified
+2020-07-12 14:26:48.242 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js was not modified
+2020-07-12 14:26:48.243 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js was not modified
+2020-07-12 14:26:48.244 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - - - 304 - application/javascript 5.5572ms
+2020-07-12 14:26:48.248 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - - - 304 - application/javascript 8.0352ms
+2020-07-12 14:26:48.251 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - - - 304 - application/javascript 10.6136ms
+2020-07-12 14:26:48.316 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - -
+2020-07-12 14:26:48.318 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js was not modified
+2020-07-12 14:26:48.319 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - - - 304 - application/javascript 2.6246ms
+2020-07-12 14:26:49.268 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[ParticipantId], [t].[ArchiveTime0], [t].[Archived0], [t].[IsResolved0], [t].[IsWinner], [t].[MatchId0], [t].[NetResult], [t].[PlayerId]
+FROM [Games] AS [g]
+LEFT JOIN (
+    SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [p].[ParticipantId], [p].[ArchiveTime] AS [ArchiveTime0], [p].[Archived] AS [Archived0], [p].[IsResolved] AS [IsResolved0], [p].[IsWinner], [p].[MatchId] AS [MatchId0], [p].[NetResult], [p].[PlayerId]
+    FROM [Matches] AS [m]
+    LEFT JOIN [Participants] AS [p] ON [m].[MatchId] = [p].[MatchId]
+) AS [t] ON [g].[GameId] = [t].[GameId]
+ORDER BY [g].[GameId], [t].[MatchId], [t].[ParticipantId]
+2020-07-12 14:26:49.489 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Game?$inlinecount=allpages&$skip=0&$top=12 - -
+2020-07-12 14:26:49.491 +01:00 [INF] Executing endpoint 'CardsBlazor.ApiControllers.GameController.Get (CardsBlazor)'
+2020-07-12 14:26:49.496 +01:00 [INF] Route matched with {action = "Get", controller = "Game", page = ""}. Executing controller action with signature System.Object Get() on controller CardsBlazor.ApiControllers.GameController (CardsBlazor).
+2020-07-12 14:26:49.500 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:26:49.503 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[ParticipantId], [t].[ArchiveTime0], [t].[Archived0], [t].[IsResolved0], [t].[IsWinner], [t].[MatchId0], [t].[NetResult], [t].[PlayerId]
+FROM [Games] AS [g]
+LEFT JOIN (
+    SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [p].[ParticipantId], [p].[ArchiveTime] AS [ArchiveTime0], [p].[Archived] AS [Archived0], [p].[IsResolved] AS [IsResolved0], [p].[IsWinner], [p].[MatchId] AS [MatchId0], [p].[NetResult], [p].[PlayerId]
+    FROM [Matches] AS [m]
+    LEFT JOIN [Participants] AS [p] ON [m].[MatchId] = [p].[MatchId]
+) AS [t] ON [g].[GameId] = [t].[GameId]
+ORDER BY [g].[GameId], [t].[MatchId], [t].[ParticipantId]
+2020-07-12 14:26:49.512 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Collections.Generic.IEnumerable`1[[CardsBlazor.Data.ViewModels.GameViewModel, CardsBlazor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2020-07-12 14:26:49.525 +01:00 [INF] Executed action CardsBlazor.ApiControllers.GameController.Get (CardsBlazor) in 26.0995ms
+2020-07-12 14:26:49.526 +01:00 [INF] Executed endpoint 'CardsBlazor.ApiControllers.GameController.Get (CardsBlazor)'
+2020-07-12 14:26:49.528 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Game?$inlinecount=allpages&$skip=0&$top=12 - - - 200 - application/json;+charset=utf-8 38.5249ms
+2020-07-12 14:28:21.888 +01:00 [INF] Starting web host
+2020-07-12 14:28:23.655 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:28:23.921 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:28:23.946 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:28:23.951 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-07-12 14:28:23.953 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-07-12 14:28:23.963 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-07-12 14:28:23.979 +01:00 [INF] No migrations were applied. The database is already up to date.
+2020-07-12 14:28:23.997 +01:00 [INF] User profile is available. Using 'C:\Users\Floul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-12 14:28:24.236 +01:00 [WRN] Unable to bind to http://localhost:5000 on the IPv4 loopback interface: 'An attempt was made to access a socket in a way forbidden by its access permissions.'.
+2020-07-12 14:28:24.238 +01:00 [INF] Now listening on: https://localhost:5001
+2020-07-12 14:28:24.239 +01:00 [INF] Now listening on: http://localhost:5000
+2020-07-12 14:28:24.241 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-12 14:28:24.242 +01:00 [INF] Hosting environment: Development
+2020-07-12 14:28:24.243 +01:00 [INF] Content root path: I:\Programming\GitHub\CardsBlazor\CardsBlazor
+2020-07-12 14:28:24.793 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:28:24.820 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:28:24.841 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:28:24.845 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 52.6942ms
+2020-07-12 14:28:24.860 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=-g1hMogjmYj8CPXiE2EyYA - -
+2020-07-12 14:28:24.862 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:28:26.566 +01:00 [INF] Executed endpoint '/_blazor'
+2020-07-12 14:28:26.570 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/_blazor?id=-g1hMogjmYj8CPXiE2EyYA - - - 101 - - 1709.4508ms
+2020-07-12 14:28:26.584 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/games - -
+2020-07-12 14:28:26.585 +01:00 [INF] Executing endpoint '/_Host'
+2020-07-12 14:28:26.606 +01:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-07-12 14:28:26.617 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-12 14:28:26.618 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-12 14:28:26.683 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:28:26.913 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[ParticipantId], [t].[ArchiveTime0], [t].[Archived0], [t].[IsResolved0], [t].[IsWinner], [t].[MatchId0], [t].[NetResult], [t].[PlayerId]
+FROM [Games] AS [g]
+LEFT JOIN (
+    SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [p].[ParticipantId], [p].[ArchiveTime] AS [ArchiveTime0], [p].[Archived] AS [Archived0], [p].[IsResolved] AS [IsResolved0], [p].[IsWinner], [p].[MatchId] AS [MatchId0], [p].[NetResult], [p].[PlayerId]
+    FROM [Matches] AS [m]
+    LEFT JOIN [Participants] AS [p] ON [m].[MatchId] = [p].[MatchId]
+) AS [t] ON [g].[GameId] = [t].[GameId]
+ORDER BY [g].[GameId], [t].[MatchId], [t].[ParticipantId]
+2020-07-12 14:28:27.294 +01:00 [INF] Executed page /_Host in 683.6122ms
+2020-07-12 14:28:27.296 +01:00 [INF] Executed endpoint '/_Host'
+2020-07-12 14:28:27.302 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/games - - - 200 - text/html;+charset=utf-8 717.7917ms
+2020-07-12 14:28:27.315 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------32904395651899991802850620692 395
+2020-07-12 14:28:27.316 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - -
+2020-07-12 14:28:27.316 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2020-07-12 14:28:27.316 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - -
+2020-07-12 14:28:27.317 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-07-12 14:28:27.323 +01:00 [INF] The file /css/site.css was not modified
+2020-07-12 14:28:27.323 +01:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-07-12 14:28:27.326 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 304 - text/css 10.6444ms
+2020-07-12 14:28:27.323 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-07-12 14:28:27.327 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/bootstrap/bootstrap.min.css - - - 304 - text/css 10.8920ms
+2020-07-12 14:28:27.330 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/blazor.server.js - - - 304 - application/javascript 13.6258ms
+2020-07-12 14:28:27.336 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-07-12 14:28:27.337 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/disconnect multipart/form-data;+boundary=---------------------------32904395651899991802850620692 395 - 200 0 - 21.3898ms
+2020-07-12 14:28:27.384 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2020-07-12 14:28:27.386 +01:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-07-12 14:28:27.387 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 2.5152ms
+2020-07-12 14:28:27.412 +01:00 [INF] Request starting HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-07-12 14:28:27.413 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-07-12 14:28:27.415 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-07-12 14:28:27.418 +01:00 [INF] Request finished HTTP/2 POST https://localhost:5001/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 5.7793ms
+2020-07-12 14:28:27.461 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/_blazor?id=IxHT8GecaqR0hwlEjzmXgg - -
+2020-07-12 14:28:27.461 +01:00 [INF] Executing endpoint '/_blazor'
+2020-07-12 14:28:27.541 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:28:27.546 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[ParticipantId], [t].[ArchiveTime0], [t].[Archived0], [t].[IsResolved0], [t].[IsWinner], [t].[MatchId0], [t].[NetResult], [t].[PlayerId]
+FROM [Games] AS [g]
+LEFT JOIN (
+    SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [p].[ParticipantId], [p].[ArchiveTime] AS [ArchiveTime0], [p].[Archived] AS [Archived0], [p].[IsResolved] AS [IsResolved0], [p].[IsWinner], [p].[MatchId] AS [MatchId0], [p].[NetResult], [p].[PlayerId]
+    FROM [Matches] AS [m]
+    LEFT JOIN [Participants] AS [p] ON [m].[MatchId] = [p].[MatchId]
+) AS [t] ON [g].[GameId] = [t].[GameId]
+ORDER BY [g].[GameId], [t].[MatchId], [t].[ParticipantId]
+2020-07-12 14:28:27.570 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - -
+2020-07-12 14:28:27.571 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js was not modified
+2020-07-12 14:28:27.573 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/syncfusion-blazor.min.js - - - 304 - application/javascript 3.1282ms
+2020-07-12 14:28:27.966 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - -
+2020-07-12 14:28:27.968 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - -
+2020-07-12 14:28:27.967 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - -
+2020-07-12 14:28:27.968 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - -
+2020-07-12 14:28:27.968 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - -
+2020-07-12 14:28:27.969 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/data-938a3e.min.js was not modified
+2020-07-12 14:28:27.971 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js was not modified
+2020-07-12 14:28:27.973 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js was not modified
+2020-07-12 14:28:27.974 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js was not modified
+2020-07-12 14:28:27.975 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js was not modified
+2020-07-12 14:28:27.976 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/data-938a3e.min.js - - - 304 - application/javascript 9.6697ms
+2020-07-12 14:28:27.977 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/navigations-938a3e.min.js - - - 304 - application/javascript 9.6894ms
+2020-07-12 14:28:27.979 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/popups-938a3e.min.js - - - 304 - application/javascript 12.3748ms
+2020-07-12 14:28:27.981 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/dropdowns-938a3e.min.js - - - 304 - application/javascript 12.9438ms
+2020-07-12 14:28:27.983 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/grids-938a3e.min.js - - - 304 - application/javascript 14.6919ms
+2020-07-12 14:28:28.003 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - -
+2020-07-12 14:28:28.004 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - -
+2020-07-12 14:28:28.004 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - -
+2020-07-12 14:28:28.005 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js was not modified
+2020-07-12 14:28:28.007 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js was not modified
+2020-07-12 14:28:28.008 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js was not modified
+2020-07-12 14:28:28.009 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/buttons-938a3e.min.js - - - 304 - application/javascript 5.8644ms
+2020-07-12 14:28:28.011 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/lists-938a3e.min.js - - - 304 - application/javascript 6.8619ms
+2020-07-12 14:28:28.012 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/inputs-938a3e.min.js - - - 304 - application/javascript 8.3123ms
+2020-07-12 14:28:28.038 +01:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - -
+2020-07-12 14:28:28.040 +01:00 [INF] The file /_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js was not modified
+2020-07-12 14:28:28.041 +01:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_content/Syncfusion.Blazor/scripts/splitbuttons-938a3e.min.js - - - 304 - application/javascript 2.9623ms
+2020-07-12 14:28:28.262 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Game?$inlinecount=allpages&$skip=0&$top=12 - -
+2020-07-12 14:28:28.264 +01:00 [INF] Executing endpoint 'CardsBlazor.ApiControllers.GameController.Get (CardsBlazor)'
+2020-07-12 14:28:28.269 +01:00 [INF] Route matched with {action = "Get", controller = "Game", page = ""}. Executing controller action with signature System.Object Get() on controller CardsBlazor.ApiControllers.GameController (CardsBlazor).
+2020-07-12 14:28:28.274 +01:00 [INF] Entity Framework Core 5.0.0-preview.6.20312.4 initialized 'CardsAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-12 14:28:28.278 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [g].[GameId], [g].[ArchiveTime], [g].[Archived], [g].[HasFixedFee], [g].[MinimumPlayerCount], [g].[Name], [g].[NumberOfWinnersInt], [t].[MatchId], [t].[ArchiveTime], [t].[Archived], [t].[EndTime], [t].[EntranceFee], [t].[GameId], [t].[IsResolved], [t].[NumberOfPlayers], [t].[StartTime], [t].[ParticipantId], [t].[ArchiveTime0], [t].[Archived0], [t].[IsResolved0], [t].[IsWinner], [t].[MatchId0], [t].[NetResult], [t].[PlayerId]
+FROM [Games] AS [g]
+LEFT JOIN (
+    SELECT [m].[MatchId], [m].[ArchiveTime], [m].[Archived], [m].[EndTime], [m].[EntranceFee], [m].[GameId], [m].[IsResolved], [m].[NumberOfPlayers], [m].[StartTime], [p].[ParticipantId], [p].[ArchiveTime] AS [ArchiveTime0], [p].[Archived] AS [Archived0], [p].[IsResolved] AS [IsResolved0], [p].[IsWinner], [p].[MatchId] AS [MatchId0], [p].[NetResult], [p].[PlayerId]
+    FROM [Matches] AS [m]
+    LEFT JOIN [Participants] AS [p] ON [m].[MatchId] = [p].[MatchId]
+) AS [t] ON [g].[GameId] = [t].[GameId]
+ORDER BY [g].[GameId], [t].[MatchId], [t].[ParticipantId]
+2020-07-12 14:28:28.286 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Collections.Generic.IEnumerable`1[[CardsBlazor.Data.ViewModels.GameViewModel, CardsBlazor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2020-07-12 14:28:28.299 +01:00 [INF] Executed action CardsBlazor.ApiControllers.GameController.Get (CardsBlazor) in 27.4202ms
+2020-07-12 14:28:28.300 +01:00 [INF] Executed endpoint 'CardsBlazor.ApiControllers.GameController.Get (CardsBlazor)'
+2020-07-12 14:28:28.302 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Game?$inlinecount=allpages&$skip=0&$top=12 - - - 200 - application/json;+charset=utf-8 39.4311ms
+2020-07-12 14:29:42.756 +01:00 [INF] Starting web host

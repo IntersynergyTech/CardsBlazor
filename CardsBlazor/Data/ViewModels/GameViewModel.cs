@@ -21,6 +21,8 @@ namespace CardsBlazor.Data.ViewModels
         public NumberOfWinners NumberOfWinners { get; set; }
         public int TotalNumberOfMatches { get; set; }
         public DateTime? LastPlayed { get; set; }
+        public decimal TotalAmountWagered { get; set; }
+        public decimal AverageStake { get; set; }
 
         public GameViewModel(Game entityGame)
         {
@@ -33,6 +35,12 @@ namespace CardsBlazor.Data.ViewModels
             if (entityGame.Matches != null)
             {
                 LastPlayed = entityGame.Matches.Any() ? entityGame.Matches.Max(x => x.StartTime) : DateTime.MinValue;
+                TotalAmountWagered = entityGame.Matches.Any()
+                    ? entityGame.Matches.Where(x => !x.Archived).SelectMany(x => x.Participants).Where(x => !x.Archived && x.IsResolved && x.NetResult >= 0)
+                        .Sum(x => x.NetResult).GetValueOrDefault(0)
+                    : 0;
+                if (TotalNumberOfMatches > 0) AverageStake = TotalAmountWagered / TotalNumberOfMatches;
+                else AverageStake = 0;
             }
 
         }

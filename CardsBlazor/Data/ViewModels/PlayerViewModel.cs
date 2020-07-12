@@ -12,9 +12,11 @@ namespace CardsBlazor.ApiControllers
         [ReadOnly(true)]
         public int PlayerId { get; set; }
         [Key]
+        [Required]
         public string UserName { get; set; }
         [EmailAddress]
         public string EmailAddress { get; set; }
+        [Required]
         public string RealName { get; set; }
         public DateTime? LastPaid { get; set; }
         public bool HasAdminPermission { get; set; }

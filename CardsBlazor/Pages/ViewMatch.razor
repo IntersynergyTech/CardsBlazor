@@ -4,7 +4,15 @@
 @using CardsBlazor.Data.ViewModels
 @inject MatchService MatchService
 @inject IJSRuntime JsRuntime
-<h3>@matchView.Game.Name for @matchView.EntranceFee.ToString("C2")</h3>
+@if (matchView.EntranceFee == 0)
+{
+    <h3>@matchView.Game.Name</h3>
+}
+else
+{
+    <h3>@matchView.Game.Name for @matchView.EntranceFee.ToString("C2")</h3>
+}
+
 <h4>Started at @matchView.StartTime.ToString("yyyy-MM-dd HH:mm:ss")</h4>
 @if (matchView.IsResolved && matchView.EndTime != null)
 {
@@ -27,40 +35,68 @@ Player List:
         @foreach (var party in matchView.Participants)
         {
             var partyId = party.ParticipantId;
-        <tr>
+            <tr>
 
-            @if (!party.IsResolved)
-            {
-                <td>@party.RealName</td>
-                <td>
-                    <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
-                    <SfButton CssClass="e-success" IconCss="oi oi-check" OnClick="() => ClickedWinner(partyId)"></SfButton>
-                    <SfButton CssClass="e-danger" IconCss="oi oi-trash" OnClick="() => MarkArchived(partyId)"></SfButton>
-                </td>
-            }
-            else
-            {
-                if (party.IsWinner.HasValue && party.IsWinner.Value)
+                @if (!party.IsResolved)
                 {
-                    <td style="font-weight:bold">@party.RealName</td>
+                    <td>@party.RealName</td>
+                    <td>
+                        <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
+                        <SfButton CssClass="e-success" IconCss="oi oi-check" OnClick="() => ClickedWinner(partyId)"></SfButton>
+                        <SfButton CssClass="e-danger" IconCss="oi oi-trash" OnClick="() => MarkArchived(partyId)"></SfButton>
+                    </td>
                 }
                 else
                 {
-                    <td style="text-decoration-line:line-through">@party.RealName</td>
+                    if (party.IsWinner.HasValue && party.IsWinner.Value)
+                    {
+                        <td style="font-weight:bold">@party.RealName</td>
+                    }
+                    else
+                    {
+                        <td style="text-decoration-line:line-through">@party.RealName</td>
+                    }
+                    <td>@party.NetResult.Value.ToString("C2")</td>
+                    <td>
+                        <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
+                        <SfButton CssClass="e-success" IconCss="oi oi-check"></SfButton>
+                        <SfButton CssClass="e-danger" IconCss="oi oi-trash"></SfButton>
+                    </td>
                 }
-                <td>@party.NetResult.Value.ToString("C2")</td>
-                <td>
-                    <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
-                    <SfButton CssClass="e-success" IconCss="oi oi-check"></SfButton>
-                    <SfButton CssClass="e-danger" IconCss="oi oi-trash"></SfButton>
-                </td>
-            }
 
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
+
+@if (matchView.Game.NumberOfWinners == NumberOfWinners.MultiWinner)
+{
+    <SfDialog @bind-Visible="IsMultiDialogVisible" Width="445px">
+        <DialogTemplates>
+            <Header>
+                <div style="color:red">Complete Multi Winner Game</div>
+            </Header>
+            <Content>
+                <div disabled="@ValidationIsVisible">@ValidationError</div>
+                @foreach (var party in matchView.Participants)
+                {
+                    var newPartyId = party.ParticipantId;
+                    <div>
+                        @party.RealName
+                    </div>
+                    <div>
+                        <SfNumericTextBox TValue="decimal" Format="c2" @bind-Value="@MatchResults[newPartyId]" Enabled="!matchView.IsResolved"></SfNumericTextBox>
+                    </div>
+                }
+            </Content>
+            <FooterTemplate>
+                <SfButton CssClass="e-success" IconCss="oi oi-check" OnClick=@ClickedMultiWinner>Success</SfButton>
+                <SfButton CssClass="e-danger" IconCss="oi oi-trash" OnClick="@CloseDialog">Cancel</SfButton>
+            </FooterTemplate>
+        </DialogTemplates>
+    </SfDialog>
+}
 
 @code {
     [Parameter]
@@ -69,6 +105,11 @@ Player List:
     private PartyViewModel winnerModel { get; set; }
     private MatchViewModel matchView { get; set; }
     protected bool IsDisabled { get; set; }
+    private bool IsMultiDialogVisible { get; set; } = false;
+    private string ValidationError { get; set; } = "";
+    private bool ValidationIsVisible { get; set; } = false;
+
+    private Dictionary<int, decimal> MatchResults { get; set; }
     protected override async Task OnInitializedAsync()
     {
         var result = MatchService.GetMatch(Id);
@@ -80,6 +121,7 @@ Player List:
         else if (result.IsResolved)
         {
             matchView = new MatchViewModel(result);
+
             IsDisabled = true;
 
         }
@@ -88,32 +130,76 @@ Player List:
             matchView = new MatchViewModel(result);
             IsDisabled = false;
         }
+        if (result.Game.NumberOfWinners == NumberOfWinners.MultiWinner)
+        {
+            MatchResults = matchView.Participants.ToDictionary(x => x.ParticipantId, model => model.NetResult.GetValueOrDefault(0));
+        }
     }
 
     private async void ClickedWinner(int partyId)
     {
         Serilog.Log.Information($"Marking {partyId} as winner of {matchView.MatchId}");
-        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
-        if (confirmed)
+        if (matchView.Game.NumberOfWinners == NumberOfWinners.MultiWinner)
         {
-            switch (matchView.WinnerCount)
-            {
-                case NumberOfWinners.SingleWinner:
-                    MatchService.ResolveSingleWinnerMatch(matchView.MatchId, partyId);
-                    break;
-                default:
-                    return;
-            }
-
-            var result = MatchService.GetMatch(Id);
-            matchView = new MatchViewModel(result);
-            this.StateHasChanged();
-            IsDisabled = true;
+            MatchResults = matchView.Participants.ToDictionary(x => x.ParticipantId, model => model.NetResult.GetValueOrDefault(0));
+            IsMultiDialogVisible = true;
         }
+        else
+        {
+            bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
+            if (confirmed)
+            {
+                switch (matchView.WinnerCount)
+                {
+                    case NumberOfWinners.SingleWinner:
+                        MatchService.ResolveSingleWinnerMatch(matchView.MatchId, partyId);
+                        break;
+                    default:
+                        return;
+                }
+
+                var result = MatchService.GetMatch(Id);
+                matchView = new MatchViewModel(result);
+                this.StateHasChanged();
+                IsDisabled = true;
+            }
+        }
+
 
     }
     private void MarkArchived(int partyId)
     {
         Serilog.Log.Information($"Archiving {partyId} on {matchView.MatchId}");
     }
+
+    private void CloseDialog()
+    {
+        IsMultiDialogVisible = false;
+    }
+
+    private void ClickedMultiWinner()
+    {
+        if (MatchResults.Sum(x => x.Value) != 0)
+        {
+            ValidationError = "The numbers do not equal out. Please try again";
+            ValidationIsVisible = true;
+            this.StateHasChanged();
+            return;
+        }
+        ValidationIsVisible = false;
+        ValidationError = "";
+        this.StateHasChanged();
+        foreach (var kvp in MatchResults)
+        {
+            Serilog.Log.Information($"Party {kvp.Key} has result {kvp.Value:c2}");
+        }
+        MatchService.ResolveMultiWinnerMatch(matchView.MatchId, MatchResults);
+        var result = MatchService.GetMatch(Id);
+        CloseDialog();
+        matchView = new MatchViewModel(result);
+
+        IsDisabled = true;
+        this.StateHasChanged();
+    }
+
 }

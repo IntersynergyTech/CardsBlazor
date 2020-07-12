@@ -31,7 +31,7 @@ namespace CardsBlazor.Data.ViewModels
 
             if (matchData.Participants != null && matchData.Participants.Count > 0)
             {
-                Participants = new List<PartyViewModel>(matchData.Participants.Select(x => new PartyViewModel(x)));
+                Participants = new List<PartyViewModel>(matchData.Participants.Where(x => !x.Archived).Select(x => new PartyViewModel(x)));
             }
             else
             {

@@ -36,7 +36,7 @@ namespace CardsBlazor.Data
         public async Task<List<GameViewModel>> GetAllAsViewModels()
         {
             var returnable = new List<GameViewModel>();
-            foreach (var test in _context.Games.Include(x => x.Matches))
+            foreach (var test in _context.Games.Include(x => x.Matches).ThenInclude(x => x.Participants))
             {
                 try
                 {
@@ -51,8 +51,6 @@ namespace CardsBlazor.Data
             }
 
             return returnable;
-            return await _context.Games.Include(x => x.Matches).Select(x => new GameViewModel(x)).ToListAsync()
-                .ConfigureAwait(true);
         }
 
         public List<GameChooseModel> GetAllAsChooseModels()

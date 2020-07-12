@@ -16,7 +16,7 @@ namespace CardsBlazor.Data.ViewModels
         public int[] StartingPlayers { get; set; }
 
         [Required]
-        [Range(1, 100000000, ErrorMessage = "The stakes must be at least £1 and at most £100000000")]
+        [Range(1, 10000000, ErrorMessage = "The stakes must be at least £1 and at most £100000000")]
         public decimal EntranceFee { get; set; }
     }
     public class CustomValidator : ValidationAttribute

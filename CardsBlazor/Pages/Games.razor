@@ -23,10 +23,11 @@ else
     <GridColumns>
 
         <GridColumn Field=@nameof(GameViewModel.Name) HeaderText="Name"></GridColumn>
-        <GridColumn Field=@nameof(GameViewModel.HasFixedFee) HeaderText="Fixed Fee" Type="ColumnType.Boolean"></GridColumn>
         <GridColumn Field=@nameof(GameViewModel.TotalNumberOfMatches) HeaderText="Times Played" Type="ColumnType.Number"></GridColumn>
         <GridColumn Field=@nameof(GameViewModel.MinimumPlayerCount) HeaderText="Minimum Players" Type="ColumnType.Number"></GridColumn>
         <GridColumn Field=@nameof(GameViewModel.LastPlayed) HeaderText="Last Played on" Type="ColumnType.DateTime"></GridColumn>
+        <GridColumn Field=@nameof(GameViewModel.TotalAmountWagered) HeaderText="Total Wagered" Type="ColumnType.Number" Format="c2"></GridColumn>
+        <GridColumn Field=@nameof(GameViewModel.AverageStake) HeaderText="Average Stake" Type="ColumnType.Number" Format="c2"></GridColumn>
     </GridColumns>
 </SfGrid>
 }
