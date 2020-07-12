@@ -26,7 +26,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0-preview.6.20323.1" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0-dev-00173" />
-    <PackageReference Include="Syncfusion.Blazor" Version="18.1.0.59" />
+    <PackageReference Include="Syncfusion.Blazor" Version="18.2.0.44" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
