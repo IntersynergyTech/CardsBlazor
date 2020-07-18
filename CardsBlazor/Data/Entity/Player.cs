@@ -26,6 +26,7 @@ namespace CardsBlazor.Data.Entity
         {
             get
             {
+                if (MatchesParticipatedIn == null || MatchesParticipatedIn.Count == 0) return 0m;
                 var matchesSinceLastPaid =
                     MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid.GetValueOrDefault(DateTime.MinValue));
                 var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);

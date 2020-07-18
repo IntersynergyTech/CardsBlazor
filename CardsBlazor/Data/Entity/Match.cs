@@ -22,5 +22,9 @@ namespace CardsBlazor.Data.Entity
         public DateTime? ArchiveTime { get; set; }
 
         public bool IsResolved { get; set; }
+
+        public decimal StakePerPoint { get; set; }
+
+        public string MatchNotes { get; set; }
     }
 }

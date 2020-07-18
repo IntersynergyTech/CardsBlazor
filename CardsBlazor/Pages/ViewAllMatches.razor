@@ -19,6 +19,9 @@
     .below-25 {
         background-color: greenyellow;
     }
+    .singlePlayer {
+        background-color: red;
+    }
 </style>
 @code {
     private List<MatchViewModel> Matches { get; set; } = new List<MatchViewModel>();
@@ -35,13 +38,17 @@
 
     public void RowBound(RowDataBoundEventArgs<MatchViewModel> args)
     {
-        if (args.Data.IsResolved)
+        if (args.Data.NumberOfPlayers < 2)
+        {
+            args.Row.AddClass(new string[] { "singlePlayer" });
+        }
+        else if (args.Data.IsResolved)
         {
             args.Row.AddClass(new string[] { "below-25" });
         }
         else
         {
-            
+
         }
     }
 }

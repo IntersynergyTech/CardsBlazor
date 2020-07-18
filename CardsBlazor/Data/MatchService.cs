@@ -34,12 +34,13 @@ namespace CardsBlazor.Data
                 .ThenInclude(x => x.Player).ToList();
         }
 
-        public void AddPlayers(int matchId, int[] playerIds)
+        public void AddPlayers(int matchId, List<int> playerIds)
         {
             var match = _context.Matches.Find(matchId);
             foreach (var player in playerIds)
             {
                 var pl = _context.Players.Find(player);
+                if (pl == null) throw new PlayerNotFoundException();
                 var participant = new Participant
                 {
                     Match = match,
@@ -49,7 +50,7 @@ namespace CardsBlazor.Data
                 _context.Participants.Add(participant);
             }
 
-            match.NumberOfPlayers += playerIds.Length;
+            match.NumberOfPlayers += playerIds.Count;
             _context.SaveChanges();
         }
 
@@ -93,7 +94,6 @@ namespace CardsBlazor.Data
             var valid = playerResults.Sum(x => x.Value) == 0;
             if (!valid) throw new NotImplementedException();
             var match = _context.Matches.Include(x => x.Participants).Include(x => x.Game).First(x => x.MatchId == matchId);
-            var playerIds = playerResults.Select(x => x.Key);
             foreach (var result in playerResults)
             {
                 var party = match.Participants.First(x => x.ParticipantId == result.Key);
@@ -117,7 +117,8 @@ namespace CardsBlazor.Data
         /// <returns></returns>
         public List<PlayerViewModel> GetAvailablePlayers(int matchId)
         {
-            var match = _context.Matches.Include(x => x.Participants).FirstOrDefault(x => x.MatchId == matchId);
+            var match = _context.Matches.Include(x => x.Participants).FirstOrDefault(x => x.MatchId == matchId && !x.Archived && !x.IsResolved);
+            if (match == null) return new List<PlayerViewModel>();
             var removedPlayerIds = match.Participants.Where(x => !x.IsResolved).Select(x => x.PlayerId).ToList();
             return _context.Players.Where(x => !removedPlayerIds.Contains(x.PlayerId))
                 .Select(x => new PlayerViewModel(x)).ToList();
@@ -166,6 +167,40 @@ namespace CardsBlazor.Data
             }
         }
 
+        public void ArchiveMatch(int matchId)
+        {
+            var match = _context.Matches.Include(x => x.Participants).FirstOrDefault(x => x.MatchId == matchId);
+            if (match == null) return;
+            foreach (var party in match.Participants)
+            {
+                party.IsResolved = true;
+                party.ArchiveTime = DateTime.Now;
+                party.Archived = true;
+                party.NetResult = 0m;
+            }
+
+            match.ArchiveTime = DateTime.Now;
+            match.Archived = true;
+            match.EndTime = DateTime.Now;
+            match.EntranceFee = 0m;
+            match.IsResolved = true;
+
+            _context.SaveChanges();
+        }
+
+        public void ArchivePlayer(int partyId)
+        {
+            var result = _context.Participants.Include(x => x.Match).FirstOrDefault(x => x.ParticipantId == partyId);
+            if (result != null)
+            {
+                result.IsResolved = true;
+                result.ArchiveTime = DateTime.Now;
+                result.Archived = true;
+                result.NetResult = 0m;
+                result.Match.NumberOfPlayers--;
+                _context.SaveChanges();
+            }
+        }
         public void Dispose()
         {
             _context?.Dispose();
@@ -173,4 +208,8 @@ namespace CardsBlazor.Data
     }
     public class MatchNotFoundException : Exception { }
     public class IncorrectMatchTypeException : Exception { }
+
+    public class PlayerNotFoundException : Exception
+    {
+    }
 }

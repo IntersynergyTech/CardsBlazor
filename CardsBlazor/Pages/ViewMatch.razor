@@ -2,6 +2,9 @@
 @using CardsBlazor.Data
 @using CardsBlazor.Data.Entity
 @using CardsBlazor.Data.ViewModels
+@using CardsBlazor.ApiControllers
+@using Newtonsoft.Json
+@using Serilog
 @inject MatchService MatchService
 @inject IJSRuntime JsRuntime
 @if (matchView.EntranceFee == 0)
@@ -14,11 +17,39 @@ else
 }
 
 <h4>Started at @matchView.StartTime.ToString("yyyy-MM-dd HH:mm:ss")</h4>
-@if (matchView.IsResolved && matchView.EndTime != null)
+@if (matchView.IsResolved && matchView.EndTime != null && !matchView.Archived)
 {
     <h4>Resolved at @matchView.EndTime.Value.ToString("yyyy-MM-dd HH:mm:ss")</h4>
     <h4>Won by @matchView.Participants.FirstOrDefault(x => x.IsWinner != null && x.IsWinner.Value)?.RealName</h4>
 }
+else if (matchView.Archived && matchView.EndTime != null)
+{
+    <h4>Archived at at @matchView.EndTime.Value.ToString("yyyy-MM-dd HH:mm:ss")</h4>
+}
+<div align="right">
+    <SfButton Disabled="IsDisabled" CssClass="e-success" IconCss="oi oi-plus" OnClick="ShowAddDialog">Add</SfButton>
+    <SfButton Disabled="IsDisabled" CssClass="e-danger" IconCss="oi oi-trash" OnClick="ArchiveGame">Archive</SfButton>
+</div>
+<div>
+    <SfDialog Header="Add Player" Width="400px" Height="350px" Visible="false" @ref="DialogObj">
+        <DialogTemplates>
+            <Content>
+                <div disabled="@ValidationIsVisible">@ValidationError</div>
+                <SfMultiSelect TValue="List<int>" Placeholder="Choose Players" DataSource="@AvailablePlayers" @bind-Value="PlayersToAdd">
+                    <MultiSelectFieldSettings Text="RealName" Value="PlayerId"></MultiSelectFieldSettings>
+                </SfMultiSelect>
+            </Content>
+        </DialogTemplates>
+        <DialogButtons>
+            <DialogButton OnClick="AddPlayer">
+                <DialogButtonModel Content="OK" IsPrimary="true"></DialogButtonModel>
+            </DialogButton>
+            <DialogButton OnClick="CloseAddDialog">
+                <DialogButtonModel Content="Cancel"></DialogButtonModel>
+            </DialogButton>
+        </DialogButtons>
+    </SfDialog>
+</div>
 Player List:
 <table class="table">
     <thead>
@@ -102,6 +133,8 @@ Player List:
     [Parameter]
     public int Id { get; set; }
 
+    SfDialog DialogObj;
+
     private PartyViewModel winnerModel { get; set; }
     private MatchViewModel matchView { get; set; }
     protected bool IsDisabled { get; set; }
@@ -110,6 +143,9 @@ Player List:
     private bool ValidationIsVisible { get; set; } = false;
 
     private Dictionary<int, decimal> MatchResults { get; set; }
+
+    private List<int> PlayersToAdd { get; set; }
+    private List<PlayerViewModel> AvailablePlayers { get; set; } = new List<PlayerViewModel>();
     protected override async Task OnInitializedAsync()
     {
         var result = MatchService.GetMatch(Id);
@@ -129,8 +165,9 @@ Player List:
         {
             matchView = new MatchViewModel(result);
             IsDisabled = false;
+            AvailablePlayers = MatchService.GetAvailablePlayers(matchView.MatchId);
         }
-        if (result.Game.NumberOfWinners == NumberOfWinners.MultiWinner)
+        if (result != null && result.Game.NumberOfWinners == NumberOfWinners.MultiWinner)
         {
             MatchResults = matchView.Participants.ToDictionary(x => x.ParticipantId, model => model.NetResult.GetValueOrDefault(0));
         }
@@ -158,9 +195,7 @@ Player List:
                         return;
                 }
 
-                var result = MatchService.GetMatch(Id);
-                matchView = new MatchViewModel(result);
-                this.StateHasChanged();
+                RefreshScreen();
                 IsDisabled = true;
             }
         }
@@ -170,6 +205,8 @@ Player List:
     private void MarkArchived(int partyId)
     {
         Serilog.Log.Information($"Archiving {partyId} on {matchView.MatchId}");
+        MatchService.ArchivePlayer(partyId);
+        RefreshScreen();
     }
 
     private void CloseDialog()
@@ -196,10 +233,69 @@ Player List:
         MatchService.ResolveMultiWinnerMatch(matchView.MatchId, MatchResults);
         var result = MatchService.GetMatch(Id);
         CloseDialog();
-        matchView = new MatchViewModel(result);
+        RefreshScreen();
 
         IsDisabled = true;
         this.StateHasChanged();
+    }
+
+    private void ShowAddDialog()
+    {
+        AvailablePlayers = MatchService.GetAvailablePlayers(matchView.MatchId);
+        PlayersToAdd = new List<int>();
+        this.StateHasChanged();
+        DialogObj.Show();
+    }
+
+    private void CloseAddDialog()
+    {
+        DialogObj.Hide();
+        this.StateHasChanged();
+    }
+
+    private void AddPlayer()
+    {
+        Log.Information($"Adding {PlayersToAdd.Count} players to match {matchView.MatchId}");
+        try
+        {
+            MatchService.AddPlayers(matchView.MatchId, PlayersToAdd);
+        }
+        catch (PlayerNotFoundException e)
+        {
+            e.Data.Add("Players", JsonConvert.SerializeObject(PlayersToAdd));
+            Log.Error(e, "Failed to find Player");
+            ValidationIsVisible = true;
+            ValidationError = "Failed to find these Players. Please try again";
+        }
+
+        RefreshScreen();
+        DialogObj.Hide();
+    }
+
+    private async void ArchiveGame()
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to archive this game?");
+        if (confirmed)
+        {
+            MatchService.ArchiveMatch(matchView.MatchId);
+            RefreshScreen();
+            IsDisabled = true;
+            StateHasChanged();
+        }
+    }
+
+    private void RefreshScreen()
+    {
+        ClearValidation();
+        var result = MatchService.GetMatch(Id);
+        matchView = new MatchViewModel(result);
+        StateHasChanged();
+    }
+    private void ClearValidation()
+    {
+        ValidationIsVisible = false;
+        ValidationError = "";
+        StateHasChanged();
     }
 
 }

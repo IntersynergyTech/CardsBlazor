@@ -31,6 +31,14 @@ namespace CardsBlazor
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "test",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddDbContext<CardsAppContext>(options =>
@@ -61,6 +69,7 @@ namespace CardsBlazor
                 app.UseHsts();
             }
 
+            app.UseCors("test");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
