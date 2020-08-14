@@ -55,5 +55,51 @@ namespace CardsBlazor.Data
             _context.SaveChanges();
         }
 
+        public List<PositionGraphClass> GetPositionGraphClasses(int playerId)
+        {
+            var returnable = new List<PositionGraphClass>();
+            var player = _context.Players
+                .Include(x => x.MatchesParticipatedIn)
+                .ThenInclude(x => x.Match)
+                .First(x => x.PlayerId == playerId);
+            var startDate = getStartOfFinancialQtr(DateTime.Now, 1);
+            var totalWeeks = Convert.ToInt32(Math.Ceiling((DateTime.Now - startDate).TotalDays / 7));
+            var partiesToSearch = player.MatchesParticipatedIn.Where(x => x.IsResolved &&
+                x.Match.EndTime.HasValue && x.Match.EndTime.Value.Date >= startDate).ToList();
+            for (int i = 0; i < totalWeeks; i++)
+            {
+                var dateToFind = DateTime.Now.AddDays(-i * 7);
+                var parties = partiesToSearch.Where(x =>
+                    x.Match.EndTime.HasValue && x.Match.EndTime.Value.Date <= dateToFind).ToList();
+                var returnObj = new PositionGraphClass
+                {
+                    PositionAtTime = Convert.ToDecimal(parties.Sum(x => x.NetResult)),
+                    WeekDate = dateToFind
+                };
+                returnable.Add(returnObj);
+            }
+
+            return returnable;
+        }
+        private DateTime getStartOfFinancialQtr(DateTime date, int monthFinancialYearStartsOn)
+        {
+            var actualMonth = date.Month;
+            var financialYear = date.Year;
+            var difference = actualMonth - monthFinancialYearStartsOn;
+            if (difference < 0)
+            {
+                --financialYear;
+                difference += 12;
+            }
+            var quarter = difference / 3;
+
+            return new DateTime(financialYear, monthFinancialYearStartsOn, 1).AddMonths(quarter * 3);
+        }
+    }
+
+    public class PositionGraphClass
+    {
+        public DateTime WeekDate { get; set; }
+        public decimal PositionAtTime { get; set; }
     }
 }

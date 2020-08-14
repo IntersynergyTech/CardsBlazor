@@ -52,6 +52,7 @@ namespace CardsBlazor
             services.AddScoped<GameService>();
             services.AddScoped<MatchService>();
             services.AddSyncfusionBlazor();
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
