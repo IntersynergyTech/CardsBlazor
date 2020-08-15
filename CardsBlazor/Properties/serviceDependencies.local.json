@@ -9,6 +9,9 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "IdentityContextConnection"
+    },
+    "secrets1": {
+      "type": "secrets.user"
     }
   }
 }

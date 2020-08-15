@@ -1,14 +1,22 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Http
 
-<h1>Cards App v0.4</h1>
+@inject IHttpContextAccessor httpContextAccessor
+
+<h1>Cards App v0.5</h1>
 
 <div>
     <h4>Release Notes</h4>
     <ul>
-        <li>Added support for multi winner games</li>
-        <li>Added better stats for each game</li>
-        <li>Support for archiving matches and participants</li>
-        <li>Support for adding players to existing game</li>
-        <li>Updated Syncfusion to latest version</li>
+        <li>Added User Registration</li>
+        <li>Added User Roles</li>
     </ul>
 </div>
+@code
+{
+    protected override Task OnInitializedAsync()
+    {
+        var user = httpContextAccessor.HttpContext.User;
+        return base.OnInitializedAsync();
+    }
+}

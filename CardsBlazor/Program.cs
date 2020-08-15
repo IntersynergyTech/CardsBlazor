@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CardsBlazor.Data;
 using CardsBlazor.Data.Entity;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -66,7 +67,18 @@ namespace CardsBlazor
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred creating the DB.");
                 }
+                try
+                {
+                    var context = services.GetRequiredService<IdentityContext>();
+                    context.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred creating the DB.");
+                }
             }
+
         }
     }
 }

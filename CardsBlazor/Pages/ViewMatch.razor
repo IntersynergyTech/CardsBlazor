@@ -3,6 +3,7 @@
 @using CardsBlazor.Data.Entity
 @using CardsBlazor.Data.ViewModels
 @using CardsBlazor.ApiControllers
+@using Microsoft.AspNetCore.Http
 @using Newtonsoft.Json
 @using Serilog
 @inject MatchService MatchService
@@ -27,8 +28,12 @@ else if (matchView.Archived && matchView.EndTime != null)
     <h4>Archived at at @matchView.EndTime.Value.ToString("yyyy-MM-dd HH:mm:ss")</h4>
 }
 <div align="right">
-    <SfButton Disabled="IsDisabled" CssClass="e-success" IconCss="oi oi-plus" OnClick="ShowAddDialog">Add</SfButton>
-    <SfButton Disabled="IsDisabled" CssClass="e-danger" IconCss="oi oi-trash" OnClick="ArchiveGame">Archive</SfButton>
+    <AuthorizeView Roles="admin">
+        <Authorized>
+            <SfButton Disabled="IsDisabled" CssClass="e-success" IconCss="oi oi-plus" OnClick="ShowAddDialog">Add</SfButton>
+            <SfButton Disabled="IsDisabled" CssClass="e-danger" IconCss="oi oi-trash" OnClick="ArchiveGame">Archive</SfButton>
+        </Authorized>
+    </AuthorizeView>
 </div>
 <div>
     <SfDialog Header="Add Player" Width="400px" Height="350px" Visible="false" @ref="DialogObj">
@@ -148,6 +153,7 @@ Player List:
     private List<PlayerViewModel> AvailablePlayers { get; set; } = new List<PlayerViewModel>();
     protected override async Task OnInitializedAsync()
     {
+
         var result = MatchService.GetMatch(Id);
         if (result == null)
         {

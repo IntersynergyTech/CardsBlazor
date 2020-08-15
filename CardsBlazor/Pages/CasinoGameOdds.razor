@@ -1,0 +1,93 @@
+﻿@page "/CasinoOdds"
+<h3>CasinoGameOdds</h3>
+<SfAccordion>
+    <AccordionItems>
+        <AccordionItem>
+            <HeaderTemplate>
+                <div>Blackjack</div>
+            </HeaderTemplate>
+            <ContentTemplate>
+
+            </ContentTemplate>
+        </AccordionItem>
+        <AccordionItem>
+            <HeaderTemplate>
+                <div>Three Card Poker</div>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <div class="container">
+                    <div class="row">
+                        Dealer qualifies with Queen high or better. Player wins ties
+                    </div>
+                    <div class="row">
+                        <h4>Ante</h4>
+                        <div>
+                            <p>Ante Bonus: Min Bet £1</p>
+                            <br />
+                            <ul>
+                                <li>Straight - 1 to 1</li>
+                                <li>Three of a kind - 4 to 1</li>
+                                <li>Straight Flush - 5 to 1</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <SfAccordion>
+                            <AccordionItems>
+                                <AccordionItem Header="Pair Plus">
+                                    <ContentTemplate>
+                                        <div class="row">
+
+                                            <p>Pair Plus: Min Bet £1, Max Bet £5</p>
+                                            <br />
+                                            <ul>
+                                                <li>Pair - 1 to 1</li>
+                                                <li>Flush - 4 to 1</li>
+                                                <li>Straight - 6 to 1</li>
+                                                <li>Three of a kind - 30 to 1</li>
+                                                <li>Straight Flush - 40 to 1</li>
+                                            </ul>
+                                        </div>
+                                    </ContentTemplate>
+                                </AccordionItem>
+                                <AccordionItem Header="Prime">
+                                    <ContentTemplate>
+                                        <div class="row">
+                                            <p>Prime: Min Bet £1, Max Bet £5</p>
+                                            <p>Requires all cards to be of the same colour</p>
+                                            <br />
+                                            <ul>
+                                                <li>Both Players - 4 to 1</li>
+                                                <li>Player only - 3 to 1</li>
+                                            </ul>
+                                        </div>
+                                    </ContentTemplate>
+                                </AccordionItem>
+                                <AccordionItem Header="5 Card Bonus">
+                                    <ContentTemplate>
+                                        <div class="row">
+                                            5 Card Bonus: Min Bet £1, Max Bet £1
+                                            <ul>
+                                                <li>Royal Flush - 1000 to 1</li>
+                                                <li>Straight Flush - 200 to 1</li>
+                                                <li>4 of a kind - 50 - 1</li>
+                                                <li>Full House - 12 to 1</li>
+                                                <li>Flush - 9 to 1</li>
+                                                <li>Straight - 6 to 1</li>
+                                                <li>Three of a kind - 4 to 1</li>
+                                            </ul>
+                                        </div>
+                                    </ContentTemplate>
+                                </AccordionItem>
+                            </AccordionItems>
+                        </SfAccordion>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </AccordionItem>
+    </AccordionItems>
+</SfAccordion>
+@code {
+
+}
