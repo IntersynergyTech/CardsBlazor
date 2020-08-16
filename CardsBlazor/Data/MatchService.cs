@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CardsBlazor.ApiControllers;
+using CardsBlazor.Areas.Identity.Data;
 using CardsBlazor.Data.Entity;
 using CardsBlazor.Data.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -13,10 +17,13 @@ namespace CardsBlazor.Data
     public class MatchService : IDisposable
     {
         private readonly CardsAppContext _context;
-
-        public MatchService(CardsAppContext context)
+        private readonly IHttpContextAccessor _httpContext;
+        private readonly UserManager<AppUser> _userManager;
+        public MatchService(CardsAppContext context, IHttpContextAccessor httpContext, UserManager<AppUser> userManager)
         {
             _context = context;
+            _httpContext = httpContext;
+            _userManager = userManager;
         }
 
         public Match GetMatch(int matchId)
@@ -49,6 +56,15 @@ namespace CardsBlazor.Data
                 };
                 _context.Participants.Add(participant);
             }
+            var userId = _httpContext.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var audit = new MatchAudit
+            {
+                AuditDate = DateTime.Now,
+                MatchId = match.MatchId,
+                UserId = userId,
+                Type = AuditType.AddParty
+            };
+            _context.MatchAudits.Add(audit);
 
             match.NumberOfPlayers += playerIds.Count;
             _context.SaveChanges();
@@ -73,6 +89,16 @@ namespace CardsBlazor.Data
 
             match.IsResolved = true;
             match.EndTime = DateTime.Now;
+
+            var userId = _httpContext.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var audit = new MatchAudit
+            {
+                AuditDate = DateTime.Now,
+                MatchId = match.MatchId,
+                UserId = userId,
+                Type = AuditType.CompleteMatch
+            };
+            _context.MatchAudits.Add(audit);
             _context.SaveChanges();
             if (_context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).ToList().Sum(x => x.CurrentPosition) != 0)
             {
@@ -106,6 +132,16 @@ namespace CardsBlazor.Data
             match.IsResolved = true;
             match.EntranceFee = 0;
             match.EndTime = DateTime.Now;
+
+            var userId = _httpContext.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var audit = new MatchAudit
+            {
+                AuditDate = DateTime.Now,
+                MatchId = match.MatchId,
+                UserId = userId,
+                Type = AuditType.ArchiveMatch
+            };
+            _context.MatchAudits.Add(audit);
             _context.SaveChanges();
             trans.Commit();
         }
@@ -129,6 +165,7 @@ namespace CardsBlazor.Data
             try
             {
                 var trans = _context.Database.BeginTransaction();
+                
                 if (!createModel.GameId.HasValue)
                 {
                     return -1;
@@ -154,6 +191,17 @@ namespace CardsBlazor.Data
                 }
 
                 newMatch.NumberOfPlayers = createModel.StartingPlayers.Length;
+                _context.SaveChanges();
+
+                var userId = _httpContext.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var audit = new MatchAudit
+                {
+                    AuditDate = DateTime.Now,
+                    MatchId = newMatch.MatchId,
+                    UserId = userId,
+                    Type = AuditType.CreateMatch
+                };
+                _context.MatchAudits.Add(audit);
                 _context.SaveChanges();
                 trans.Commit();
                 trans.Dispose();
@@ -184,7 +232,15 @@ namespace CardsBlazor.Data
             match.EndTime = DateTime.Now;
             match.EntranceFee = 0m;
             match.IsResolved = true;
-
+            var userId = _httpContext.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var audit = new MatchAudit
+            {
+                AuditDate = DateTime.Now,
+                MatchId = match.MatchId,
+                UserId = userId,
+                Type = AuditType.ArchiveMatch
+            };
+            _context.MatchAudits.Add(audit);
             _context.SaveChanges();
         }
 
@@ -198,6 +254,15 @@ namespace CardsBlazor.Data
                 result.Archived = true;
                 result.NetResult = 0m;
                 result.Match.NumberOfPlayers--;
+                var userId = _httpContext.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var audit = new MatchAudit
+                {
+                    AuditDate = DateTime.Now,
+                    MatchId = result.MatchId,
+                    UserId = userId,
+                    Type = AuditType.RemoveParty
+                };
+                _context.MatchAudits.Add(audit);
                 _context.SaveChanges();
             }
         }

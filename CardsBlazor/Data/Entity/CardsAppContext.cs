@@ -12,6 +12,8 @@ namespace CardsBlazor.Data.Entity
         public DbSet<Match> Matches { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Participant> Participants { get; set; }
+
+        public DbSet<MatchAudit> MatchAudits { get; set; }
         public CardsAppContext(DbContextOptions<CardsAppContext> options)
             : base(options)
         {
@@ -54,6 +56,10 @@ namespace CardsBlazor.Data.Entity
                 NumberOfWinnersInt = 1,
                 ArchiveTime = null
             });
+
+            modelBuilder.Entity<MatchAudit>().HasKey(x => x.AuditId);
+            modelBuilder.Entity<MatchAudit>().Property(x => x.AuditDate).IsRequired();
+            modelBuilder.Entity<MatchAudit>().HasOne(x => x.Match).WithMany(x => x.Audits);
         }
     }
 }

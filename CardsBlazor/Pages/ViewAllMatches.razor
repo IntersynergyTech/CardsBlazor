@@ -27,7 +27,7 @@
     private List<MatchViewModel> Matches { get; set; } = new List<MatchViewModel>();
     protected override async Task OnInitializedAsync()
     {
-        Matches = MatchService.GetAllMatches().OrderBy(x => x.IsResolved).ThenBy(x => x.StartTime).Select(x => new MatchViewModel(x)).ToList();
+        Matches = MatchService.GetAllMatches().OrderBy(x => x.IsResolved).ThenByDescending(x => x.StartTime).Select(x => new MatchViewModel(x)).ToList();
         Log.Information($"Successfully loaded {Matches.Count} matches");
     }
     public void RecordDoubleClickHandler(RecordDoubleClickEventArgs<MatchViewModel> args)

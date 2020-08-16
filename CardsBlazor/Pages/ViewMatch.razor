@@ -77,9 +77,14 @@ Player List:
                 {
                     <td>@party.RealName</td>
                     <td>
-                        <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
-                        <SfButton CssClass="e-success" IconCss="oi oi-check" OnClick="() => ClickedWinner(partyId)"></SfButton>
-                        <SfButton CssClass="e-danger" IconCss="oi oi-trash" OnClick="() => MarkArchived(partyId)"></SfButton>
+                        <AuthorizeView>
+                            <Authorized>
+                                <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
+                                <SfButton CssClass="e-success" IconCss="oi oi-check" OnClick="() => ClickedWinner(partyId)"></SfButton>
+                                <SfButton CssClass="e-danger" IconCss="oi oi-trash" OnClick="() => MarkArchived(partyId)"></SfButton>
+                            </Authorized>
+                        </AuthorizeView>
+                        
                     </td>
                 }
                 else
@@ -94,9 +99,9 @@ Player List:
                     }
                     <td>@party.NetResult.Value.ToString("C2")</td>
                     <td>
-                        <SfButton CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
-                        <SfButton CssClass="e-success" IconCss="oi oi-check"></SfButton>
-                        <SfButton CssClass="e-danger" IconCss="oi oi-trash"></SfButton>
+                        <SfButton Disabled="IsDisabled" CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
+                        <SfButton Disabled="IsDisabled" CssClass="e-success" IconCss="oi oi-check"></SfButton>
+                        <SfButton Disabled="IsDisabled" CssClass="e-danger" IconCss="oi oi-trash"></SfButton>
                     </td>
                 }
 

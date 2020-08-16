@@ -11,19 +11,28 @@
 @inject PlayerService PlayerService
 @inject GameService GameService
 @inject NavigationManager NavigationManager
-<h3>Start Match</h3>
-<EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes" Max="10000000" Step="50"></SfNumericTextBox>
-    <SfDropDownList TValue="int?" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
-        <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
-    </SfDropDownList>
-    <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
-        <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
-    </SfMultiSelect>
-    <button type="submit">Submit</button>
-</EditForm>
+<h2>Start Match</h2>
+<AuthorizeView>
+    <Authorized Context="auth">
+        <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes" Max="10000000" Step="50"></SfNumericTextBox>
+            <SfDropDownList TValue="int?" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
+                <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
+            </SfDropDownList>
+            <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
+                <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
+            </SfMultiSelect>
+            <button type="submit">Submit</button>
+        </EditForm>
+    </Authorized>
+    <NotAuthorized>
+        <br />
+        <h4>You must be signed in to start a match</h4>
+    </NotAuthorized>
+</AuthorizeView>
+
 <SfDialog @bind-Visible="@IsExceptionDialogVisible" Width="250px" IsModal="true">
     <DialogEvents OnOverlayClick="ExceptionDialogClicked">
     </DialogEvents>

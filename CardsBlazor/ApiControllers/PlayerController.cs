@@ -46,5 +46,12 @@ namespace CardsBlazor.ApiControllers
         {
             _playerService.AddPlayer(player);
         }
+
+        [Route("Position")]
+        [HttpGet]
+        public async Task<IActionResult> GetPositionGraph(int playerId)
+        {
+            return Ok(_playerService.GetPositionGraphClasses(playerId));
+        }
     }
 }

@@ -26,5 +26,7 @@ namespace CardsBlazor.Data.Entity
         public decimal StakePerPoint { get; set; }
 
         public string MatchNotes { get; set; }
+
+        public virtual List<MatchAudit> Audits { get; set; }
     }
 }
