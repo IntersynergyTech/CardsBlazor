@@ -52,12 +52,13 @@ namespace CardsBlazor
                     .ConfigureWarnings(c => c
                         .Log((RelationalEventId.CommandExecuting, LogLevel.Debug))
                         .Log((RelationalEventId.CommandExecuted, LogLevel.Debug))
-                    ));
+                    ), ServiceLifetime.Transient);
             services.AddScoped<TokenProvider>();
             services.AddScoped<PlayerService>();
             services.AddScoped<GameService>();
             services.AddScoped<MatchService>();
             services.AddScoped<TokenProvider>();
+            services.AddScoped<BoardService>();
             services.AddHttpContextAccessor();
             services.AddScoped<HttpContextAccessor>();
 

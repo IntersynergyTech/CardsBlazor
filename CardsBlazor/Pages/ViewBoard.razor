@@ -3,115 +3,60 @@
 @using CardsBlazor.Data
 @using CardsBlazor.ApiControllers
 @using System.Timers
+@using CardsBlazor.Data.ViewModels
 @using Serilog
 @inject PlayerService PlayerService
-@inject IJSRuntime JsRuntime;
-
-<h3>The Board</h3>
+@inject BoardService BoardService
+<h3>Legacy Board Viewer</h3>
 @if (PlayerList != null)
 {
     <table class="table">
         <thead class="thead-dark">
-        <tr>
-            @foreach (var player in PlayerList)
-            {
-                <th>@player.RealName</th>
-            }
-        </tr>
+            <tr>
+                <th>Time</th>
+                @foreach (var player in PlayerList.OrderBy(x => x.PlayerId))
+                {
+                    <th>@player.RealName</th>
+                }
+            </tr>
         </thead>
-
-        <tr>
-            @foreach (var player in PlayerList)
-            {
-                <td>@player.CurrentPosition.ToString("c2")</td>
-            }
-        </tr>
+        @foreach (var board in BoardList)
+        {
+            <tr>
+                <td>
+                    @board.TimeOfBoard.ToString("yyyy-MM-dd HH:mm:ss")
+                </td>
+                @foreach (var pos in board.Positions.OrderBy(x => x.Key.PlayerId))
+                {
+                    <td>
+                        @pos.Value.ToString("C2")
+                    </td>
+                }
+            </tr>
+        }
     </table>
-    <SfSwitch @bind-Checked="AutoRefresh" OnFocus="Test">Auto Refresh</SfSwitch>
+    <SfButton OnClick="Refresh">Refresh</SfButton>
 }
 
 @code {
     private List<PlayerViewModel> PlayerList;
-    private bool AutoRefresh = false;
-    
-    private TimerPlus _timer;
-    private double TimeLeft
-    {
-        get
-        {
-            if (_timer == null) return 0;
-            return (_timer.TimeLeft / _timer.Interval) * 100;
-        }
-    }
+    private List<BoardViewModel> BoardList = new List<BoardViewModel>();
 
     protected override async Task OnInitializedAsync()
     {
         PlayerList = await PlayerService.GetPlayersViewModel();
-        _timer = new TimerPlus
-        {
-            Interval = 5000,
-            Enabled = false
-        };
-        _timer.Elapsed += TimerOnElapsed;
+        var boardData = BoardService.GetNPositions(50, 0);
+        BoardList = boardData;
         StateHasChanged();
-    }
-    
-    private void StartAutoRefresh()
-    {
-        if (AutoRefresh)
-        {
-            _timer.Start();
-        }
-        else
-        {
-            _timer.Stop();
-        }
+
     }
 
-    private async void TimerOnElapsed(object sender, ElapsedEventArgs e)
+
+    private void Refresh()
     {
-        Log.Information("Refreshing screen");
-        PlayerList = await PlayerService.GetPlayersViewModel();
-        StartAutoRefresh();
-        await InvokeAsync(StateHasChanged);
-    }
-
-    public class TimerPlus : System.Timers.Timer
-    {
-        private DateTime m_dueTime;
-
-        public TimerPlus() : base()
-        {
-            this.Elapsed += this.ElapsedAction;
-        }
-
-        protected new void Dispose()
-        {
-            this.Elapsed -= this.ElapsedAction;
-            base.Dispose();
-        }
-
-        public double TimeLeft
-        {
-            get
-            {
-                return (this.m_dueTime - DateTime.Now).TotalMilliseconds;
-            }
-        }
-
-        public new void Start()
-        {
-            this.m_dueTime = DateTime.Now.AddMilliseconds(this.Interval);
-            base.Start();
-        }
-
-        private void ElapsedAction(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (this.AutoReset)
-            {
-                this.m_dueTime = DateTime.Now.AddMilliseconds(this.Interval);
-            }
-        }
+        var boardData = BoardService.GetNPositions(50, 0);
+        BoardList = boardData;
+        StateHasChanged();
     }
 
 }

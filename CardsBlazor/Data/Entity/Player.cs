@@ -20,6 +20,7 @@ namespace CardsBlazor.Data.Entity
         public virtual List<Participant> MatchesParticipatedIn { get; set; }
         public bool Archived { get; set; }
         public DateTime? ArchiveTime { get; set; }
+        public bool HideFromView { get; set; }
 
         [NotMapped]
         public decimal CurrentPosition
@@ -32,6 +33,15 @@ namespace CardsBlazor.Data.Entity
                 var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
                 return netResult.GetValueOrDefault(0);
             }
+        }
+
+        public decimal GetPositionAtTime(DateTime date)
+        {
+            if (MatchesParticipatedIn == null || MatchesParticipatedIn.Count == 0) return 0m;
+            var matchesSinceLastPaid =
+                MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid.GetValueOrDefault(DateTime.MinValue) && x.Match.EndTime <= date);
+            var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
+            return netResult.GetValueOrDefault(0);
         }
     }
 }

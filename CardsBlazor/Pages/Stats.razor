@@ -7,45 +7,56 @@
 @inject PlayerService PlayerService
 <h3>Statistics</h3>
 <div class="col-10">
-    <SfChart @ref="Chartobj">
-        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Title="Date">
-            <ChartSeriesCollection>
-                <ChartSeries Name="@nameof(PositionGraphClass.WeekDate)" DataSource="@chartData" YName="@nameof(PositionGraphClass.PositionAtTime)" XName="@nameof(PositionGraphClass.WeekDate)">
-                    <ChartSeriesAnimation Enable="false"> </ChartSeriesAnimation>
-                </ChartSeries>
-            </ChartSeriesCollection>
-        </ChartPrimaryXAxis>
+    <SfChart @ref="Chartobj2">
+        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Title="Date"></ChartPrimaryXAxis>
         <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
         <ChartPrimaryYAxis Title="Net Position"></ChartPrimaryYAxis>
-
+        <ChartZoomSettings EnableMouseWheelZooming="true" EnablePinchZooming="true" EnableSelectionZooming="true"></ChartZoomSettings>
+        <ChartSeriesCollection></ChartSeriesCollection>
     </SfChart>
+</div>
+<div>
+    <SfButton OnClick="Callback">Load Data</SfButton>
 </div>
 @code {
     public SfChart Chartobj;
+    public SfChart Chartobj2;
     public string[] colors = new string[] { "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Black", "Aqua", "Lime", "Gray" };
     private Random rnd = new Random();
     public List<PositionGraphClass> chartData = new List<PositionGraphClass>();
+    public Dictionary<int, List<PositionGraphClass>> graphResults;
     protected override async Task OnInitializedAsync()
     {
+        await Task.Delay(1000);
         var results = await PlayerService.GetPlayersViewModel();
-        var graphResults = results.ToDictionary(player => player.PlayerId, player => PlayerService.GetPositionGraphClasses(player.PlayerId));
-        List<ChartSeries> seriesCollection = new List<ChartSeries>();
+        graphResults = results.ToDictionary(player => player.PlayerId, player => PlayerService.GetPositionGraphClasses(player.PlayerId, 1));
+        chartData = graphResults.First().Value;
 
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Task.Delay(5000);
+    }
+
+    private async void Callback()
+    {
+        await Task.Delay(100);
+        List<ChartSeries> seriesCollection = new List<ChartSeries>();
         foreach (var kvp in graphResults)
         {
             seriesCollection.Add(new ChartSeries
             {
-                Name = kvp.Key.ToString(),
+                Name = PlayerService.GetPlayer(kvp.Key).RealName,
                 XName = nameof(PositionGraphClass.WeekDate),
                 YName = nameof(PositionGraphClass.PositionAtTime),
                 DataSource = kvp.Value,
                 Type = ChartSeriesType.Line,
-                Fill = colors[rnd.Next(colors.Length - 1)],
-                Animation = new ChartSeriesAnimation { Enable = false }
+                Fill = colors[rnd.Next(colors.Length - 1)]
             });
         }
-        await Chartobj.AddSeries(seriesCollection.First());
-        chartData = graphResults.First().Value;
-        StateHasChanged();
+        await this.Chartobj2.AddSeries(seriesCollection);
     }
+
 }

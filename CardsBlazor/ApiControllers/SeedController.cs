@@ -4,7 +4,6 @@ using CardsBlazor.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
-using Serilog.Core;
 
 namespace CardsBlazor.ApiControllers
 {
@@ -14,12 +13,10 @@ namespace CardsBlazor.ApiControllers
     {
         private RoleManager<IdentityRole> _roleManager;
         private UserManager<AppUser> _userManager;
-        private ILogger _logger;
-        public SeedController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, ILogger logger)
+        public SeedController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
-            _logger = logger;
         }
 
         /// <summary>
@@ -49,7 +46,7 @@ namespace CardsBlazor.ApiControllers
                     IdentityRole adminRole = new IdentityRole("user");
                     //create the roles and seed them to the database
                     roleResult = await _roleManager.CreateAsync(adminRole);
-                    _logger.Information("Seeded User Role");
+                    Log.Information("Seeded User Role");
                 }
                 var role3 = await _roleManager.RoleExistsAsync("moderator");
                 if (!role3)
@@ -57,7 +54,7 @@ namespace CardsBlazor.ApiControllers
                     IdentityRole adminRole = new IdentityRole("moderator");
                     //create the roles and seed them to the database
                     roleResult = await _roleManager.CreateAsync(adminRole);
-                    _logger.Information("Seeded Moderator Role");
+                    Log.Information("Seeded Moderator Role");
                 }
                 var userExists = await _userManager.FindByEmailAsync("admin@floul.dev");
                 if (userExists == null)
@@ -71,7 +68,7 @@ namespace CardsBlazor.ApiControllers
                     };
                     var res = _userManager.CreateAsync(appUser, "asd123asd").Result;
                     await _userManager.AddToRoleAsync(appUser, "admin");
-                    _logger.Information("Seeded Admin Account");
+                    Log.Information("Seeded Admin Account");
                 }
                 return Ok();
             }
