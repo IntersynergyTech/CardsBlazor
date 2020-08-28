@@ -17,7 +17,7 @@ namespace CardsBlazor.ApiControllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
-        private PlayerService _playerService;
+        private readonly PlayerService _playerService;
         public PlayerController(PlayerService service)
         {
             _playerService = service;
@@ -30,10 +30,8 @@ namespace CardsBlazor.ApiControllers
             var queryString = Request.Query;
             if (queryString.Keys.Contains("$inlinecount"))
             {
-                StringValues Skip;
-                StringValues Take;
-                int skip = (queryString.TryGetValue("$skip", out Skip)) ? Convert.ToInt32(Skip[0], CultureInfo.InvariantCulture) : 0;
-                int top = (queryString.TryGetValue("$top", out Take)) ? Convert.ToInt32(Take[0], CultureInfo.InvariantCulture) : data.Count();
+                int skip = (queryString.TryGetValue("$skip", out var Skip)) ? Convert.ToInt32(Skip[0], CultureInfo.InvariantCulture) : 0;
+                int top = (queryString.TryGetValue("$top", out var Take)) ? Convert.ToInt32(Take[0], CultureInfo.InvariantCulture) : data.Count();
                 return new { Items = data.Skip(skip).Take(top), Count = count };
             }
             else
