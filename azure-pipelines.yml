@@ -33,7 +33,8 @@ steps:
   inputs:
     command: 'publish'
     projects: '**/*.csproj'
-    arguments: '--configuration Release'
+    arguments: '--configuration Release -o $(Build.ArtifactStagingDirectory)/Output'
+    modifyOutputPath: true
 
 - task: VSTest@2
   inputs:
