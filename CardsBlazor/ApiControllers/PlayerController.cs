@@ -44,6 +44,7 @@ namespace CardsBlazor.ApiControllers
         [HttpPost]
         public async void Post([FromBody] PlayerViewModel player)
         {
+            await Task.Delay(0);
             _playerService.AddPlayer(player);
         }
 
@@ -51,6 +52,7 @@ namespace CardsBlazor.ApiControllers
         [HttpGet]
         public async Task<IActionResult> GetPositionGraph(int playerId)
         {
+            await Task.Delay(0);
             return Ok(_playerService.GetPositionGraphClasses(playerId, 7));
         }
     }
