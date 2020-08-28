@@ -16,6 +16,7 @@ using Serilog;
 
 namespace CardsBlazor
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "Is used as a type argument")]
     public class Program
     {
         public static void Main(string[] args)
@@ -67,6 +68,7 @@ namespace CardsBlazor
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred creating the DB.");
+                    throw;
                 }
                 try
                 {
@@ -77,6 +79,7 @@ namespace CardsBlazor
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred creating the DB.");
+                    throw;
                 }
             }
 
