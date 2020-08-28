@@ -28,11 +28,15 @@ steps:
     projects: '**/*.csproj'
     feedsToUse: 'select'
     vstsFeed: '9990ce44-8539-467d-bda4-efa3bcee29a7'
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '-c Release'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    projects: '**/*.csproj'
+    projects: '**/CardsBlazor.csproj'
     arguments: '--configuration Release -o $(Build.ArtifactStagingDirectory)/Output'
     modifyOutputPath: true
 
