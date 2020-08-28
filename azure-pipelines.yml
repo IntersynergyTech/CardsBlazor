@@ -33,6 +33,12 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '-c Release'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
@@ -40,10 +46,6 @@ steps:
     arguments: '--configuration Release -o $(Build.ArtifactStagingDirectory)/Output'
     modifyOutputPath: true
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
