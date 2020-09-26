@@ -21,7 +21,7 @@ else
 {
 <SfGrid TValue="PlayerViewModel" AllowPaging="true" Toolbar="@(new List<string>() {"Add", "Edit", "Delete", "Cancel", "Update"})">
     <GridEditSettings AllowAdding="true" AllowEditing="false" AllowDeleting="false" Mode="EditMode.Normal"></GridEditSettings>
-    <DataManager Url="api/Player" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
+    <DataManager Url="https://cards.floul.dev/api/Player" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
 
     <GridColumns>
         <GridColumn Field=@nameof(PlayerViewModel.UserName) HeaderText="User Name"></GridColumn>
