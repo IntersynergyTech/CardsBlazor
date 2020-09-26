@@ -16,10 +16,8 @@
 }
 else
 {
-<SfGrid TValue="GameViewModel" AllowPaging="true" ShowColumnChooser="true">
+<SfGrid TValue="GameViewModel" AllowPaging="true" ShowColumnChooser="true" DataSource="_gameList">
     <GridEditSettings AllowAdding="false" AllowEditing="false" AllowDeleting="false" Mode="EditMode.Normal"></GridEditSettings>
-    <DataManager Url="api/Game" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
-
     <GridColumns>
 
         <GridColumn Field=@nameof(GameViewModel.Name) HeaderText="Name"></GridColumn>
