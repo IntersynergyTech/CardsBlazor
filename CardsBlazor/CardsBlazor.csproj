@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200919173222_PaymentMethods.cs" />
+    <Compile Remove="Migrations\20200919173222_PaymentMethods.Designer.cs" />
     <Compile Remove="Migrations\Identity\20200815151335_AddIdentityRoles.cs" />
     <Compile Remove="Migrations\Identity\20200815151335_AddIdentityRoles.Designer.cs" />
     <Compile Remove="Migrations\Identity\20200815184913_AddPlayerJoinTable.cs" />

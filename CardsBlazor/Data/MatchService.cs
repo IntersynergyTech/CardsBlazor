@@ -38,7 +38,7 @@ namespace CardsBlazor.Data
         {
             return _context.Matches.Include(x => x.Game)
                 .Include(x => x.Participants)
-                .ThenInclude(x => x.Player).ToList();
+                .ThenInclude(x => x.Player).Where(x => !x.IsSettleMatch).ToList();
         }
 
         public void AddPlayers(int matchId, List<int> playerIds)

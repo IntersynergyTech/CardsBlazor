@@ -12,7 +12,7 @@
     <SfNumericTextBox @bind-Value="viewModel.Sucesses" Format="######" TValue="int" Placeholder="Outs" Min="1" Max="208" Decimals="0" ValidateDecimalOnType="true" FloatLabelType="FloatLabelType.Auto"></SfNumericTextBox>
     <SfNumericTextBox @bind-Value="viewModel.Draws" Format="######"TValue="int" Placeholder="Your cards left" Min="1" Max="208" Decimals="0" ValidateDecimalOnType="true" FloatLabelType="FloatLabelType.Auto"></SfNumericTextBox>
     <SfNumericTextBox @bind-Value="viewModel.Needed" Format="######" TValue="int" Placeholder="Number of outs required" Min="1" Max="208" Decimals="0" ValidateDecimalOnType="true" FloatLabelType="FloatLabelType.Auto"></SfNumericTextBox>
-    <button type="submit">Calculate</button>
+    <button class="btn btn-dark" type="submit">Calculate</button>
 </EditForm>
 @if (!string.IsNullOrWhiteSpace(OverallOdds))
 {

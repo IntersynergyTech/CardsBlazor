@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CardsBlazor.Data.Entity
@@ -14,6 +15,7 @@ namespace CardsBlazor.Data.Entity
         public string EmailAddress { get; set; }
         public string RealName { get; set; }
         public string Password { get; set; }
+        [Obsolete("LastPaid is no longer used due to an issue with multiple payments")]
         public DateTime? LastPaid { get; set; }
         public bool HasAdminPermission { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
@@ -22,6 +24,12 @@ namespace CardsBlazor.Data.Entity
         public DateTime? ArchiveTime { get; set; }
         public bool HideFromView { get; set; }
 
+        [JsonIgnore]
+        public virtual List<PaymentAudit> PositivePayments { get; set; }
+
+        [JsonIgnore]
+        public virtual List<PaymentAudit> NegativePayments { get; set; }
+
         [NotMapped]
         public decimal CurrentPosition
         {
@@ -29,7 +37,7 @@ namespace CardsBlazor.Data.Entity
             {
                 if (MatchesParticipatedIn == null || MatchesParticipatedIn.Count == 0) return 0m;
                 var matchesSinceLastPaid =
-                    MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid.GetValueOrDefault(DateTime.MinValue));
+                    MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived);
                 var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
                 return netResult.GetValueOrDefault(0);
             }
@@ -39,7 +47,7 @@ namespace CardsBlazor.Data.Entity
         {
             if (MatchesParticipatedIn == null || MatchesParticipatedIn.Count == 0) return 0m;
             var matchesSinceLastPaid =
-                MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived && x.Match.EndTime >= LastPaid.GetValueOrDefault(DateTime.MinValue) && x.Match.EndTime <= date);
+                MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived && x.Match.EndTime <= date);
             var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
             return netResult.GetValueOrDefault(0);
         }

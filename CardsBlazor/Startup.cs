@@ -59,6 +59,7 @@ namespace CardsBlazor
             services.AddScoped<MatchService>();
             services.AddScoped<TokenProvider>();
             services.AddScoped<BoardService>();
+            services.AddScoped<IdentityService>();
             services.AddHttpContextAccessor();
             services.AddScoped<HttpContextAccessor>();
 

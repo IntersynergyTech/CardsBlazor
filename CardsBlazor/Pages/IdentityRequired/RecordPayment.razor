@@ -1,0 +1,145 @@
+﻿@page "/Payment/Record"
+@using CardsBlazor.Data
+@using CardsBlazor.ApiControllers
+@using System.ComponentModel.DataAnnotations
+@using Serilog
+@using Microsoft.AspNetCore.Identity;
+@using CardsBlazor.Areas.Identity.Data;
+@using CardsBlazor.Data.Entity
+@inject IdentityService IdentityService
+@inject NavigationManager NavigationManager
+@inject PlayerService PlayerService
+@inject AuthenticationStateProvider AuthProvider
+@inject UserManager<AppUser> UserManager
+@inject IJSRuntime Runtime 
+<h3>Record a payment from player</h3>
+<AuthorizeView>
+    <Authorized Context="auth">
+        <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <p>Enter the Settlement Value</p>
+            <table class="table dark-mode-text">
+                <tbody>
+                    <tr>
+                        <th>Settlement Amount</th>
+                        <td>
+                            <SfNumericTextBox @bind-Value="viewModel.SettlementAmount" TValue="decimal" Format="c2" Placeholder="Stakes" Max="10000000" Step="10" Min="0"></SfNumericTextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Paid Player</th>
+                        <td>
+                            <SfDropDownList TValue="int" DataSource="@userPlayers" TItem="PlayerViewModel" @bind-value="viewModel.PositivePlayerId" Placeholder="">
+                                <DropDownListFieldSettings Text="RealName" Value="PlayerId"></DropDownListFieldSettings>
+                            </SfDropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Paying Player</th>
+                        <td>
+                            <SfDropDownList TValue="int" DataSource="@players" TItem="PlayerViewModel" @bind-value="viewModel.NegativePlayerId">
+                                <DropDownListFieldSettings Text="RealName" Value="PlayerId"></DropDownListFieldSettings>
+                            </SfDropDownList>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-dark" type="submit">Submit</button>
+        </EditForm>
+    </Authorized>
+    <NotAuthorized>
+        <br />
+        <h4>You must be signed in to start a match</h4>
+    </NotAuthorized>
+</AuthorizeView>
+<SfDialog @bind-Visible="@IsExceptionDialogVisible" Width="250px" IsModal="true">
+    <DialogEvents OnOverlayClick="ExceptionDialogClicked">
+    </DialogEvents>
+    <DialogTemplates>
+        <Content> An exception has occurred. The link has not been created. </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton OnClick="ExceptionDialogClicked">
+            <DialogButtonModel Content="Ok" IsPrimary="true"></DialogButtonModel>
+        </DialogButton>
+    </DialogButtons>
+</SfDialog>
+@code {
+    private List<PlayerViewModel> players { get; set; } = new List<PlayerViewModel>();
+    private List<PlayerViewModel> userPlayers { get; set; } = new List<PlayerViewModel>();
+    private bool IsExceptionDialogVisible { get; set; } = false;
+    private bool IsSuccessDialogVisible { get; set; } = false;
+    private SettlementViewModel viewModel = new SettlementViewModel
+    {
+        SettlementAmount = 1m
+    };
+    private EditContext editContext;
+    public class SettlementViewModel
+    {
+        /// <summary>
+        /// Winning Player
+        /// </summary>
+        [Required]
+        public int PositivePlayerId { get; set; }
+
+        /// <summary>
+        /// Losing Player
+        /// </summary>
+        [Required(ErrorMessage = "You need to supply a ")]
+        public int NegativePlayerId { get; set; }
+
+
+        [Required(ErrorMessage = "You need to supply an amount")]
+        public decimal SettlementAmount { get; set; }
+    }
+    private void ExceptionDialogClicked()
+    {
+        IsExceptionDialogVisible = false;
+    }
+    private async void HandleValidSubmit()
+    {
+        var isValid = editContext.Validate();
+        if (!isValid) return;
+        if (viewModel.NegativePlayerId == viewModel.PositivePlayerId)
+        {
+            return;
+        }
+        PaymentAudit audit;
+        try
+        {
+            audit = IdentityService.RecordPayment(viewModel.PositivePlayerId, viewModel.NegativePlayerId, viewModel.SettlementAmount);
+        }
+        catch (ArgumentException e)
+        {
+            Console.WriteLine(e);
+            Log.Logger.Warning(e, "Error finding these players");
+            return;
+        }
+        catch (Exception ex)
+        {
+            Log.Logger.Error(ex, "An error occurred.");
+            IsExceptionDialogVisible = true;
+            return;
+        }
+        await Runtime.InvokeAsync<bool>("confirm", $"{audit.PositivePlayer.RealName} recieved {viewModel.SettlementAmount} from {audit.NegativePlayer.RealName}");
+        NavigationManager.NavigateTo("Players");
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        var loggedIn = await AuthProvider.GetAuthenticationStateAsync();
+        var user = await UserManager.GetUserAsync(loggedIn.User);
+        var userId = IdentityService.GetUsers().FirstOrDefault(x => x.UserName == user.UserName);
+
+        editContext = new EditContext(viewModel);
+        players = await PlayerService.GetPlayersViewModel();
+        if (userId != null)
+        {
+            userPlayers = (await PlayerService.GetPlayersViewModel()).Where(x => userId.Players.Contains(x.PlayerId)).ToList();
+            players = players.Where(x => !userPlayers.Select(y => y.PlayerId).Contains(x.PlayerId)).ToList();
+        }
+
+        Console.WriteLine($"Successfully loaded {players.Count} players");
+    }
+}

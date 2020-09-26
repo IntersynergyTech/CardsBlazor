@@ -3,20 +3,19 @@
 
 @inject IHttpContextAccessor httpContextAccessor
 
-<h1>Cards App v0.6</h1>
+<h1>Cards App v0.8</h1>
 
 <div>
     <h4>Release Notes</h4>
-    <ul>
-        <li>Added Board view</li>
-        <li>Added Graph Page</li>
+    <ul class="dark-mode-text">
+        <li>Added Dark Mode</li>
+        <li>Added Ability to make payments</li>
     </ul>
 </div>
 @code
 {
     protected override Task OnInitializedAsync()
     {
-        var user = httpContextAccessor.HttpContext.User;
         return base.OnInitializedAsync();
     }
 }

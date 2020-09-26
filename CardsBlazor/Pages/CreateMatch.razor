@@ -24,7 +24,7 @@
             <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
                 <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
             </SfMultiSelect>
-            <button type="submit">Submit</button>
+            <button class="btn btn-dark" type="submit">Submit</button>
         </EditForm>
     </Authorized>
     <NotAuthorized>
@@ -58,7 +58,7 @@
     {
         var isValid = editContext.Validate();
         Console.WriteLine(viewModel.StartingPlayers.Length.ToString());
-
+        if (!isValid) return;
         var matchId = MatchService.AddNewMatch(viewModel);
         if (matchId == -1)
         {

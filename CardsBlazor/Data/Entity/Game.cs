@@ -25,5 +25,7 @@ namespace CardsBlazor.Data.Entity
         [NotMapped] 
         public NumberOfWinners NumberOfWinners => (NumberOfWinners) NumberOfWinnersInt;
         public int NumberOfWinnersInt { get; set; }
+
+        public bool IsVisible { get; set; }
     }
 }

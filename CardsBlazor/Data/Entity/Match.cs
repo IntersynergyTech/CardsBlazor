@@ -28,5 +28,9 @@ namespace CardsBlazor.Data.Entity
         public string MatchNotes { get; set; }
 
         public virtual List<MatchAudit> Audits { get; set; }
+
+        public virtual PaymentAudit SettleAudit { get; set; }
+        public int? SettleAuditId { get; set; }
+        public bool IsSettleMatch { get; set; }
     }
 }

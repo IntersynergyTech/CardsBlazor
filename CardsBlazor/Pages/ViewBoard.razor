@@ -11,7 +11,7 @@
 @if (PlayerList != null)
 {
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead-dark dark-mode-text">
             <tr>
                 <th>Time</th>
                 @foreach (var player in PlayerList.OrderBy(x => x.PlayerId))
@@ -22,7 +22,7 @@
         </thead>
         @foreach (var board in BoardList)
         {
-            <tr>
+            <tr class="dark-mode-text">
                 <td>
                     @board.TimeOfBoard.ToString("yyyy-MM-dd HH:mm:ss")
                 </td>

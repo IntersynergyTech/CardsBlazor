@@ -8,6 +8,16 @@ a, .btn-link {
     color: #0366d6;
 }
 
+h1, h2, h3, h4, p {
+    color: white
+}
+.table-dark {
+
+}
+
+.dark-mode-text {
+    color: white
+}
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -28,10 +38,11 @@ app {
 
 .main {
     flex: 1;
+    background-color: #121212;
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
+        background-color: #121212;
         border-bottom: 1px solid #d6d5d5;
         justify-content: flex-end;
     }
@@ -41,10 +52,10 @@ app {
             margin-left: 1.5rem;
         }
 
-.main .top-row a:first-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .main .top-row a:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
 .sidebar {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);

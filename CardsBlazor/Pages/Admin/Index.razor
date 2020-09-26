@@ -1,7 +1,89 @@
 ﻿@page "/Admin/"
+@using CardsBlazor.Data
+@using CardsBlazor.ApiControllers
+@using CardsBlazor.Data.ViewModels
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using Serilog
+@using Serilog.Core
 @attribute [Authorize(Roles = "admin")]
+@inject IdentityService IdentityService
+@inject PlayerService PlayerService
+
 <h3>Admin Area</h3>
-
+<div class="container">
+    <h4>Assign Players to Users</h4>
+    <div class="row">
+        <EditForm Model="@viewModel" OnSubmit="CreateLink">
+            <SfDropDownList TValue="int" TItem="PlayerViewModel" Placeholder="Select a player" DataSource="@players" @bind-Value="viewModel.PlayerId">
+                <DropDownListFieldSettings Value="PlayerId" Text="RealName"></DropDownListFieldSettings>
+            </SfDropDownList>
+            <SfDropDownList TValue="string" TItem="UserViewModel" Placeholder="Select a user" DataSource="@users" @bind-Value="viewModel.UserId">
+                <DropDownListFieldSettings Value="UserId" Text="UserName"></DropDownListFieldSettings>
+            </SfDropDownList>
+            <button class="btn btn-dark" type="submit">Submit</button>
+        </EditForm>
+    </div>
+</div>
+<SfDialog @bind-Visible="@IsExceptionDialogVisible" Width="250px" IsModal="true">
+    <DialogEvents OnOverlayClick="ExceptionDialogClicked">
+    </DialogEvents>
+    <DialogTemplates>
+        <Content> An exception has occurred. The link has not been created. </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton OnClick="ExceptionDialogClicked">
+            <DialogButtonModel Content="Ok" IsPrimary="true"></DialogButtonModel>
+        </DialogButton>
+    </DialogButtons>
+</SfDialog>
+<SfDialog @bind-Visible="@IsSuccessDialogVisible" Width="250px" IsModal="true">
+    <DialogEvents OnOverlayClick="ExceptionDialogClicked">
+    </DialogEvents>
+    <DialogTemplates>
+        <Content> Successfully created Link </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton OnClick="ExceptionDialogClicked">
+            <DialogButtonModel Content="Ok" IsPrimary="true"></DialogButtonModel>
+        </DialogButton>
+    </DialogButtons>
+</SfDialog>
 @code {
+    private JoinViewModel viewModel { get; set; } = new JoinViewModel();
+    private List<PlayerViewModel> players { get; set; } = new List<PlayerViewModel>();
+    private List<UserViewModel> users { get; set; } = new List<UserViewModel>();
+    private bool IsExceptionDialogVisible { get; set; } = false;
+    private bool IsSuccessDialogVisible { get; set; } = false;
+    protected override async Task OnInitializedAsync()
+    {
+        players = await PlayerService.GetPlayersViewModel();
+        Console.WriteLine($"Successfully loaded {players.Count} players");
+        users = IdentityService.GetUsers();
+    }
 
+    private void CreateLink()
+    {
+        try
+        {
+            IdentityService.AddPlayerToUser(viewModel.PlayerId, viewModel.UserId);
+            IsSuccessDialogVisible = true;
+            viewModel = new JoinViewModel();
+        }
+        catch (Exception e)
+        {
+            IsExceptionDialogVisible = true;
+            Log.Logger.Error(e, "Failed to create link");
+        }
+    }
+
+    public class JoinViewModel
+    {
+        public string UserId { get; set; }
+        public int PlayerId { get; set; }
+    }
+    private void ExceptionDialogClicked()
+    {
+        IsExceptionDialogVisible = false;
+        IsSuccessDialogVisible = false;
+    }
 }

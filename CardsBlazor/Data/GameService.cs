@@ -24,19 +24,19 @@ namespace CardsBlazor.Data
 
         public async Task<List<Game>> GetPlayers()
         {
-            return await _context.Games.OrderBy(x => x.GameId).ToListAsync().ConfigureAwait(true);
+            return await _context.Games.Where(x => x.IsVisible).OrderBy(x => x.GameId).ToListAsync().ConfigureAwait(true);
         }
 
 
         public IQueryable<Game> GetAllAsQueryable()
         {
-            return _context.Games.AsQueryable();
+            return _context.Games.Where(x => x.IsVisible).AsQueryable();
         }
 
         public async Task<List<GameViewModel>> GetAllAsViewModels()
         {
             var returnable = new List<GameViewModel>();
-            foreach (var test in _context.Games.Include(x => x.Matches).ThenInclude(x => x.Participants))
+            foreach (var test in _context.Games.Where(x => x.IsVisible).Include(x => x.Matches).ThenInclude(x => x.Participants))
             {
                 try
                 {
@@ -56,7 +56,7 @@ namespace CardsBlazor.Data
         public List<GameChooseModel> GetAllAsChooseModels()
         {
             var games = _context.Games
-                .Where(x => !x.Archived)
+                .Where(x => !x.Archived && x.IsVisible)
                 .Select(x => new GameChooseModel {GameId = x.GameId, Name = x.Name})
                 .ToList();
             return games;

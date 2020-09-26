@@ -57,7 +57,7 @@ else if (matchView.Archived && matchView.EndTime != null)
 </div>
 Player List:
 <table class="table">
-    <thead>
+    <thead class="thead-dark dark-mode-text">
         <tr>
             <th>Name</th>
             @if (matchView.IsResolved)
@@ -67,7 +67,7 @@ Player List:
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="dark-mode-text">
         @foreach (var party in matchView.Participants)
         {
             var partyId = party.ParticipantId;

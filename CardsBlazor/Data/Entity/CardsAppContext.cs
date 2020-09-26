@@ -13,6 +13,8 @@ namespace CardsBlazor.Data.Entity
         public DbSet<Game> Games { get; set; }
         public DbSet<Participant> Participants { get; set; }
 
+        public DbSet<PaymentAudit> PaymentAudits { get; set; }
+
         public DbSet<MatchAudit> MatchAudits { get; set; }
         public CardsAppContext(DbContextOptions<CardsAppContext> options)
             : base(options)
@@ -37,6 +39,7 @@ namespace CardsBlazor.Data.Entity
 
             modelBuilder.Entity<Match>().HasKey(x => x.MatchId);
             modelBuilder.Entity<Match>().HasOne(x => x.Game).WithMany(x => x.Matches);
+            modelBuilder.Entity<Match>().Property(x => x.IsSettleMatch).HasDefaultValue(false);
 
             modelBuilder.Entity<Participant>().HasKey(x => x.ParticipantId);
             modelBuilder.Entity<Participant>().HasOne(x => x.Match).WithMany(x => x.Participants);
@@ -46,6 +49,7 @@ namespace CardsBlazor.Data.Entity
             modelBuilder.Entity<Game>().Property(x => x.Name).IsRequired();
             modelBuilder.Entity<Game>().Property(x => x.HasFixedFee).IsRequired();
             modelBuilder.Entity<Game>().Property(x => x.MinimumPlayerCount).IsRequired();
+            modelBuilder.Entity<Game>().Property(x => x.IsVisible).HasDefaultValue(true);
             modelBuilder.Entity<Game>().HasData(new Game
             {
                 GameId = 1,
@@ -55,11 +59,28 @@ namespace CardsBlazor.Data.Entity
                 MinimumPlayerCount = 2,
                 NumberOfWinnersInt = 1,
                 ArchiveTime = null
+            }, new Game
+            {
+                GameId = 999,
+                Archived = false,
+                HasFixedFee = false,
+                NumberOfWinnersInt = 1,
+                ArchiveTime = null,
+                MinimumPlayerCount = 2,
+                Name = "Settlement"
             });
 
             modelBuilder.Entity<MatchAudit>().HasKey(x => x.AuditId);
             modelBuilder.Entity<MatchAudit>().Property(x => x.AuditDate).IsRequired();
             modelBuilder.Entity<MatchAudit>().HasOne(x => x.Match).WithMany(x => x.Audits);
+
+            modelBuilder.Entity<PaymentAudit>().HasKey(x => x.Id);
+            modelBuilder.Entity<PaymentAudit>().HasIndex(x => x.Id);
+            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.PositivePlayer).WithMany(x => x.PositivePayments).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.NegativePlayer).WithMany(x => x.NegativePayments).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<PaymentAudit>().Property(x => x.PaymentDate).IsRequired();
+            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.SettleMatch).WithOne(x => x.SettleAudit).HasForeignKey<Match>(x => x.SettleAuditId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
