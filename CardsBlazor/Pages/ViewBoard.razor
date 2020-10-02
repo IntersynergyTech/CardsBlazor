@@ -10,6 +10,7 @@
 <h3>Legacy Board Viewer</h3>
 @if (PlayerList != null)
 {
+    <p>Showing </p>
     <table class="table">
         <thead class="thead-dark dark-mode-text">
             <tr>
@@ -35,28 +36,46 @@
             </tr>
         }
     </table>
-    <SfButton OnClick="Refresh">Refresh</SfButton>
+    <SfButton OnClick="PreviousPage" IconCss="oi oi-arrow-left" Disabled="CantMoveBack"></SfButton>
+    <SfButton OnClick="NextPage" IconCss="oi oi-arrow-right" Disabled="CantMoveForward"></SfButton>
 }
 
 @code {
+    private int StartPosition;
+    private int PageSize;
+    private int CurrentPosition;
     private List<PlayerViewModel> PlayerList;
     private List<BoardViewModel> BoardList = new List<BoardViewModel>();
+    private bool CantMoveBack = true;
+    private bool CantMoveForward = false;
 
     protected override async Task OnInitializedAsync()
     {
+        StartPosition = 0;
+        PageSize = 50;
         PlayerList = await PlayerService.GetPlayersViewModel();
-        var boardData = BoardService.GetNPositions(50, 0);
-        BoardList = boardData;
-        StateHasChanged();
+        Refresh();
 
     }
 
 
     private void Refresh()
     {
-        var boardData = BoardService.GetNPositions(50, 0);
+        var boardData = BoardService.GetNPositions(PageSize, StartPosition);
         BoardList = boardData;
+        CantMoveBack = StartPosition == 0;
+        CantMoveForward = BoardList.Count < PageSize;
         StateHasChanged();
+    }
+    private void NextPage()
+    {
+        StartPosition += 50;
+        Refresh();
+    }
+    private void PreviousPage()
+    {
+        StartPosition -= 50;
+        Refresh();
     }
 
 }
