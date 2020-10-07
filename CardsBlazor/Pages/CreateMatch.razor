@@ -17,7 +17,7 @@
         <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
             <DataAnnotationsValidator />
             <ValidationSummary />
-            <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes" Max="10000000" Step="50"></SfNumericTextBox>
+            <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes" Max="100" Step="5"></SfNumericTextBox>
             <SfDropDownList TValue="int?" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
                 <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
             </SfDropDownList>
@@ -57,7 +57,6 @@
     private void HandleValidSubmit()
     {
         var isValid = editContext.Validate();
-        Console.WriteLine(viewModel.StartingPlayers.Length.ToString());
         if (!isValid) return;
         var matchId = MatchService.AddNewMatch(viewModel);
         if (matchId == -1)

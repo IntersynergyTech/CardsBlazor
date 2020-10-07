@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Blazor.Analytics;
 using CardsBlazor.ApiControllers;
 using CardsBlazor.Data.Entity;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +14,11 @@ namespace CardsBlazor.Data
     public class PlayerService
     {
         private readonly CardsAppContext _context;
-        public PlayerService(CardsAppContext context)
+        private readonly IAnalytics _analytic;
+        public PlayerService(CardsAppContext context, IAnalytics analytic)
         {
             _context = context;
+            _analytic = analytic;
         }
 
         public Player GetPlayer(int playerId)
@@ -50,10 +54,12 @@ namespace CardsBlazor.Data
                 Archived = false,
                 HasAdminPermission = player.HasAdminPermission,
                 RealName = player.RealName,
-                LastPaid = player.LastPaid
+                LastPaid = DateTime.Now
             };
+            
             _context.Players.Add(model);
             _context.SaveChanges();
+            _analytic.TrackEvent("Added Player", model.PlayerId.ToString(CultureInfo.InvariantCulture));
         }
 
         public List<PositionGraphClass> GetPositionGraphClasses(int playerId, int differenceBetweenPoints)

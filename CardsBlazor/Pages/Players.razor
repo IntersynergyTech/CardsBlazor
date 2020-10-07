@@ -5,7 +5,9 @@
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Grids
 @using CardsBlazor.ApiControllers
+@using CardsBlazor.Data.ViewModels
 @inject PlayerService PlayerService
+@inject NavigationManager NavigationManager
 
 <h1>Players</h1>
 
@@ -19,17 +21,16 @@
 }
 else
 {
-<SfGrid TValue="PlayerViewModel" AllowPaging="true" Toolbar="@(new List<string>() {"Add", "Edit", "Delete", "Cancel", "Update"})">
-    <GridEditSettings AllowAdding="true" AllowEditing="false" AllowDeleting="false" Mode="EditMode.Normal"></GridEditSettings>
-    <DataManager Url="https://cards.floul.dev/api/Player" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
-
-    <GridColumns>
-        <GridColumn Field=@nameof(PlayerViewModel.UserName) HeaderText="User Name"></GridColumn>
-        <GridColumn Field=@nameof(PlayerViewModel.RealName) HeaderText="Real Name"></GridColumn>
-        <GridColumn Field=@nameof(PlayerViewModel.CurrentPosition) HeaderText="Current Pos" Type="ColumnType.Number" Format="C2"></GridColumn>
-        <GridColumn Field=@nameof(PlayerViewModel.LastPaid) HeaderText="Last Paid" Type="ColumnType.DateTime" EditType="EditType.DateTimePickerEdit"></GridColumn>
-    </GridColumns>
-</SfGrid>
+    <SfGrid TValue="PlayerViewModel" AllowPaging="true" Toolbar="@(new List<string>() {"Add", "Edit", "Delete", "Cancel", "Update"})">
+        <GridEditSettings AllowAdding="true" AllowEditing="false" AllowDeleting="false" Mode="EditMode.Normal"></GridEditSettings>
+        <DataManager Url="https://cards.floul.dev/api/Player" Adaptor="Adaptors.WebApiAdaptor"></DataManager>
+        <GridEvents TValue="PlayerViewModel"/>
+        <GridColumns>
+            <GridColumn Field=@nameof(PlayerViewModel.UserName) HeaderText="User Name"></GridColumn>
+            <GridColumn Field=@nameof(PlayerViewModel.RealName) HeaderText="Real Name"></GridColumn>
+            <GridColumn Field=@nameof(PlayerViewModel.CurrentPosition) HeaderText="Current Pos" Type="ColumnType.Number" Format="C2"></GridColumn>
+        </GridColumns>
+    </SfGrid>
 }
 
 @code {

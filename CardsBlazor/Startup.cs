@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Blazor.Analytics;
+using Blazor.Analytics.GoogleAnalytics;
 using CardsBlazor.Areas.Identity;
 using CardsBlazor.Areas.Identity.Data;
 using Microsoft.AspNetCore.Builder;
@@ -62,6 +64,7 @@ namespace CardsBlazor
             services.AddScoped<IdentityService>();
             services.AddHttpContextAccessor();
             services.AddScoped<HttpContextAccessor>();
+            services.AddScoped<IAnalytics, GoogleAnalyticsStrategy>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -93,7 +96,7 @@ namespace CardsBlazor
                     options.ClientId = googleAuthNSection["ClientId"];
                     options.ClientSecret = googleAuthNSection["ClientSecret"];
                 });
-
+            services.AddGoogleAnalytics("UA-167808686-1");
             services.AddSyncfusionBlazor();
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }

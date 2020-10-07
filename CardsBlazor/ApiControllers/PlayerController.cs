@@ -25,7 +25,7 @@ namespace CardsBlazor.ApiControllers
 
         public object Get()
         {
-            var data = _playerService.GetAllAsQueryable();
+            var data = _playerService.GetAllAsQueryable().Where(x => !x.HideFromView);
             var count = data.Count();
             var queryString = Request.Query;
             if (queryString.Keys.Contains("$inlinecount"))
