@@ -1,15 +1,19 @@
 {
   "dependencies": {
+    "secrets1": {
+      "type": "secrets"
+    },
     "appInsights1": {
       "type": "appInsights",
       "connectionId": "APPINSIGHTS_INSTRUMENTATIONKEY"
     },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "CardsAppContext"
+    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "IdentityContextConnection"
-    },
-    "secrets1": {
-      "type": "secrets"
     }
   }
 }

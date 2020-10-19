@@ -36,6 +36,8 @@ namespace CardsBlazor.Data.Entity
                 RealName = "Admin",
                 UserName = "Admin"
             });
+            modelBuilder.Entity<Player>().Property(x => x.IsFeeUser).HasDefaultValue(false);
+            modelBuilder.Entity<Player>().Property(x => x.IsSystemInactiveUser).HasDefaultValue(false);
 
             modelBuilder.Entity<Match>().HasKey(x => x.MatchId);
             modelBuilder.Entity<Match>().HasOne(x => x.Game).WithMany(x => x.Matches);

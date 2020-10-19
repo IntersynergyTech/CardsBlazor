@@ -5,6 +5,7 @@
 @using System.Timers
 @using CardsBlazor.Data.ViewModels
 @using Serilog
+@using System.Globalization
 @inject PlayerService PlayerService
 @inject BoardService BoardService
 <h3>Legacy Board Viewer</h3>
@@ -27,10 +28,10 @@
                 <td>
                     @board.TimeOfBoard.ToString("yyyy-MM-dd HH:mm:ss")
                 </td>
-                @foreach (var pos in board.Positions.OrderBy(x => x.Key.PlayerId))
+                @foreach (var pos in board.Positions.Where(x => !x.Key.HideFromView).OrderBy(x => x.Key.PlayerId))
                 {
                     <td>
-                        @pos.Value.ToString("C2")
+                        @pos.Value.ToString("C2", CultureInfo.GetCultureInfo("en-GB"))
                     </td>
                 }
             </tr>

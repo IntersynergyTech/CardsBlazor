@@ -6,6 +6,7 @@
 @using Microsoft.AspNetCore.Http
 @using Newtonsoft.Json
 @using Serilog
+@using System.Globalization
 @inject MatchService MatchService
 @inject IJSRuntime JsRuntime
 @if (matchView.EntranceFee == 0)
@@ -14,7 +15,7 @@
 }
 else
 {
-    <h3>@matchView.Game.Name for @matchView.EntranceFee.ToString("C2")</h3>
+    <h3>@matchView.Game.Name for @matchView.EntranceFee.ToString("C2", CultureInfo.GetCultureInfo("en-GB"))</h3>
 }
 
 <h4>Started at @matchView.StartTime.ToString("yyyy-MM-dd HH:mm:ss")</h4>
@@ -97,7 +98,7 @@ Player List:
                     {
                         <td style="text-decoration-line:line-through">@party.RealName</td>
                     }
-                    <td>@party.NetResult.Value.ToString("C2")</td>
+                    <td>@party.NetResult.Value.ToString("C2", CultureInfo.GetCultureInfo("en-GB"))</td>
                     <td>
                         <SfButton Disabled="IsDisabled" CssClass="e-info" IconCss="oi oi-pencil"></SfButton>
                         <SfButton Disabled="IsDisabled" CssClass="e-success" IconCss="oi oi-check"></SfButton>
@@ -239,7 +240,7 @@ Player List:
         this.StateHasChanged();
         foreach (var kvp in MatchResults)
         {
-            Serilog.Log.Information($"Party {kvp.Key} has result {kvp.Value:c2}");
+            Serilog.Log.Information($"Party {kvp.Key} has result {kvp.Value.ToString("C2", CultureInfo.GetCultureInfo("en-GB"))}");
         }
         MatchService.ResolveMultiWinnerMatch(matchView.MatchId, MatchResults);
         var result = MatchService.GetMatch(Id);

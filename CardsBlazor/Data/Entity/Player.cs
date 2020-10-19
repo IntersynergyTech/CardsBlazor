@@ -23,7 +23,12 @@ namespace CardsBlazor.Data.Entity
         public bool Archived { get; set; }
         public DateTime? ArchiveTime { get; set; }
         public bool HideFromView { get; set; }
+        /// <summary>
+        /// True if the user is the board user. Used for fees
+        /// </summary>
+        public bool IsFeeUser { get; set; }
 
+        public bool IsSystemInactiveUser { get; set; }
         [JsonIgnore]
         public virtual List<PaymentAudit> PositivePayments { get; set; }
 
