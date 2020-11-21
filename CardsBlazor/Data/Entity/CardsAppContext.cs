@@ -16,6 +16,9 @@ namespace CardsBlazor.Data.Entity
         public DbSet<PaymentAudit> PaymentAudits { get; set; }
 
         public DbSet<MatchAudit> MatchAudits { get; set; }
+
+        public DbSet<CashGame> CashGames { get; set; }
+        public DbSet<CashGameParty> CashGameParties { get; set; }
         public CardsAppContext(DbContextOptions<CardsAppContext> options)
             : base(options)
         {
@@ -57,20 +60,21 @@ namespace CardsBlazor.Data.Entity
                 GameId = 1,
                 Archived = false,
                 Name = "Spin",
-                HasFixedFee = false,
+                HasFixedFee = true,
                 MinimumPlayerCount = 2,
                 NumberOfWinnersInt = 1,
                 ArchiveTime = null
-            }, new Game
-            {
-                GameId = 999,
-                Archived = false,
-                HasFixedFee = false,
-                NumberOfWinnersInt = 1,
-                ArchiveTime = null,
-                MinimumPlayerCount = 2,
-                Name = "Settlement"
-            });
+            }
+            ,new Game
+                {
+                    GameId = 999,
+                    Archived = false,
+                    HasFixedFee = true,
+                    NumberOfWinnersInt = 1,
+                    ArchiveTime = null,
+                    MinimumPlayerCount = 2,
+                    Name = "Settlement"
+                });
 
             modelBuilder.Entity<MatchAudit>().HasKey(x => x.AuditId);
             modelBuilder.Entity<MatchAudit>().Property(x => x.AuditDate).IsRequired();
@@ -83,6 +87,15 @@ namespace CardsBlazor.Data.Entity
             modelBuilder.Entity<PaymentAudit>().Property(x => x.PaymentDate).IsRequired();
             modelBuilder.Entity<PaymentAudit>().HasOne(x => x.SettleMatch).WithOne(x => x.SettleAudit).HasForeignKey<Match>(x => x.SettleAuditId)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<CashGame>().HasKey(x => x.CashGameId);
+            modelBuilder.Entity<CashGame>().HasIndex(x => x.CashGameId);
+            modelBuilder.Entity<CashGame>().Property(x => x.GameName).IsRequired();
+            modelBuilder.Entity<CashGame>().HasMany(x => x.PartiesToGame).WithOne(x => x.Game)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<CashGameParty>().HasKey(x => x.PartyId);
+            modelBuilder.Entity<CashGameParty>().HasOne(x => x.Player);
         }
     }
 }

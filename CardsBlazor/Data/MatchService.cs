@@ -266,6 +266,38 @@ namespace CardsBlazor.Data
                 _context.SaveChanges();
             }
         }
+
+        public void MarkAsDraw(int matchId)
+        {
+            var trans = _context.Database.BeginTransaction();
+            var match = _context.Matches.Include(x => x.Participants).Include(x => x.Game).FirstOrDefault(x => x.MatchId == matchId);
+            if (match == null) return;
+            match.IsResolved = true;
+            match.EndTime = DateTime.Now;
+            _context.SaveChanges();
+            foreach (var party in match.Participants)
+            {
+                party.IsResolved = true;
+                party.NetResult = 0m;
+                party.IsWinner = true;
+            }
+
+            _context.SaveChanges();
+            var userId = _httpContext.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var audit = new MatchAudit
+            {
+                AuditDate = DateTime.Now,
+                MatchId = match.MatchId,
+                UserId = userId,
+                Type = AuditType.DrawMatch
+            };
+            if (_context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).ToList().Sum(x => x.CurrentPosition) != 0)
+            {
+                Log.Error("Board does not level out");
+                throw new Exception("Board does not level");
+            }
+            trans.Commit();
+        }
         public void Dispose()
         {
             _context?.Dispose();

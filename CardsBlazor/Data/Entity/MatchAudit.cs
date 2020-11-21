@@ -22,5 +22,6 @@ namespace CardsBlazor.Data.Entity
         AddParty,
         RemoveParty,
         ArchiveMatch,
+        DrawMatch
     }
 }

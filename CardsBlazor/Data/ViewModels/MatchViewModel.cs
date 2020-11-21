@@ -52,6 +52,9 @@ namespace CardsBlazor.Data.ViewModels
         public string GameName => Game?.Name;
         public NumberOfWinners WinnerCount;
         public bool Archived { get; set; }
+
+        public bool IsDrawGame => WinnerCount == NumberOfWinners.SingleWinner &&
+                                  Participants.Sum(x => Math.Abs(x.NetResult.GetValueOrDefault(0))) == 0 && IsResolved && !Archived;
     }
 
     public class PartyViewModel

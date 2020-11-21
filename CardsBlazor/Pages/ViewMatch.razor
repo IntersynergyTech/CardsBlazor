@@ -32,6 +32,7 @@ else if (matchView.Archived && matchView.EndTime != null)
     <AuthorizeView Roles="admin">
         <Authorized>
             <SfButton Disabled="IsDisabled" CssClass="e-success" IconCss="oi oi-plus" OnClick="ShowAddDialog">Add</SfButton>
+            <SfButton Disabled="IsDisabled" CssClass="e-warning" IconCss="oi oi-transfer" OnClick="DrawGame">Draw</SfButton>
             <SfButton Disabled="IsDisabled" CssClass="e-danger" IconCss="oi oi-trash" OnClick="ArchiveGame">Archive</SfButton>
         </Authorized>
     </AuthorizeView>
@@ -290,6 +291,18 @@ Player List:
         if (confirmed)
         {
             MatchService.ArchiveMatch(matchView.MatchId);
+            RefreshScreen();
+            IsDisabled = true;
+            StateHasChanged();
+        }
+    }
+
+    private async void DrawGame()
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to mark this game as a draw?");
+        if (confirmed)
+        {
+            MatchService.MarkAsDraw(matchView.MatchId);
             RefreshScreen();
             IsDisabled = true;
             StateHasChanged();

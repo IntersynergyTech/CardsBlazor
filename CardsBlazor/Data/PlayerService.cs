@@ -42,7 +42,10 @@ namespace CardsBlazor.Data
 
         public IQueryable<Player> GetAllAsQueryable()
         {
-            return _context.Players.Where(x => !x.Archived).Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).AsQueryable();
+            return _context.Players.Where(x => !x.Archived)
+                .Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match)
+                .Include(x => x.CashGamesPlayed).ThenInclude(x => x.Game)
+                .AsQueryable();
         }
 
         public void AddPlayer(PlayerViewModel player)
@@ -56,7 +59,7 @@ namespace CardsBlazor.Data
                 RealName = player.RealName,
                 LastPaid = DateTime.Now
             };
-            
+
             _context.Players.Add(model);
             _context.SaveChanges();
             _analytic.TrackEvent("Added Player", model.PlayerId.ToString(CultureInfo.InvariantCulture));

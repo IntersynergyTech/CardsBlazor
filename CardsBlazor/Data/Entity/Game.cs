@@ -14,7 +14,7 @@ namespace CardsBlazor.Data.Entity
         public int MinimumPlayerCount { get; set; }
 
         /// <summary>
-        /// This field describes if the game has a fixed entrance fee (Tournament Poker, Kalooki, Spins) or if the fee will change based on the outcome (Cash Poker, OFC)
+        /// This field describes if the game has a known buy in (Tournament Poker, Kalooki, Spins) or if the fee will change based on the outcome (OFC)
         /// </summary>
         public bool HasFixedFee { get; set; }
 
@@ -27,5 +27,6 @@ namespace CardsBlazor.Data.Entity
         public int NumberOfWinnersInt { get; set; }
 
         public bool IsVisible { get; set; }
+        
     }
 }

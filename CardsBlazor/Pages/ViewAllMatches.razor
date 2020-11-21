@@ -22,6 +22,9 @@
     .singlePlayer {
         background-color: red;
     }
+    .draw-game{
+        background-color: orangew
+    }
 </style>
 @code {
     private List<MatchViewModel> Matches { get; set; } = new List<MatchViewModel>();
@@ -41,6 +44,10 @@
         if (args.Data.NumberOfPlayers < 2)
         {
             args.Row.AddClass(new string[] { "singlePlayer" });
+        }
+        else if (args.Data.IsDrawGame)
+        {
+            args.Row.AddClass(new string[] { "draw-game" });
         }
         else if (args.Data.IsResolved)
         {

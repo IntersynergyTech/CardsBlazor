@@ -1,0 +1,30 @@
+﻿@page "/CashGame/{Id:int}"
+@using CardsBlazor.Data.ViewModels
+@using CardsBlazor.Data
+@using CardsBlazor.Data.Entity
+@inject CashGameService CashService
+<h2>ViewCashGame</h2>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public CashGame cashGame { get; set; }
+    public bool GameFinished { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var result = CashService.GetCashGame(Id);
+        if (result == null)
+        {
+        }
+        else if (result.IsFinished)
+        {
+            GameFinished = true;
+        }
+        else
+        {
+
+        }
+    }
+}

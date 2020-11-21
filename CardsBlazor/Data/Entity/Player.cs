@@ -35,6 +35,9 @@ namespace CardsBlazor.Data.Entity
         [JsonIgnore]
         public virtual List<PaymentAudit> NegativePayments { get; set; }
 
+        [JsonIgnore]
+        public virtual List<CashGameParty> CashGamesPlayed { get; set; }
+
         [NotMapped]
         public decimal CurrentPosition
         {
@@ -55,6 +58,20 @@ namespace CardsBlazor.Data.Entity
                 MatchesParticipatedIn.Where(x => x.Match.IsResolved && !x.Archived && x.Match.EndTime <= date);
             var netResult = matchesSinceLastPaid.Sum(x => x.NetResult);
             return netResult.GetValueOrDefault(0);
+        }
+
+        [NotMapped]
+        public decimal PotentialPosition
+        {
+            get
+            {
+                var currentPosition = CurrentPosition;
+                var currentSimpleStakes = MatchesParticipatedIn.Where(x => !x.IsResolved && !x.Archived && !x.Match.IsResolved && !x.Match.Archived)
+                    .Sum(x => x.Match.EntranceFee);
+                var currentCashGameStakes = CashGamesPlayed.Where(x => !x.IsPlayerFinished && !x.Game.IsArchived)
+                    .Sum(x => x.AmountStaked);
+                return currentPosition - (currentSimpleStakes + currentCashGameStakes);
+            }
         }
     }
 }

@@ -64,6 +64,7 @@ namespace CardsBlazor
             services.AddScoped<TokenProvider>();
             services.AddScoped<BoardService>();
             services.AddScoped<IdentityService>();
+            services.AddScoped<CashGameService>();
             services.AddHttpContextAccessor();
             services.AddScoped<HttpContextAccessor>();
             services.AddScoped<IAnalytics, GoogleAnalyticsStrategy>();

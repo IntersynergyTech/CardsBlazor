@@ -1,0 +1,64 @@
+﻿@page "/CashGame/Start"
+@using CardsBlazor.Data.ViewModels
+@using CardsBlazor.ApiControllers
+@using CardsBlazor.Data
+@using CardsBlazor.Data.Entity
+@inject PlayerService PlayerService
+@inject NavigationManager NavigationManager
+@inject CashGameService CashGameService 
+<h2>Begin Cash Game</h2>
+<AuthorizeView>
+    <Authorized Context="auth">
+        <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            
+            <p>
+                <label>
+                    Stakes:
+                    <InputText @bind-Value="viewModel.Stakes" />
+                </label>
+            </p>
+            <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
+                <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
+            </SfMultiSelect>
+            <button class="btn btn-dark" type="submit">Submit</button>
+        </EditForm>
+    </Authorized>
+    <NotAuthorized>
+        <br />
+        <h4>You must be signed in to start a match</h4>
+    </NotAuthorized>
+</AuthorizeView>
+@code {
+    private CashGameCreateModel viewModel = new CashGameCreateModel();
+    private List<PlayerViewModel> players { get; set; } = new List<PlayerViewModel>();
+    private List<GameChooseModel> games { get; set; } = new List<GameChooseModel>();
+    private EditContext editContext;
+    private bool IsExceptionDialogVisible { get; set; } = false;
+    private void HandleValidSubmit()
+    {
+        var isValid = editContext.Validate();
+        if (!isValid) return;
+        if (viewModel == null)
+        {
+            return;
+        }
+        var matchId = CashGameService.StartCashGame(viewModel);
+        if (matchId == -1)
+        {
+            IsExceptionDialogVisible = true;
+        }
+        else
+        {
+            NavigationManager.NavigateTo($"CashGame/{matchId}", false);
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        editContext = new EditContext(viewModel);
+        players = await PlayerService.GetPlayersViewModel();
+        Console.WriteLine($"Successfully loaded {players.Count} players");
+    }
+}
