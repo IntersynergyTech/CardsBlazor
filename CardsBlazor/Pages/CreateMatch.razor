@@ -15,20 +15,28 @@
 <AuthorizeView>
     <Authorized Context="auth">
         <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-            <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes" Max="100" Step="5"></SfNumericTextBox>
-            <SfDropDownList TValue="int?" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
-                <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
-            </SfDropDownList>
-            <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
-                <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
-            </SfMultiSelect>
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+            <div class="form-group">
+                <SfNumericTextBox @bind-Value="viewModel.EntranceFee" TValue="decimal" Format="c2" Placeholder="Stakes" Max="100" Step="5"></SfNumericTextBox>
+            </div>
+            <div class="form-group">
+                <SfDropDownList TValue="int?" TItem="GameChooseModel" Placeholder="Select a game" DataSource="@games" @bind-Value="viewModel.GameId">
+                    <DropDownListFieldSettings Value="GameId" Text="Name"></DropDownListFieldSettings>
+                </SfDropDownList>
+            </div>
+            <div class="form-group">
+                <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
+                    <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
+                </SfMultiSelect>
+            </div>
+
+
             <button class="btn btn-dark" type="submit">Submit</button>
         </EditForm>
     </Authorized>
     <NotAuthorized>
-        <br />
+        <br/>
         <h4>You must be signed in to start a match</h4>
     </NotAuthorized>
 </AuthorizeView>
@@ -49,11 +57,12 @@
 
 @code {
 
-    private MatchCreateModel viewModel = new MatchCreateModel { EntranceFee = 1 };
+    private MatchCreateModel viewModel = new MatchCreateModel {EntranceFee = 1};
     private List<PlayerViewModel> players { get; set; } = new List<PlayerViewModel>();
     private List<GameChooseModel> games { get; set; } = new List<GameChooseModel>();
     private EditContext editContext;
     private bool IsExceptionDialogVisible { get; set; } = false;
+
     private void HandleValidSubmit()
     {
         var isValid = editContext.Validate();
@@ -76,12 +85,15 @@
         games = GameService.GetAllAsChooseModels();
         Console.WriteLine($"Successfully loaded {players.Count} players");
     }
+
     private async Task<bool> RemoteValidate(EditContext editContext)
     {
         return true;
     }
+
     private void ExceptionDialogClicked()
     {
         IsExceptionDialogVisible = false;
     }
+
 }

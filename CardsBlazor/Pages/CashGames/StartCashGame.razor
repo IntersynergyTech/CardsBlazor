@@ -5,37 +5,39 @@
 @using CardsBlazor.Data.Entity
 @inject PlayerService PlayerService
 @inject NavigationManager NavigationManager
-@inject CashGameService CashGameService 
+@inject CashGameService CashGameService
 <h2>Begin Cash Game</h2>
 <AuthorizeView>
     <Authorized Context="auth">
         <EditForm Model="@viewModel" OnSubmit="HandleValidSubmit">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-            
-            <p>
-                <label>
-                    Stakes:
-                    <InputText @bind-Value="viewModel.Stakes" />
-                </label>
-            </p>
-            <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
-                <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
-            </SfMultiSelect>
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+            <div class="form-group">
+                <label>Stakes:</label>
+                <InputText @bind-Value="viewModel.Stakes" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <SfMultiSelect TValue="int[]" Placeholder="Choose Players" DataSource="@players" @bind-Value="viewModel.StartingPlayers">
+                    <MultiSelectFieldSettings Text="UserName" Value="PlayerId"></MultiSelectFieldSettings>
+                </SfMultiSelect>
+            </div>
+
             <button class="btn btn-dark" type="submit">Submit</button>
         </EditForm>
     </Authorized>
     <NotAuthorized>
-        <br />
-        <h4>You must be signed in to start a match</h4>
+        <br/>
+        <h4>You must be signed in to start a cash game</h4>
     </NotAuthorized>
 </AuthorizeView>
+
 @code {
     private CashGameCreateModel viewModel = new CashGameCreateModel();
     private List<PlayerViewModel> players { get; set; } = new List<PlayerViewModel>();
     private List<GameChooseModel> games { get; set; } = new List<GameChooseModel>();
     private EditContext editContext;
     private bool IsExceptionDialogVisible { get; set; } = false;
+
     private void HandleValidSubmit()
     {
         var isValid = editContext.Validate();
@@ -61,4 +63,5 @@
         players = await PlayerService.GetPlayersViewModel();
         Console.WriteLine($"Successfully loaded {players.Count} players");
     }
+
 }
