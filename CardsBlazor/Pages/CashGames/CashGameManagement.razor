@@ -1,6 +1,42 @@
 ﻿@page "/CashGame/Manage"
+@using CardsBlazor.Data.ViewModels
+@using CardsBlazor.Data
+@using CardsBlazor.Data.Entity
+@inject NavigationManager NavigationManager
+@inject CashGameService CashGameService
 <h3>CashGameManagement</h3>
-
+<SfGrid DataSource="@Matches" AllowSelection="true" AllowPaging="true">
+    <GridEvents OnRecordDoubleClick="RecordDoubleClickHandler" TValue="CashGameViewModel" ></GridEvents>
+    <GridColumns>
+        <GridColumn Field=@nameof(CashGameViewModel.CashGameId) HeaderText="Game"></GridColumn>
+        <GridColumn Field=@nameof(CashGameViewModel.Stakes) HeaderText="Stake"></GridColumn>
+        <GridColumn Field=@nameof(CashGameViewModel.NumberOfPlayers) HeaderText="Number of Players"></GridColumn>
+        <GridColumn Field=@nameof(CashGameViewModel.StartTime) HeaderText="Start Time" Type="ColumnType.DateTime"></GridColumn>
+    </GridColumns>
+</SfGrid>
+<style>
+    .below-25 {
+        background-color: darkgreen;
+    }
+    .singlePlayer {
+        background-color: red;
+    }
+    .draw-game{
+        background-color: orange;
+    }
+</style>
 @code {
+    public List<CashGameViewModel> Matches = new List<CashGameViewModel>();
+    protected override async Task OnInitializedAsync()
+    {
 
+        var result = CashGameService.GetAllCashGames().Select(x => new CashGameViewModel(x)).ToList();
+        Matches = result;
+
+    }
+    public void RecordDoubleClickHandler(RecordDoubleClickEventArgs<CashGameViewModel> args)
+    {
+        var matchId = args.RowData.CashGameId;
+        NavigationManager.NavigateTo($"CashGame/{matchId}", false);
+    }
 }

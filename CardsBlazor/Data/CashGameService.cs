@@ -15,11 +15,11 @@ namespace CardsBlazor.Data
 {
     public class CashGameService : IDisposable
     {
-        private CardsAppContext _context;
-        private IHttpContextAccessor _httpContext;
-        private UserManager<AppUser> _userManager;
-        private MatchService _matchService;
-        private int _cashGameGameId;
+        private readonly CardsAppContext _context;
+        private readonly IHttpContextAccessor _httpContext;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly MatchService _matchService;
+        private readonly int _cashGameGameId;
 
         public CashGameService(CardsAppContext context, IHttpContextAccessor httpContext, UserManager<AppUser> userManager)
         {
