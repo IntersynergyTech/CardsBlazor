@@ -15,6 +15,8 @@ namespace CardsBlazor.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class PlayerController : ControllerBase
     {
         private readonly PlayerService _playerService;

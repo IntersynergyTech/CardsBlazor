@@ -28,7 +28,7 @@
                 <td>
                     @board.TimeOfBoard.ToString("yyyy-MM-dd HH:mm:ss")
                 </td>
-                @foreach (var pos in board.Positions.Where(x => !x.Key.HideFromView).OrderBy(x => x.Key.PlayerId))
+                @foreach (var pos in board.Positions.OrderBy(x => x.Key))
                 {
                     <td>
                         @pos.Value.ToString("C2", CultureInfo.GetCultureInfo("en-GB"))
@@ -55,6 +55,11 @@
         StartPosition = 0;
         PageSize = 50;
         PlayerList = await PlayerService.GetPlayersViewModel();
+        PlayerList.Add(new PlayerViewModel
+        {
+            PlayerId = 42069,
+            CurrentPosition = PlayerService.GetAllAsQueryable().Where(x => x.HideFromView).Sum(x => x.CurrentPosition)
+        });
         Refresh();
 
     }

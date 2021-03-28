@@ -9,6 +9,6 @@ namespace CardsBlazor.Data.ViewModels
     public class BoardViewModel
     {
         public DateTime TimeOfBoard { get; set; }
-        public Dictionary<Player, decimal> Positions { get; set; }
+        public Dictionary<int, decimal> Positions { get; set; }
     }
 }

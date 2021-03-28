@@ -28,9 +28,15 @@ namespace CardsBlazor.Data
         {
             var startTime = _context.Matches.Where(x => !x.Archived && x.IsResolved).OrderByDescending(x => x.EndTime)
                 .Skip(skip).Take(take).Select(x => x.EndTime.Value).ToList();
-            var players = _context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).ToList();
-
-            return (from time in startTime let dict = players.ToDictionary(player => player, player => player.GetPositionAtTime(time)) select new BoardViewModel { Positions = dict, TimeOfBoard = time }).ToList();
+            var players = _context.Players.Where(x => !x.HideFromView)
+                .Include(x => x.MatchesParticipatedIn)
+                .ThenInclude(x => x.Match).ToList();
+            var hiddenPlayers =_context.Players.Where(x => x.HideFromView)
+                .Include(x => x.MatchesParticipatedIn)
+                .ThenInclude(x => x.Match).ToList();
+            return (from time in startTime let dict = 
+                players.ToDictionary(player => player.PlayerId, player => player.GetPositionAtTime(time)) 
+                select new BoardViewModel { Positions = dict, TimeOfBoard = time }).ToList();
         }
     }
 }
