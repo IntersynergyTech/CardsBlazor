@@ -48,6 +48,22 @@ namespace CardsBlazor.Data
                 .AsQueryable();
         }
 
+        public List<PlayerApiModel> GetAllPlayersAsApiModel()
+        {
+             return _context.Players.Where(x => !x.Archived)
+                .Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match)
+                .Include(x => x.CashGamesPlayed).ThenInclude(x => x.Game)
+                .AsSplitQuery().Select(x => new PlayerApiModel()
+                {
+                    Id = x.PlayerId,
+                    UserName = x.UserName,
+                    RealName = x.RealName,
+                    CurrentPosition = x.CurrentPosition,
+                    PotentialPosition = x.PotentialPosition,
+                    HideFromView = x.HideFromView
+                }).ToList();
+        }
+
         public void AddPlayer(PlayerViewModel player)
         {
             var model = new Player

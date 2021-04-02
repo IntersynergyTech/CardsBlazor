@@ -44,4 +44,14 @@ namespace CardsBlazor.ApiControllers
 
         }
     }
+
+    public class PlayerApiModel
+    {
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string RealName { get; set; }
+        public decimal CurrentPosition { get; set; }
+        public decimal PotentialPosition { get; set; }
+        public bool HideFromView { get; set; }
+    }
 }

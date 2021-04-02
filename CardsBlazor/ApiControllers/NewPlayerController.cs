@@ -37,26 +37,13 @@ namespace CardsBlazor.ApiControllers
             });
             return data;
         }
-        [HttpGet()]
+        [HttpGet]
         [Route("GetBoard")]
         [MapToApiVersion("2.0")]
-        public object GetBoard(int pageSize, int startPos)
+        public JsonResult GetBoard(int pageSize, int startPos)
         {
-            var boardModel = _boardService.GetNPositions(pageSize, startPos);
-            var players = _playerService.GetAllAsQueryable().AsSplitQuery().Where(x => !x.HideFromView).ToList().Select(x => new
-            {
-                Id = x.PlayerId,
-                UserName = x.UserName,
-                RealName = x.RealName,
-                CurrentPosition = x.CurrentPosition,
-                PotentialPosition = x.PotentialPosition,
-                HideFromView = x.HideFromView
-            }).ToList();
-            return new
-            {
-                Players = players,
-                Positions = boardModel
-            };
+            var model = _boardService.GetNPositionsForApi(pageSize, startPos);
+            return new(model);
         }
     }
 }
