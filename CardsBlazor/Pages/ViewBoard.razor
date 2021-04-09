@@ -9,26 +9,26 @@
 @inject PlayerService PlayerService
 @inject BoardService BoardService
 <h3>Legacy Board Viewer</h3>
-@if (PlayerList != null)
+@if (BoardList != null)
 {
     <p>Showing </p>
     <table class="table">
         <thead class="thead-dark dark-mode-text">
             <tr>
                 <th>Time</th>
-                @foreach (var player in PlayerList.OrderBy(x => x.PlayerId))
+                @foreach (var player in BoardList.Players.OrderBy(x => x.Id))
                 {
                     <th>@player.RealName</th>
                 }
             </tr>
         </thead>
-        @foreach (var board in BoardList)
+        @foreach (var row in BoardList.Positions)
         {
             <tr class="dark-mode-text">
                 <td>
-                    @board.TimeOfBoard.ToString("yyyy-MM-dd HH:mm:ss")
+                    @row.PositionDate.ToString("yyyy-MM-dd HH:mm:ss")
                 </td>
-                @foreach (var pos in board.Positions.OrderBy(x => x.Key))
+                @foreach (var pos in row.PlayerPositions.OrderBy(x => x.Key))
                 {
                     <td>
                         @pos.Value.ToString("C2", CultureInfo.GetCultureInfo("en-GB"))
@@ -45,8 +45,7 @@
     private int StartPosition;
     private int PageSize;
     private int CurrentPosition;
-    private List<PlayerViewModel> PlayerList;
-    private List<BoardViewModel> BoardList = new List<BoardViewModel>();
+    private BoardApiModel BoardList;
     private bool CantMoveBack = true;
     private bool CantMoveForward = false;
 
@@ -54,23 +53,16 @@
     {
         StartPosition = 0;
         PageSize = 50;
-        PlayerList = await PlayerService.GetPlayersViewModel();
-        PlayerList.Add(new PlayerViewModel
-        {
-            PlayerId = 42069,
-            CurrentPosition = PlayerService.GetAllAsQueryable().Where(x => x.HideFromView).Sum(x => x.CurrentPosition)
-        });
         Refresh();
-
     }
 
 
     private void Refresh()
     {
-        var boardData = BoardService.GetNPositions(PageSize, StartPosition);
+        var boardData = BoardService.GetNPositionsForApi(PageSize, StartPosition);
         BoardList = boardData;
         CantMoveBack = StartPosition == 0;
-        CantMoveForward = BoardList.Count < PageSize;
+        CantMoveForward = BoardList.Positions.Count < PageSize;
         StateHasChanged();
     }
     private void NextPage()
