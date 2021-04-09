@@ -66,13 +66,15 @@ namespace CardsBlazor.Data
             var playersForModel = _playerService.GetAllPlayersAsApiModel().Where(x => !x.HideFromView).ToList();
             playersForModel.Add(fakeUser);
             returnable.Players = playersForModel;
-            foreach (var time in timeList)
+            for (int i = 0; i < timeList.Count; i++)
             {
+                var time = timeList[i];
                 var correctPlayers = players.GetPositionsAtTime(time);
                 var otherDict = otherPlayers.GetPositionsAtTime(time);
                 correctPlayers.Add(42069, otherDict.Sum(x => x.Value));
                 returnable.Positions.Add(new BoardModel
                 {
+                    BoardModelId = i,
                     PositionDate = time,
                     PlayerPositions = correctPlayers
                 });

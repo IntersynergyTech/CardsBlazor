@@ -22,7 +22,9 @@ namespace CardsBlazor
 
     public class BoardModel
     {
+        public int BoardModelId { get; set; }
         public DateTime PositionDate { get; set; }
         public Dictionary<int, decimal> PlayerPositions { get; set; }
     }
+    
 }
