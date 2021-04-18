@@ -19,10 +19,14 @@ namespace CardsBlazor.Data.Entity
 
         public DbSet<CashGame> CashGames { get; set; }
         public DbSet<CashGameParty> CashGameParties { get; set; }
+
+        public DbSet<AppleAuthUser> AppleAuthUsers { get; set; }
+
         public CardsAppContext(DbContextOptions<CardsAppContext> options)
             : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Player>().HasIndex(x => x.PlayerId);
@@ -64,17 +68,16 @@ namespace CardsBlazor.Data.Entity
                 MinimumPlayerCount = 2,
                 NumberOfWinnersInt = 1,
                 ArchiveTime = null
-            }
-            ,new Game
-                {
-                    GameId = 999,
-                    Archived = false,
-                    HasFixedFee = true,
-                    NumberOfWinnersInt = 1,
-                    ArchiveTime = null,
-                    MinimumPlayerCount = 2,
-                    Name = "Settlement"
-                });
+            }, new Game
+            {
+                GameId = 999,
+                Archived = false,
+                HasFixedFee = true,
+                NumberOfWinnersInt = 1,
+                ArchiveTime = null,
+                MinimumPlayerCount = 2,
+                Name = "Settlement"
+            });
 
             modelBuilder.Entity<MatchAudit>().HasKey(x => x.AuditId);
             modelBuilder.Entity<MatchAudit>().Property(x => x.AuditDate).IsRequired();
@@ -82,10 +85,13 @@ namespace CardsBlazor.Data.Entity
 
             modelBuilder.Entity<PaymentAudit>().HasKey(x => x.Id);
             modelBuilder.Entity<PaymentAudit>().HasIndex(x => x.Id);
-            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.PositivePlayer).WithMany(x => x.PositivePayments).OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.NegativePlayer).WithMany(x => x.NegativePayments).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.PositivePlayer).WithMany(x => x.PositivePayments)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.NegativePlayer).WithMany(x => x.NegativePayments)
+                .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<PaymentAudit>().Property(x => x.PaymentDate).IsRequired();
-            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.SettleMatch).WithOne(x => x.SettleAudit).HasForeignKey<Match>(x => x.SettleAuditId)
+            modelBuilder.Entity<PaymentAudit>().HasOne(x => x.SettleMatch).WithOne(x => x.SettleAudit)
+                .HasForeignKey<Match>(x => x.SettleAuditId)
                 .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<CashGame>().HasKey(x => x.CashGameId);
@@ -96,6 +102,12 @@ namespace CardsBlazor.Data.Entity
 
             modelBuilder.Entity<CashGameParty>().HasKey(x => x.PartyId);
             modelBuilder.Entity<CashGameParty>().HasOne(x => x.Player);
+
+            modelBuilder.Entity<AppleAuthUser>().HasKey(x => x.Id);
+            modelBuilder.Entity<AppleAuthUser>().HasIndex(x => x.Id);
+            modelBuilder.Entity<AppleAuthUser>().Property(x => x.AppleAuthCode).IsRequired();
+            modelBuilder.Entity<AppleAuthUser>().HasOne(x => x.Player);
+            modelBuilder.Entity<AppleAuthUser>().Property(x => x.DateArchived).HasColumnType("datetime");
         }
     }
 }

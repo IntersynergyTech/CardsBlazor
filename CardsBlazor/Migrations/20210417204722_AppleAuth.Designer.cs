@@ -4,14 +4,16 @@ using CardsBlazor.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CardsBlazor.Migrations
 {
     [DbContext(typeof(CardsAppContext))]
-    partial class CardsAppContextModelSnapshot : ModelSnapshot
+    [Migration("20210417204722_AppleAuth")]
+    partial class AppleAuth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,15 +28,12 @@ namespace CardsBlazor.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<Guid>("ApiKey")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("AppleAuthCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DateArchived")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("EmailAddress")
                         .HasColumnType("nvarchar(max)");
@@ -51,14 +50,9 @@ namespace CardsBlazor.Migrations
                     b.Property<DateTime?>("LastAuth")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PlayerId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Id");
-
-                    b.HasIndex("PlayerId");
 
                     b.ToTable("AppleAuthUsers");
                 });
@@ -404,15 +398,6 @@ namespace CardsBlazor.Migrations
                             RealName = "Admin",
                             UserName = "Admin"
                         });
-                });
-
-            modelBuilder.Entity("CardsBlazor.Data.Entity.AppleAuthUser", b =>
-                {
-                    b.HasOne("CardsBlazor.Data.Entity.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId");
-
-                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("CardsBlazor.Data.Entity.CashGameParty", b =>
