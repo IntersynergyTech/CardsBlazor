@@ -31,6 +31,7 @@ namespace CardsBlazor.ApiControllers
         /// <param name="percentageWagered">The percentage amount that a player must wager. For example 50 = 50%</param>
         /// <param name="percentageFee"></param>
         [Route("CalculateFees")]
+        [HttpGet]
         public void CalculateAndCheck(int daysSincePlayed, int percentageWagered, int percentageFee)
         {
             var players = _context.Players.Include(x => x.MatchesParticipatedIn).ThenInclude(x => x.Match).ToList();
