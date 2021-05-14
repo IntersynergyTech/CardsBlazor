@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CardsBlazor.Data.Entity
 {
+    [SuppressMessage("ReSharper", "CA2227", Scope = "namespace", Target = "CardsBlazor.Data.Entity")]
+    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Scope = "namespace", Target = "CardsBlazor.Data.Entity")]
     public class CashGame
     {
         public int CashGameId { get; set; }

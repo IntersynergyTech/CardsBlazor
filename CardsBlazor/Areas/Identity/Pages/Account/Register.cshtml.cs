@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CardsBlazor.Areas.Identity.Pages.Account
 {
+    [SuppressMessage("ReSharper", "CA2227"), SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {

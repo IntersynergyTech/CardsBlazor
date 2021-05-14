@@ -1,5 +1,8 @@
-﻿namespace CardsBlazor.Data
+﻿using System;
+
+namespace CardsBlazor.Data
 {
+    [Flags]
     public enum NumberOfWinners
     {
         SingleWinner = 1,

@@ -111,6 +111,7 @@ namespace CardsBlazor
                 x.AssumeDefaultVersionWhenUnspecified = true;
             });
             services.AddSwaggerGen();
+            services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -120,7 +121,7 @@ namespace CardsBlazor
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
                 // Enable middleware to serve generated Swagger as a JSON endpoint.
                 app.UseSwagger();
 

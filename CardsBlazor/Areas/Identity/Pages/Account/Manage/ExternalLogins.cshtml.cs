@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using CardsBlazor.Areas.Identity.Data;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CardsBlazor.Areas.Identity.Pages.Account.Manage
 {
+    [SuppressMessage("ReSharper", "CA2227"), SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global"), SuppressMessage("ReSharper", "CA2227")]
     public class ExternalLoginsModel : PageModel
     {
         private readonly UserManager<AppUser> _userManager;

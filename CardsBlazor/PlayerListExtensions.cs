@@ -16,8 +16,18 @@ namespace CardsBlazor
 
     public class BoardApiModel
     {
-        public List<PlayerApiModel> Players { get; set; }
-        public List<BoardModel> Positions { get; set; }
+        public BoardApiModel()
+        {
+            
+        }
+
+        public BoardApiModel(List<BoardModel> positions, List<PlayerApiModel> players)
+        {
+            Players = players;
+            Positions = positions;
+        }
+        public List<PlayerApiModel> Players { get; }
+        public List<BoardModel> Positions { get; }
     }
 
     public class BoardModel

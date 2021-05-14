@@ -298,15 +298,52 @@ namespace CardsBlazor.Data
             }
             trans.Commit();
         }
+
         public void Dispose()
         {
             _context?.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
-    public class MatchNotFoundException : Exception { }
-    public class IncorrectMatchTypeException : Exception { }
+    public class MatchNotFoundException : Exception {
+        public MatchNotFoundException(string message) : base(message)
+        {
+        }
+
+        public MatchNotFoundException()
+        {
+        }
+
+        public MatchNotFoundException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+    }
+    public class IncorrectMatchTypeException : Exception {
+        public IncorrectMatchTypeException(string message) : base(message)
+        {
+        }
+
+        public IncorrectMatchTypeException()
+        {
+        }
+
+        public IncorrectMatchTypeException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+    }
 
     public class PlayerNotFoundException : Exception
     {
+        public PlayerNotFoundException(string message) : base(message)
+        {
+        }
+
+        public PlayerNotFoundException()
+        {
+        }
+
+        public PlayerNotFoundException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
     }
 }

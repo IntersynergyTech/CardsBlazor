@@ -59,6 +59,7 @@ namespace CardsBlazor.ApiControllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ApiKey]
         public IActionResult FinishMatch(int matchId, [FromBody] Dictionary<int, decimal> playerResults)
         {
             var match = _service.GetMatch(matchId);
@@ -71,7 +72,7 @@ namespace CardsBlazor.ApiControllers
                 {
                     _service.ResolveSingleWinnerMatch(match.MatchId, winningPlayerId);
                 }
-                catch (MatchNotFoundException e)
+                catch (MatchNotFoundException)
                 {
                     return NotFound();
                 }
@@ -89,6 +90,22 @@ namespace CardsBlazor.ApiControllers
                 _service.ResolveMultiWinnerMatch(match.MatchId, playerResults);
             }
             return Ok();
+        }
+        
+        [HttpPost]
+        [Route("StartMatch")]
+        [MapToApiVersion("2.0")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ApiKey]
+        public IActionResult StartMatch([FromBody] MatchCreateModel model)
+        {
+            if (model == null) return BadRequest("Model is missing");
+            if (model.GameId is null or 0) return BadRequest("Invalid Game");
+            var matchId = _service.AddNewMatch(model);
+            var match = _service.GetMatch(matchId);
+            return Ok(match);
         }
     }
 }
