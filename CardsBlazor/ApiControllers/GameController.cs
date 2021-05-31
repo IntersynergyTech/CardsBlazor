@@ -50,18 +50,5 @@ namespace CardsBlazor.ApiControllers
         {
             return _gameService.GetAllAsViewModels().Result;
         }
-
-        // POST api/<GameController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<GameController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
     }
 }
