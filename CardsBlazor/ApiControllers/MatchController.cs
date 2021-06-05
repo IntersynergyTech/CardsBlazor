@@ -104,8 +104,40 @@ namespace CardsBlazor.ApiControllers
             if (model == null) return BadRequest("Model is missing");
             if (model.GameId is null or 0) return BadRequest("Invalid Game");
             var matchId = _service.AddNewMatch(model);
+            if (matchId == -1)
+                return new ContentResult
+                {
+                    StatusCode = 500,
+                    Content = "An Error has occurred"
+                };
             var match = _service.GetMatch(matchId);
             return Ok(match);
+        }
+        
+        [Route("AddPlayer")]
+        [MapToApiVersion("2.0")]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ApiKey]
+        public IActionResult AddPlayerToMatch(int matchId, [FromBody] int playerId)
+        {
+            if (matchId < 1) return NotFound();
+            try
+            {
+                _service.AddPlayers(matchId, new List<int>{playerId});
+                return Accepted();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message, e);
+                return new ContentResult
+                {
+                    StatusCode = 500,
+                    Content = "An Error has occurred"
+                };
+                throw;
+            }
         }
     }
 }
