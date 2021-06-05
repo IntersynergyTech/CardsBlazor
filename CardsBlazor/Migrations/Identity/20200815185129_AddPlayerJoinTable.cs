@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+// ReSharper disable CA1062
 
 namespace CardsBlazor.Migrations.Identity
 {

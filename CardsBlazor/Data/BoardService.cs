@@ -49,10 +49,7 @@ namespace CardsBlazor.Data
             var players = _context.Players.Where(x => !x.HideFromView)
                 .Include(x => x.MatchesParticipatedIn)
                 .ThenInclude(x => x.Match).ToList();
-            var returnable = new BoardApiModel
-            {
-                Positions = new List<BoardModel>()
-            };
+
             var otherPlayers = _context.Players.Where(x => x.HideFromView)
                 .Include(x => x.MatchesParticipatedIn)
                 .ThenInclude(x => x.Match).ToList();
@@ -65,7 +62,8 @@ namespace CardsBlazor.Data
             };
             var playersForModel = _playerService.GetAllPlayersAsApiModel().Where(x => !x.HideFromView).ToList();
             playersForModel.Add(fakeUser);
-            returnable.Players = playersForModel;
+            var returnable = new BoardApiModel
+                (new List<BoardModel>(), playersForModel);
             for (int i = 0; i < timeList.Count; i++)
             {
                 var time = timeList[i];

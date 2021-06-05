@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using CardsBlazor.ApiControllers;
@@ -8,6 +9,8 @@ using CardsBlazor.Data.Entity;
 
 namespace CardsBlazor.Data.ViewModels
 {
+    [SuppressMessage("ReSharper", "CA2227", Scope = "namespace", Target = "CardsBlazor.Data.Entity")]
+    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Scope = "namespace", Target = "CardsBlazor.Data.Entity")]
     public class MatchViewModel
     {
         public MatchViewModel()
@@ -47,7 +50,7 @@ namespace CardsBlazor.Data.ViewModels
         [Required]
         [Range(1, double.MaxValue, ErrorMessage = "The stakes must be at least £1")]
         public decimal EntranceFee { get; set; }
-        public List<PartyViewModel> Participants { get; set; }
+        public List<PartyViewModel> Participants { get; }
         public bool IsResolved { get; set; }
         public string GameName => Game?.Name;
         public NumberOfWinners WinnerCount;

@@ -48,11 +48,9 @@ else if (matchView.Archived && matchView.EndTime != null)
             </Content>
         </DialogTemplates>
         <DialogButtons>
-            <DialogButton OnClick="AddPlayer">
-                <DialogButtonModel Content="OK" IsPrimary="true"></DialogButtonModel>
+            <DialogButton OnClick="AddPlayer" Content="OK" IsPrimary="true">
             </DialogButton>
-            <DialogButton OnClick="CloseAddDialog">
-                <DialogButtonModel Content="Cancel"></DialogButtonModel>
+            <DialogButton OnClick="CloseAddDialog" Content="Cancel">
             </DialogButton>
         </DialogButtons>
     </SfDialog>
@@ -160,7 +158,7 @@ Player List:
     private List<PlayerViewModel> AvailablePlayers { get; set; } = new List<PlayerViewModel>();
     protected override async Task OnInitializedAsync()
     {
-
+        await Task.Delay(0);
         var result = MatchService.GetMatch(Id);
         if (result == null)
         {

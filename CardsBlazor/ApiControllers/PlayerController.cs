@@ -25,6 +25,7 @@ namespace CardsBlazor.ApiControllers
             _playerService = service;
         }
 
+        [HttpGet]
         public object Get()
         {
             var data = _playerService.GetAllAsQueryable().Where(x => !x.HideFromView);

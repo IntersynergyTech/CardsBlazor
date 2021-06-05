@@ -50,13 +50,9 @@ namespace CardsBlazor.ApiControllers
                 _context.SaveChanges();
                 return StatusCode(402, authUser.ApiKey);
             }
-            else
-            {
-                if(model.IsAllowedAccess) return Ok(model.ApiKey);
-                return StatusCode((int) HttpStatusCode.PaymentRequired); //Use payment required as short hand for awaiting activation
-            }
 
-            return Unauthorized(); //Disallow login by default
+            if(model.IsAllowedAccess) return Ok(model.ApiKey);
+            return StatusCode((int) HttpStatusCode.PaymentRequired); //Use payment required as short hand for awaiting activation
         }
 
         [HttpGet]
