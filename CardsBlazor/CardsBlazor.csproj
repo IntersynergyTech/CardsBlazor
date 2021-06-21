@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="AspNet.Security.OAuth.Apple" Version="5.0.7" />
-    <PackageReference Include="Blazor-Analytics" Version="3.3.0" />
+    <PackageReference Include="Blazor-Analytics" Version="3.6.0" />
     <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.6" />
