@@ -19,59 +19,70 @@ namespace CardsBlazor.Data
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (context == null)
+            try
             {
-                Log.Logger.Error("Context was null on request");
-                return;
-            }
-
-            _context = context.HttpContext
-                .RequestServices
-                .GetService(typeof(CardsAppContext)) as CardsAppContext;
-            if (_context == null)
-            {
-                Log.Logger.Error("Database Context was null on request, rejecting");
-                context.Result = new ContentResult
+                if (context == null)
                 {
-                    StatusCode = 500,
-                    Content = "Error with auth"
-                };
-                return;
-            }
+                    Log.Logger.Error("Context was null on request");
+                    return;
+                }
 
-            if (!context.HttpContext.Request.Headers.TryGetValue(APIKEYNAME, out var extractedApiKey))
-            {
-                context.Result = new ContentResult()
+                _context = context.HttpContext
+                    .RequestServices
+                    .GetService(typeof(CardsAppContext)) as CardsAppContext;
+                if (_context == null)
                 {
-                    StatusCode = 401,
-                    Content = "Api Key was not provided"
-                };
-                return;
-            }
+                    Log.Logger.Error("Database Context was null on request, rejecting");
+                    context.Result = new ContentResult
+                    {
+                        StatusCode = 500,
+                        Content = "Error with auth"
+                    };
+                    return;
+                }
 
-            var result = _context.AppleAuthUsers.Where(x => x.DateArchived == null)
-                .FirstOrDefault(x => x.ApiKey == extractedApiKey);
-            if (result == null)
-            {
-                context.Result = new ContentResult()
+                if (!context.HttpContext.Request.Headers.TryGetValue(APIKEYNAME, out var extractedApiKey))
                 {
-                    StatusCode = 401,
-                    Content = "Api Key is not valid"
-                };
-                return;
-            }
+                    context.Result = new ContentResult()
+                    {
+                        StatusCode = 401,
+                        Content = "Api Key was not provided"
+                    };
+                    return;
+                }
 
-            if (!result.IsAllowedAccess)
-            {
-                context.Result = new ContentResult()
+                var guid = new Guid(extractedApiKey.ToString());
+
+                var result = _context.AppleAuthUsers.Where(x => x.DateArchived == null)
+                    .FirstOrDefault(x => x.ApiKey == guid);
+
+                if (result == null)
                 {
-                    StatusCode = 402,
-                    Content = "Awaiting ApiKey Activation"
-                };
-                return;
-            }
+                    context.Result = new ContentResult()
+                    {
+                        StatusCode = 401,
+                        Content = "Api Key is not valid"
+                    };
+                    return;
+                }
 
-            await next();
+                if (!result.IsAllowedAccess)
+                {
+                    context.Result = new ContentResult()
+                    {
+                        StatusCode = 402,
+                        Content = "Awaiting ApiKey Activation"
+                    };
+                    return;
+                }
+
+                await next();
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e, "Failed to load auth");
+                throw;
+            }
         }
     }
 

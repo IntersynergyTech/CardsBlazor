@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CardsBlazor.Data.Entity
 {
@@ -31,6 +32,8 @@ namespace CardsBlazor.Data.Entity
 
         public virtual List<MatchAudit> Audits { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        [JsonIgnore]
         public virtual PaymentAudit SettleAudit { get; set; }
         public int? SettleAuditId { get; set; }
         public bool IsSettleMatch { get; set; }

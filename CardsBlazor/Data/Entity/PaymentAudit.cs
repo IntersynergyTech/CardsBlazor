@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CardsBlazor.Data.Entity
 {
@@ -18,6 +19,8 @@ namespace CardsBlazor.Data.Entity
         public DateTime PaymentDate { get; set; }
 
         public int SettleMatchId { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        [JsonIgnore]
         public virtual Match SettleMatch { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CardsBlazor.Data.Entity
@@ -12,6 +13,9 @@ namespace CardsBlazor.Data.Entity
         public string UserId { get; set; }
         public DateTime AuditDate { get; set; }
         public AuditType Type { get; set; }
+        
+        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public virtual Match Match { get; set; }
     }
 

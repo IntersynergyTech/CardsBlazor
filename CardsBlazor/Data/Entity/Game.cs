@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CardsBlazor.Data.Entity
 {
@@ -20,6 +21,8 @@ namespace CardsBlazor.Data.Entity
         /// </summary>
         public bool HasFixedFee { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        [JsonIgnore]
         public virtual List<Match> Matches { get; set; }
 
         public bool Archived { get; set; }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CardsBlazor.Data.Entity
 {
@@ -19,6 +19,7 @@ namespace CardsBlazor.Data.Entity
         public DateTime? LastPaid { get; set; }
         public bool HasAdminPermission { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
+        [JsonIgnore]
         public virtual List<Participant> MatchesParticipatedIn { get; set; }
         public bool Archived { get; set; }
         public DateTime? ArchiveTime { get; set; }
@@ -29,12 +30,15 @@ namespace CardsBlazor.Data.Entity
         public bool IsFeeUser { get; set; }
 
         public bool IsSystemInactiveUser { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         [JsonIgnore]
         public virtual List<PaymentAudit> PositivePayments { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         [JsonIgnore]
         public virtual List<PaymentAudit> NegativePayments { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         [JsonIgnore]
         public virtual List<CashGameParty> CashGamesPlayed { get; set; }
 
