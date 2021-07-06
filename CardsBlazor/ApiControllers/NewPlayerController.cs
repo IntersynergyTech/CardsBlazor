@@ -40,10 +40,10 @@ namespace CardsBlazor.ApiControllers
         [HttpGet]
         [Route("GetBoard")]
         [MapToApiVersion("2.0")]
-        public JsonResult GetBoard(int pageSize, int startPos)
+        public JsonResult GetBoard(int pageSize = 50, int startPos = 0)
         {
             var model = _boardService.GetNPositionsForApi(pageSize, startPos);
-            return new(model);
+            return new JsonResult(model);
         }
     }
 }

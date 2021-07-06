@@ -44,7 +44,8 @@ namespace CardsBlazor.ApiControllers
         {
             var match = _service.GetMatch(matchId);
             if (match == null) return NotFound();
-            return Ok(match);
+            var result = new MatchViewModel(match);
+            return Ok(result);
         }
 
         /// <summary>
@@ -63,14 +64,21 @@ namespace CardsBlazor.ApiControllers
         public IActionResult FinishMatch(int matchId, [FromBody] Dictionary<int, decimal> playerResults)
         {
             var match = _service.GetMatch(matchId);
-            if (match == null) return NotFound();
+            if (match == null) return NotFound("Match not found");
             if (playerResults == null) return BadRequest();
+            if (match.IsResolved) return Conflict();
             if (match.Game.NumberOfWinners == NumberOfWinners.SingleWinner)
             {
                 var winningPlayerId = playerResults.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
                 try
                 {
-                    _service.ResolveSingleWinnerMatch(match.MatchId, winningPlayerId);
+                    var winningPartyId = match.Participants.FirstOrDefault(x => x.PlayerId == winningPlayerId)?
+                        .ParticipantId;
+                    if (winningPartyId == null)
+                    {
+                        return NotFound("Player not found");
+                    }
+                    _service.ResolveSingleWinnerMatch(match.MatchId, winningPartyId ?? -1);
                 }
                 catch (MatchNotFoundException)
                 {
