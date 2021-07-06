@@ -66,7 +66,7 @@ namespace CardsBlazor.ApiControllers
             var match = _service.GetMatch(matchId);
             if (match == null) return NotFound("Match not found");
             if (playerResults == null) return BadRequest();
-            if (match.IsResolved) return Conflict();
+            if (match.IsResolved) return Conflict("Match is Resolved");
             if (match.Game.NumberOfWinners == NumberOfWinners.SingleWinner)
             {
                 var winningPlayerId = playerResults.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
@@ -95,7 +95,30 @@ namespace CardsBlazor.ApiControllers
             }
             else
             {
-                _service.ResolveMultiWinnerMatch(match.MatchId, playerResults);
+                var partyResults = new Dictionary<int, decimal>();
+                foreach (var kvp in playerResults)
+                {
+                    var partyId = match.Participants.FirstOrDefault(x => x.PlayerId == kvp.Key)?
+                        .ParticipantId;
+                    if (partyId == null)
+                    {
+                        return NotFound("Party Error");
+                    }
+                    else
+                    {
+                        partyResults.Add(partyId.Value, kvp.Value);
+                    }
+                }
+
+                if (partyResults.Count == playerResults.Count)
+                {
+                    _service.ResolveMultiWinnerMatch(match.MatchId, partyResults);
+                }
+                else
+                {
+                    return Conflict("Party Size Conflict");
+                }
+                
             }
 
             var updatedMatch = _service.GetMatch(matchId);
