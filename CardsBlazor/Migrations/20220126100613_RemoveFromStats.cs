@@ -2,24 +2,23 @@
 
 namespace CardsBlazor.Migrations
 {
-    public partial class AddWinnerField : Migration
+    public partial class RemoveFromStats : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<bool>(
-                name: "IsWinner",
-                table: "Participants",
+                name: "RemoveFromStatistics",
+                table: "Matches",
                 type: "bit",
-                nullable: true);
+                nullable: false,
+                defaultValue: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-#pragma warning disable CA1062
             migrationBuilder.DropColumn(
-#pragma warning restore CA1062
-                name: "IsWinner",
-                table: "Participants");
+                name: "RemoveFromStatistics",
+                table: "Matches");
         }
     }
 }

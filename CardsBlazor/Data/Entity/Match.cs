@@ -37,5 +37,6 @@ namespace CardsBlazor.Data.Entity
         public virtual PaymentAudit SettleAudit { get; set; }
         public int? SettleAuditId { get; set; }
         public bool IsSettleMatch { get; set; }
+        public bool RemoveFromStatistics { get; set; }
     }
 }

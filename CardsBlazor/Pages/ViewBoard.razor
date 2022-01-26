@@ -11,7 +11,11 @@
 <h3>Legacy Board Viewer</h3>
 @if (BoardList != null)
 {
-    <p>Showing </p>
+    <div class="table">
+        
+    </div>
+    <SfButton OnClick="Refresh" CssClass="pull-right" IconCss="oi oi-loop-square">Refresh</SfButton>
+    <br/>
     <table class="table">
         <thead class="thead-dark dark-mode-text">
             <tr>
