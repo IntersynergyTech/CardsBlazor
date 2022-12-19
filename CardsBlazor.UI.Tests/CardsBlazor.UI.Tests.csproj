@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="bunit.web" Version="1.4.15" />
     <PackageReference Include="bunit.xunit" Version="1.0.0-beta-9" />
-    <PackageReference Include="Microsoft.AspNetCore.Metadata" Version="5.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Metadata" Version="7.0.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.0.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
